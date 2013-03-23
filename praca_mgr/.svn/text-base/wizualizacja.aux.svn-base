@@ -1,0 +1,74 @@
+\relax 
+\@writefile{toc}{\contentsline {section}{\numberline {3}Wizualizacja HMI}{22}{section.3}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Specyfikacja zewn\IeC {\k e}trzna}{22}{subsection.3.1}}
+\@writefile{lof}{\contentsline {figure}{\numberline {12}{\ignorespaces Szablon ekran\IeC {\'o}w wizualizacji\relax }}{23}{figure.caption.16}}
+\newlabel{template}{{12}{23}{Szablon ekranów wizualizacji\relax \relax }{figure.caption.16}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.1}Ekran powitalny}{23}{subsubsection.3.1.1}}
+\@writefile{lof}{\contentsline {figure}{\numberline {13}{\ignorespaces Ekran powitalny\relax }}{23}{figure.caption.17}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces {Bez po\IeC {\l }\IeC {\k a}czenia ze sterownikiem}}}{23}{subfigure.13.1}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces {Z pod\IeC {\l }\IeC {\k a}czonym sterownikiem}}}{23}{subfigure.13.2}}
+\newlabel{vis1}{{13}{23}{Ekran powitalny\relax \relax }{figure.caption.17}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.2}Stan robota}{23}{subsubsection.3.1.2}}
+\@writefile{lof}{\contentsline {figure}{\numberline {14}{\ignorespaces Ekran prezentuj\IeC {\k a}cy stan robota\relax }}{24}{figure.caption.18}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces {Bez po\IeC {\l }\IeC {\k a}czenia ze sterownikiem}}}{24}{subfigure.14.1}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces {Z pod\IeC {\l }\IeC {\k a}czonym sterownikiem}}}{24}{subfigure.14.2}}
+\newlabel{vis2}{{14}{24}{Ekran prezentujący stan robota\relax \relax }{figure.caption.18}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.3}Stan magazynu i testowanie obs\IeC {\l }ugi}{24}{subsubsection.3.1.3}}
+\@writefile{lof}{\contentsline {figure}{\numberline {15}{\ignorespaces Ekran prezentuj\IeC {\k a}cy stan magazynu i umo\IeC {\.z}liwiaj\IeC {\k a}cy obs\IeC {\l }ug\IeC {\k e}\relax }}{25}{figure.caption.19}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces {Bez po\IeC {\l }\IeC {\k a}czenia ze sterownikiem}}}{25}{subfigure.15.1}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces {Z pod\IeC {\l }\IeC {\k a}czonym sterownikiem}}}{25}{subfigure.15.2}}
+\newlabel{vis3}{{15}{25}{Ekran prezentujący stan magazynu i umożliwiający obsługę\relax \relax }{figure.caption.19}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.4}Testowanie sterowania r\IeC {\k e}cznego z poziomu wizualizacji}{25}{subsubsection.3.1.4}}
+\@writefile{lof}{\contentsline {figure}{\numberline {16}{\ignorespaces Widok dodatkowych klawiszy przypisanych do ekranu testowania sterowania r\IeC {\k e}cznego z poziomu wizualizacji\relax }}{25}{figure.caption.20}}
+\newlabel{manvis}{{16}{25}{Widok dodatkowych klawiszy przypisanych do ekranu testowania sterowania ręcznego z poziomu wizualizacji\relax \relax }{figure.caption.20}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {17}{\ignorespaces Ekran umo\IeC {\.z}liwiaj\IeC {\k a}cy testowanie sterowania r\IeC {\k e}cznego z poziomu wizualizacji\relax }}{26}{figure.caption.21}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces {Bez po\IeC {\l }\IeC {\k a}czenia ze sterownikiem}}}{26}{subfigure.17.1}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces {Z pod\IeC {\l }\IeC {\k a}czonym sterownikiem}}}{26}{subfigure.17.2}}
+\newlabel{vis4}{{17}{26}{Ekran umożliwiający testowanie sterowania ręcznego z poziomu wizualizacji\relax \relax }{figure.caption.21}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.5}Testowanie sterowania r\IeC {\k e}cznego z pilota pod\IeC {\l }\IeC {\k a}czonego do sterownika}{26}{subsubsection.3.1.5}}
+\@writefile{lof}{\contentsline {figure}{\numberline {18}{\ignorespaces Ekran umo\IeC {\.z}liwiaj\IeC {\k a}cy testowanie sterowania r\IeC {\k e}cznego z pilota pod\IeC {\l }\IeC {\k a}czonego do sterownika\relax }}{26}{figure.caption.22}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces {Bez po\IeC {\l }\IeC {\k a}czenia ze sterownikiem}}}{26}{subfigure.18.1}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces {Z pod\IeC {\l }\IeC {\k a}czonym sterownikiem}}}{26}{subfigure.18.2}}
+\newlabel{vis5}{{18}{26}{Ekran umożliwiający testowanie sterowania ręcznego z pilota podłączonego do sterownika\relax \relax }{figure.caption.22}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.6}Testowanie sterowania automatycznego}{27}{subsubsection.3.1.6}}
+\@writefile{lof}{\contentsline {figure}{\numberline {19}{\ignorespaces Ekran umo\IeC {\.z}liwiaj\IeC {\k a}cy testowanie sterowania automatycznego\relax }}{27}{figure.caption.23}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces {Bez po\IeC {\l }\IeC {\k a}czenia ze sterownikiem}}}{27}{subfigure.19.1}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces {Z pod\IeC {\l }\IeC {\k a}czonym sterownikiem}}}{27}{subfigure.19.2}}
+\newlabel{vis6}{{19}{27}{Ekran umożliwiający testowanie sterowania automatycznego\relax \relax }{figure.caption.23}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Specyfikacja wewn\IeC {\k e}trzna}{27}{subsection.3.2}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {6}BDScript}{28}{lstlisting.6}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {7}NNScript}{28}{lstlisting.7}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {8}MagazynPush}{28}{lstlisting.8}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {9}MagazynTake}{28}{lstlisting.9}}
+\@setckpt{wizualizacja}{
+\setcounter{page}{29}
+\setcounter{equation}{0}
+\setcounter{enumi}{2}
+\setcounter{enumii}{0}
+\setcounter{enumiii}{0}
+\setcounter{enumiv}{0}
+\setcounter{footnote}{0}
+\setcounter{mpfootnote}{0}
+\setcounter{part}{0}
+\setcounter{section}{3}
+\setcounter{subsection}{2}
+\setcounter{subsubsection}{0}
+\setcounter{paragraph}{0}
+\setcounter{subparagraph}{0}
+\setcounter{figure}{19}
+\setcounter{table}{4}
+\setcounter{Item}{6}
+\setcounter{Hfootnote}{0}
+\setcounter{ContinuedFloat}{0}
+\setcounter{KVtest}{0}
+\setcounter{subfigure}{0}
+\setcounter{subfigure@save}{2}
+\setcounter{lofdepth}{1}
+\setcounter{subtable}{0}
+\setcounter{subtable@save}{0}
+\setcounter{lotdepth}{1}
+\setcounter{lstnumber}{4}
+\setcounter{lips@count}{0}
+\setcounter{section@level}{0}
+\setcounter{lstlisting}{9}
+}

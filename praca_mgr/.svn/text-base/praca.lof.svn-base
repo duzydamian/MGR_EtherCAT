@@ -1,0 +1,32 @@
+\select@language {polish}
+\contentsline {figure}{\numberline {1}{\ignorespaces Robot 3D firmy Fischertechnik\relax }}{2}{figure.caption.1}
+\contentsline {figure}{\numberline {2}{\ignorespaces Schemat stanowiska\relax }}{3}{figure.caption.2}
+\contentsline {figure}{\numberline {3}{\ignorespaces Siemens SIMATIC S7-300\relax }}{3}{figure.caption.3}
+\contentsline {figure}{\numberline {4}{\ignorespaces Konfiguracja sterownika PLC\relax }}{4}{figure.caption.4}
+\contentsline {figure}{\numberline {5}{\ignorespaces Zbudowany magazyn\relax }}{6}{figure.caption.7}
+\contentsline {figure}{\numberline {6}{\ignorespaces Zbudowany magazyn z zamontowanym robotem\relax }}{6}{figure.caption.8}
+\contentsline {figure}{\numberline {7}{\ignorespaces Wykorzystanie pami\IeC {\k e}ci sterownika\relax }}{8}{figure.caption.9}
+\contentsline {figure}{\numberline {8}{\ignorespaces Przyk\IeC {\l }adowe wywo\IeC {\l }anie FB1 w OB1 dla silnika Lift\relax }}{11}{figure.caption.12}
+\contentsline {figure}{\numberline {9}{\ignorespaces Licznik wewn\IeC {\k e}trzny dla silnika w bloku FB1\relax }}{12}{figure.caption.13}
+\contentsline {figure}{\numberline {10}{\ignorespaces Fragment bloku FB1 wybieraj\IeC {\k a}cy kierunek pracy silnika\relax }}{12}{figure.caption.14}
+\contentsline {figure}{\numberline {11}{\ignorespaces Fragment bloku FB1 decyduj\IeC {\k a}cy o za\IeC {\l }\IeC {\k a}czeniu silnika\relax }}{13}{figure.caption.15}
+\contentsline {figure}{\numberline {12}{\ignorespaces Szablon ekran\IeC {\'o}w wizualizacji\relax }}{23}{figure.caption.16}
+\contentsline {figure}{\numberline {13}{\ignorespaces Ekran powitalny\relax }}{23}{figure.caption.17}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Bez po\IeC {\l }\IeC {\k a}czenia ze sterownikiem}}}{23}{subfigure.13.1}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Z pod\IeC {\l }\IeC {\k a}czonym sterownikiem}}}{23}{subfigure.13.2}
+\contentsline {figure}{\numberline {14}{\ignorespaces Ekran prezentuj\IeC {\k a}cy stan robota\relax }}{24}{figure.caption.18}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Bez po\IeC {\l }\IeC {\k a}czenia ze sterownikiem}}}{24}{subfigure.14.1}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Z pod\IeC {\l }\IeC {\k a}czonym sterownikiem}}}{24}{subfigure.14.2}
+\contentsline {figure}{\numberline {15}{\ignorespaces Ekran prezentuj\IeC {\k a}cy stan magazynu i umo\IeC {\.z}liwiaj\IeC {\k a}cy obs\IeC {\l }ug\IeC {\k e}\relax }}{25}{figure.caption.19}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Bez po\IeC {\l }\IeC {\k a}czenia ze sterownikiem}}}{25}{subfigure.15.1}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Z pod\IeC {\l }\IeC {\k a}czonym sterownikiem}}}{25}{subfigure.15.2}
+\contentsline {figure}{\numberline {16}{\ignorespaces Widok dodatkowych klawiszy przypisanych do ekranu testowania sterowania r\IeC {\k e}cznego z poziomu wizualizacji\relax }}{25}{figure.caption.20}
+\contentsline {figure}{\numberline {17}{\ignorespaces Ekran umo\IeC {\.z}liwiaj\IeC {\k a}cy testowanie sterowania r\IeC {\k e}cznego z poziomu wizualizacji\relax }}{26}{figure.caption.21}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Bez po\IeC {\l }\IeC {\k a}czenia ze sterownikiem}}}{26}{subfigure.17.1}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Z pod\IeC {\l }\IeC {\k a}czonym sterownikiem}}}{26}{subfigure.17.2}
+\contentsline {figure}{\numberline {18}{\ignorespaces Ekran umo\IeC {\.z}liwiaj\IeC {\k a}cy testowanie sterowania r\IeC {\k e}cznego z pilota pod\IeC {\l }\IeC {\k a}czonego do sterownika\relax }}{26}{figure.caption.22}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Bez po\IeC {\l }\IeC {\k a}czenia ze sterownikiem}}}{26}{subfigure.18.1}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Z pod\IeC {\l }\IeC {\k a}czonym sterownikiem}}}{26}{subfigure.18.2}
+\contentsline {figure}{\numberline {19}{\ignorespaces Ekran umo\IeC {\.z}liwiaj\IeC {\k a}cy testowanie sterowania automatycznego\relax }}{27}{figure.caption.23}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Bez po\IeC {\l }\IeC {\k a}czenia ze sterownikiem}}}{27}{subfigure.19.1}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Z pod\IeC {\l }\IeC {\k a}czonym sterownikiem}}}{27}{subfigure.19.2}

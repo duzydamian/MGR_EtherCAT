@@ -1,0 +1,39 @@
+\select@language {polish}
+\vspace *{.05\baselineskip }
+\contentsline {section}{\numberline {1}Wst\IeC {\k e}p}{2}{section.1}
+\contentsline {subsection}{\numberline {1.1}Stanowisko laboratoryjne}{2}{subsection.1.1}
+\contentsline {subsubsection}{\numberline {1.1.1}Sterownik PLC}{3}{subsubsection.1.1.1}
+\contentsline {subsubsection}{\numberline {1.1.2}Komputer}{4}{subsubsection.1.1.2}
+\contentsline {subsubsection}{\numberline {1.1.3}Model Robota 3D}{4}{subsubsection.1.1.3}
+\contentsline {subsubsection}{\numberline {1.1.4}Magazyn}{6}{subsubsection.1.1.4}
+\contentsline {subsection}{\numberline {1.2}Analiza tematu}{7}{subsection.1.2}
+\contentsline {subsection}{\numberline {1.3}Za\IeC {\l }o\IeC {\.z}enia}{7}{subsection.1.3}
+\contentsline {subsection}{\numberline {1.4}Plan pracy}{7}{subsection.1.4}
+\contentsline {section}{\numberline {2}Oprogramowanie sterownika}{8}{section.2}
+\contentsline {subsection}{\numberline {2.1}Specyfikacja zewn\IeC {\k e}trzna}{8}{subsection.2.1}
+\contentsline {subsection}{\numberline {2.2}Specyfikacja wewn\IeC {\k e}trzna}{9}{subsection.2.2}
+\contentsline {subsubsection}{\numberline {2.2.1}Blok FB1}{10}{subsubsection.2.2.1}
+\contentsline {subsubsection}{\numberline {2.2.2}Blok FB8}{13}{subsubsection.2.2.2}
+\contentsline {subsubsection}{\numberline {2.2.3}Blok FB9}{15}{subsubsection.2.2.3}
+\contentsline {subsubsection}{\numberline {2.2.4}Blok FB10}{16}{subsubsection.2.2.4}
+\contentsline {subsubsection}{\numberline {2.2.5}Blok FB11}{18}{subsubsection.2.2.5}
+\contentsline {subsubsection}{\numberline {2.2.6}Blok FB12}{19}{subsubsection.2.2.6}
+\contentsline {section}{\numberline {3}Wizualizacja HMI}{22}{section.3}
+\contentsline {subsection}{\numberline {3.1}Specyfikacja zewn\IeC {\k e}trzna}{22}{subsection.3.1}
+\contentsline {subsubsection}{\numberline {3.1.1}Ekran powitalny}{23}{subsubsection.3.1.1}
+\contentsline {subsubsection}{\numberline {3.1.2}Stan robota}{23}{subsubsection.3.1.2}
+\contentsline {subsubsection}{\numberline {3.1.3}Stan magazynu i testowanie obs\IeC {\l }ugi}{24}{subsubsection.3.1.3}
+\contentsline {subsubsection}{\numberline {3.1.4}Testowanie sterowania r\IeC {\k e}cznego z poziomu wizualizacji}{25}{subsubsection.3.1.4}
+\contentsline {subsubsection}{\numberline {3.1.5}Testowanie sterowania r\IeC {\k e}cznego z pilota pod\IeC {\l }\IeC {\k a}czonego do sterownika}{26}{subsubsection.3.1.5}
+\contentsline {subsubsection}{\numberline {3.1.6}Testowanie sterowania automatycznego}{27}{subsubsection.3.1.6}
+\contentsline {subsection}{\numberline {3.2}Specyfikacja wewn\IeC {\k e}trzna}{27}{subsection.3.2}
+\contentsline {section}{\numberline {4}Uruchamianie i testowanie}{29}{section.4}
+\contentsline {subsection}{\numberline {4.1}Przebieg testowania}{29}{subsection.4.1}
+\contentsline {subsection}{\numberline {4.2}Napotkane problemy}{30}{subsection.4.2}
+\contentsline {section}{\numberline {5}Wnioski}{31}{section.5}
+\contentsline {section}{\numberline {6}Bibliografia}{33}{section.6}
+\contentsline {section}{\numberline {7}Spis rysunk\IeC {\'o}w, tablic i kod\IeC {\'o}w \IeC {\'z}r\IeC {\'o}d\IeC {\l }owych}{34}{section.7}
+\contentsline {subsection}{\numberline {7.1}Spis rysunk\IeC {\'o}w}{34}{subsection.7.1}
+\contentsline {subsection}{\numberline {7.2}Spis tablic}{34}{subsection.7.2}
+\contentsline {subsection}{\numberline {7.3}Spis kod\IeC {\'o}w \IeC {\'z}r\IeC {\'o}d\IeC {\l }owych}{34}{subsection.7.3}
+\contentsline {section}{\numberline {8}Za\IeC {\l }\IeC {\k a}czniki}{35}{section.8}

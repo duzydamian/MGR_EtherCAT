@@ -1,0 +1,37 @@
+\BOOKMARK [1][-]{section.1}{Wstep}{}
+\BOOKMARK [2][-]{subsection.1.1}{Stanowisko laboratoryjne}{section.1}
+\BOOKMARK [3][-]{subsubsection.1.1.1}{Sterownik PLC}{subsection.1.1}
+\BOOKMARK [3][-]{subsubsection.1.1.2}{Komputer}{subsection.1.1}
+\BOOKMARK [3][-]{subsubsection.1.1.3}{Model Robota 3D}{subsection.1.1}
+\BOOKMARK [3][-]{subsubsection.1.1.4}{Magazyn}{subsection.1.1}
+\BOOKMARK [2][-]{subsection.1.2}{Analiza tematu}{section.1}
+\BOOKMARK [2][-]{subsection.1.3}{Za\233ozenia}{section.1}
+\BOOKMARK [2][-]{subsection.1.4}{Plan pracy}{section.1}
+\BOOKMARK [1][-]{section.2}{Oprogramowanie sterownika}{}
+\BOOKMARK [2][-]{subsection.2.1}{Specyfikacja zewnetrzna}{section.2}
+\BOOKMARK [2][-]{subsection.2.2}{Specyfikacja wewnetrzna}{section.2}
+\BOOKMARK [3][-]{subsubsection.2.2.1}{Blok FB1}{subsection.2.2}
+\BOOKMARK [3][-]{subsubsection.2.2.2}{Blok FB8}{subsection.2.2}
+\BOOKMARK [3][-]{subsubsection.2.2.3}{Blok FB9}{subsection.2.2}
+\BOOKMARK [3][-]{subsubsection.2.2.4}{Blok FB10}{subsection.2.2}
+\BOOKMARK [3][-]{subsubsection.2.2.5}{Blok FB11}{subsection.2.2}
+\BOOKMARK [3][-]{subsubsection.2.2.6}{Blok FB12}{subsection.2.2}
+\BOOKMARK [1][-]{section.3}{Wizualizacja HMI}{}
+\BOOKMARK [2][-]{subsection.3.1}{Specyfikacja zewnetrzna}{section.3}
+\BOOKMARK [3][-]{subsubsection.3.1.1}{Ekran powitalny}{subsection.3.1}
+\BOOKMARK [3][-]{subsubsection.3.1.2}{Stan robota}{subsection.3.1}
+\BOOKMARK [3][-]{subsubsection.3.1.3}{Stan magazynu i testowanie obs\233ugi}{subsection.3.1}
+\BOOKMARK [3][-]{subsubsection.3.1.4}{Testowanie sterowania recznego z poziomu wizualizacji}{subsection.3.1}
+\BOOKMARK [3][-]{subsubsection.3.1.5}{Testowanie sterowania recznego z pilota pod\233aczonego do sterownika}{subsection.3.1}
+\BOOKMARK [3][-]{subsubsection.3.1.6}{Testowanie sterowania automatycznego}{subsection.3.1}
+\BOOKMARK [2][-]{subsection.3.2}{Specyfikacja wewnetrzna}{section.3}
+\BOOKMARK [1][-]{section.4}{Uruchamianie i testowanie}{}
+\BOOKMARK [2][-]{subsection.4.1}{Przebieg testowania}{section.4}
+\BOOKMARK [2][-]{subsection.4.2}{Napotkane problemy}{section.4}
+\BOOKMARK [1][-]{section.5}{Wnioski}{}
+\BOOKMARK [1][-]{section.6}{Bibliografia}{}
+\BOOKMARK [1][-]{section.7}{Spis rysunk\363w, tablic i kod\363w zr\363d\233owych}{}
+\BOOKMARK [2][-]{subsection.7.1}{Spis rysunk\363w}{section.7}
+\BOOKMARK [2][-]{subsection.7.2}{Spis tablic}{section.7}
+\BOOKMARK [2][-]{subsection.7.3}{Spis kod\363w zr\363d\233owych}{section.7}
+\BOOKMARK [1][-]{section.8}{Za\233aczniki}{}

@@ -1,0 +1,31 @@
+\relax 
+\catcode`"\active
+\ifx\hyper@anchor\@undefined
+\global \let \oldcontentsline\contentsline
+\gdef \contentsline#1#2#3#4{\oldcontentsline{#1}{#2}{#3}}
+\global \let \oldnewlabel\newlabel
+\gdef \newlabel#1#2{\newlabelxx{#1}#2}
+\gdef \newlabelxx#1#2#3#4#5#6{\oldnewlabel{#1}{{#2}{#3}}}
+\AtEndDocument{\let \contentsline\oldcontentsline
+\let \newlabel\oldnewlabel}
+\else
+\global \let \hyper@last\relax 
+\fi
+
+\@input{tytulowa.aux}
+\select@language{polish}
+\@writefile{toc}{\select@language{polish}}
+\@writefile{lof}{\select@language{polish}}
+\@writefile{lot}{\select@language{polish}}
+\@writefile{toc}{\vspace *{.05\baselineskip }}
+\@input{wstep.aux}
+\@input{oprogramowaniesterownika.aux}
+\@input{wizualizacja.aux}
+\@input{podsumowanie.aux}
+\@input{wnioski.aux}
+\@input{bibliografia.aux}
+\@writefile{toc}{\contentsline {section}{\numberline {7}Spis rysunk\IeC {\'o}w, tablic i kod\IeC {\'o}w \IeC {\'z}r\IeC {\'o}d\IeC {\l }owych}{34}{section.7}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.1}Spis rysunk\IeC {\'o}w}{34}{subsection.7.1}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.2}Spis tablic}{34}{subsection.7.2}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.3}Spis kod\IeC {\'o}w \IeC {\'z}r\IeC {\'o}d\IeC {\l }owych}{34}{subsection.7.3}}
+\@input{zalaczniki.aux}
