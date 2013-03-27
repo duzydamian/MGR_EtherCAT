@@ -1,3 +1,0 @@
-\beamer@endinputifotherversion {3.07pt}
-\beamer@sectionintoc {1}{Wst\IeC {\k e}p}{2}{0}{1}
-\beamer@subsectionintoc {1}{2}{Aktualny stan pracy}{8}{0}{1}

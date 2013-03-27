@@ -1,8 +1,8 @@
 #Latex ignore
 *.acn
 *.acr
-*.alg
 *.aux
+*.alg
 *.bbl
 *.blg
 *.dvi
