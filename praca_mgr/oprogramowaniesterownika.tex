@@ -15,7 +15,7 @@
 W~niniejszym rozdziale opisane zostało oprogramowanie sterujące modelem. W~kolejnych podrozdziałach zostanie przedstawiona specyfikacja zewnętrzna oraz wewnętrzna. 
 
 Stworzone przez autora oprogramowanie wraz ze~wszystkimi funkcjami systemowymi zajmują w~sterowniku 47428~kB z dostępnych 524288~kB. Zajętość pamięci dostępnej w~sterowniku obrazuje zrzut ekranu wykonany w~środowisku Step~7, widoczny na Rysunku~\ref{memory}.
-\begin{figure}[!htb] \centering \includegraphics[width=0.6\textwidth]{obrazki/memory.PNG} \caption{Wykorzystanie pamięci sterownika} \label{memory} \end{figure}
+%\begin{figure}[!htb] \centering \includegraphics[width=0.6\textwidth]{obrazki/memory.PNG} \caption{Wykorzystanie pamięci sterownika} \label{memory} \end{figure}
 
 \subsection{Specyfikacja zewnętrzna}
 Specyfikacja zewnętrzna przedstawiona w dalszej części podrozdziału zawiera opis, jak korzystać z~oprogramowania wgranego do sterownika przez jego autora. Opisane zostało, jak ustawiać odpowiednie zmienne, aby~uzyskać żądany efekt.
@@ -99,17 +99,17 @@ ResetFinish & Bool & Sygnał zakończenia                                resetu 
 \end{table}
 
 Blok FB1 jest wywoływany w bloku OB1 z~odpowiednimi parametrami, niezależnie dla poszczególnych 4~silników. Przykładowe wywołanie znajduje się na Rysunku~\ref{ob1}. Na rysunku łatwo można zaobserwować, że do bloku podane są wszystkie niezbędne informacje dla danego silnika oraz 2~wspólne dla wszystkich silników sygnały informujące o~aktualnym trybie pracy modelu.
-\begin{figure}[!htb] 	\centering 	\includegraphics[width=0.58\textwidth]{obrazki/ob1.png} 	\caption{Przykładowe wywołanie FB1 w OB1 dla silnika Lift} \label{ob1} \end{figure} 
+%\begin{figure}[!htb] 	\centering 	\includegraphics[width=0.58\textwidth]{obrazki/ob1.png} 	\caption{Przykładowe wywołanie FB1 w OB1 dla silnika Lift} \label{ob1} \end{figure} 
 
 Istotnymi fragmentami bloku FB1 są 3~gałęzie programu: licznik wewnętrzny, decyzja o~kierunku oraz decyzja o~załączeniu.
 Bardzo istotnym warunkiem wpływającym na pracę silnika jest jego położenie. Jeśli silnik osiąga wartość maksymalną lub minimalną to przerywa swoją pracę. Warunkiem koniecznym do określenia tej pozycji jest wykorzystanie licznika do zliczania impulsów z~modelu i~jego odpowiednia inkrementacja lub dekrementacja. Tak działający licznik przedstawia Rysunek~\ref{licznik}.
-\begin{figure}[!htb] 	\centering 	\includegraphics[width=0.5\textwidth]{obrazki/fb1licznik.png} 	\caption{Licznik wewnętrzny dla silnika w bloku FB1} \label{licznik} \end{figure} 
+%\begin{figure}[!htb] 	\centering 	\includegraphics[width=0.5\textwidth]{obrazki/fb1licznik.png} 	\caption{Licznik wewnętrzny dla silnika w bloku FB1} \label{licznik} \end{figure} 
 
 Decyzja dotycząca kierunku jest podejmowana zależnie od trybu pracy, co zaobserwować można na Rysunku~\ref{kierunek}. W~przypadku trybu automatycznego decydująca jest bieżąca pozycja oraz pozycja docelowa. Kierunek jest ustawiany tak, aby załączony silnik zmierzał do~pozycji docelowej. W~przypadku trybów manualnych decydujące są stany przycisków przy sterowaniu z~pilota lub zmienne przy sterowaniu z~wizualizacji. Jeżeli została podjęta decyzja o~załączeniu silnika to stan przycisku (zmiennej) jest wpisywany do zmiennej statycznej \emph{EngineDirectionManual}, która jest następnie zsumowana logicznie ze zmienną \emph{EngineDirectionAuto}, dając w~wyniku decyzję o~kierunku.
-\begin{figure}[!htb] 	\centering 	\includegraphics[width=0.66\textwidth]{obrazki/fb1kierunek.png} \caption{Fragment bloku FB1 wybierający kierunek pracy silnika} \label{kierunek} \end{figure} 
+%\begin{figure}[!htb] 	\centering 	\includegraphics[width=0.66\textwidth]{obrazki/fb1kierunek.png} \caption{Fragment bloku FB1 wybierający kierunek pracy silnika} \label{kierunek} \end{figure} 
 
 Część decydująca o~załączeniu silnika jest bardzo rozbudowana. Jest to przykład załączenia z~podtrzymaniem. Zależnie od trybu pracy sprawdzane są inne warunki. W~przypadku trybu automatycznego ważna jest zmienna \emph{Enable}, która decyduje o~załączeniu wybranego silnika, co pozwala na częściową pracę sekwencyjną. Silnik pracuje w~kierunku krańcówki aż do~jej osiągnięcia, a w~kierunku od krańcówki aż~do osiągnięcia swojego maksimum, chyba że~wcześniej zostanie osiągnięta pozycja docelowa. W~ręcznych trybach pracy głównym warunkiem decydującym o~załączeniu zależnie od kierunku są wartość maksymalna licznika lub krańcówka. Wspólnym dla obu trybów warunkiem pozwalającym zatrzymać pracę silnika jest ustawienie zmiennej \emph{EmergencyStop} na wartość \emph{true}. Tą rozbudowaną i skomplikowaną gałąź prezentuje Rysunek~\ref{onoff}.
-\begin{figure}[!htb] 	\centering 	\includegraphics[width=0.95\textwidth]{obrazki/fb1wlwyl.png} 	\caption{Fragment bloku FB1 decydujący o załączeniu silnika} \label{onoff} \end{figure} 
+%\begin{figure}[!htb] 	\centering 	\includegraphics[width=0.95\textwidth]{obrazki/fb1wlwyl.png} 	\caption{Fragment bloku FB1 decydujący o załączeniu silnika} \label{onoff} \end{figure} 
 
 \subsubsection{Blok FB8}
 W trybie automatycznym podczas obsługi magazynu praca odbywa się na zasadzie zadań do wykonania. Na zadanie takie składa się indeks komórki w magazynie oraz zmienna typu bool, która decyduje o ruchu chwytaka (zaciskanie lub zwalnianie). Indeks jest następnie przetwarzany w odpowiednim bloku na położenie komórki w modelu magazynu. 

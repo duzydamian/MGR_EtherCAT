@@ -9,10 +9,10 @@ Tematem projektu, którego dotyczy ta praca jest: „System sterowania i wizuali
 %System sterowania i wizualizacji pracy robota 3D. \\
 Głównymi celami pracy było napisanie oprogramowania dla sterownika przemysłowego Siemens S7-300 oraz stworzenie graficznej prezentacji pracy modelu Robota~3D takiego jak na~Rysunku~\ref{robot}.
 Dodatkowym elementem pracy inżynierskiej zrealizowanej przez autora jest element pozainformatyczny, a mianowicie zbudowanie magazynu, z~którym robot będzie współpracował. Wyżej wspomniany magazyn po zakończeniu projektu posłuży jako pomoc dydaktyczna do~ćwiczeń laboratoryjnych.
-\begin{figure}[!htb] \centering \includegraphics[width=0.4\textwidth]{obrazki/Fischertechnik3DRobot.png} \caption{Robot 3D firmy Fischertechnik} \label{robot} \end{figure}
+%\begin{figure}[!htb] \centering \includegraphics[width=0.4\textwidth]{obrazki/Fischertechnik3DRobot.png} \caption{Robot 3D firmy Fischertechnik} \label{robot} \end{figure}
 
 \subsection{Stanowisko laboratoryjne}
-\begin{figure}[!htb] 	\centering 	\includegraphics[width=0.99\textwidth]{obrazki/schemat.png} 	\caption{Schemat stanowiska} \label{schemat} \end{figure} 
+%\begin{figure}[!htb] 	\centering 	\includegraphics[width=0.99\textwidth]{obrazki/schemat.png} 	\caption{Schemat stanowiska} \label{schemat} \end{figure} 
 Na potrzeby realizacji projektu wykorzystano istniejące stanowisko laboratoryjne, którego schemat przedstawia Rysunek~\ref{schemat}. Składa się ono~z:
 \begin{itemize}
 \item Sterownika PLC,
@@ -29,11 +29,11 @@ Sterownik PLC wykorzystywany do realizacji projektu był wyposażony w następuj
 \item SIMATIC S7-300, Wejścia/Wyjścia cyfrowe SM 323,
 \item SIMATIC S7-300, Wejścia/Wyjścia analogowe SM 334.
 \end{enumerate}
-\begin{figure}[!htb] 	\centering 	\includegraphics[width=0.75\textwidth]{obrazki/sterownik.png} 	\caption{Siemens SIMATIC S7-300} \end{figure}
+%\begin{figure}[!htb] 	\centering 	\includegraphics[width=0.75\textwidth]{obrazki/sterownik.png} 	\caption{Siemens SIMATIC S7-300} \end{figure}
 \indent
 \indent Sterownik podłączony jest do sieci lokalnej Ethernet w~laboratorium, więc komunikacja z~nim odbywa się tak samo jak z~każdym innym urządzeniem sieciowym. Podstawy programowania i korzystania ze sterowników autor poznał zapoznając się z odpowiednią literaturą \cite{plc1,plc2,plc4,plc5,plc6}.
 Konfigurację sterownika wraz z modułami przedstawia Rysunek~\ref{conf}.
-\begin{figure}[!htb] 	\centering 	\includegraphics[width=0.75\textwidth]{obrazki/conf.png} \caption{Konfiguracja sterownika PLC} \label{conf} \end{figure}
+%\begin{figure}[!htb] 	\centering 	\includegraphics[width=0.75\textwidth]{obrazki/conf.png} \caption{Konfiguracja sterownika PLC} \label{conf} \end{figure}
 \subsubsection{Komputer}
 Projekt w całości był realizowany na laptopie autora, podłączanym do~sieci w~laboratorium. Na~komputerze uruchomiane były dwie maszyny wirtualne. Na~jednej zainstalowane było środowisko Step~7 do~programowania sterownika, a~na~drugiej WinCC flexible 2008 do~tworzenia i~uruchamiania wizualizacji. Wizualizacje tworzone w środowisku WinCC flexible są~dedykowane do~paneli operatorskich, jednak ta~stworzona przez autora na~potrzeby projektu była uruchamiana na komputerze za~pomocą runtime system.
 
@@ -161,8 +161,8 @@ Magazyn zaprojektowano tak, aby optymalnie wykorzystać konstrukcję robota. Prz
 %\begin{figure}[!htb] 	\centering 	\includegraphics[width=0.95\textwidth]{obrazki/magazynb.png} 	\caption{Projekt magazynu wykonany w Blenderze}\end{figure}
 
 Do budowy magazynu zastosowano płytę MDF o~grubości 18~mm oraz szufladki warsztatowe. Na~podstawie pomiarów wykonanych na~modelu oraz na~podstawie wcześniejszego projektu powstał model, który zobaczyć można na Rysunkach~\ref{mag}~oraz~\ref{mag2} lub w~sali~544 wydziału AEI na Politechnice Śląskiej.
-\begin{figure}[!htb] 	\centering 	\includegraphics[width=0.55\textwidth]{obrazki/magazynr.png} \caption{Zbudowany magazyn} \label{mag} \end{figure}
-\begin{figure}[!htb] 	\centering 	\includegraphics[width=0.7 \textwidth]{obrazki/magazynrobot.png} \caption{Zbudowany magazyn z zamontowanym robotem} \label{mag2} \end{figure}
+%\begin{figure}[!htb] 	\centering 	\includegraphics[width=0.55\textwidth]{obrazki/magazynr.png} \caption{Zbudowany magazyn} \label{mag} \end{figure}
+%\begin{figure}[!htb] 	\centering 	\includegraphics[width=0.7 \textwidth]{obrazki/magazynrobot.png} \caption{Zbudowany magazyn z zamontowanym robotem} \label{mag2} \end{figure}
 
 \subsection{Analiza tematu}
 Analiza tematu polegała przede wszystkim na zapoznaniu się z~narzędziami programistycznymi do~tworzenia oprogramowania sterownika oraz wizualizacji.
