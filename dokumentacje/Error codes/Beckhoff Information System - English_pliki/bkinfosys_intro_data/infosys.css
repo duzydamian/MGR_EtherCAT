@@ -1,0 +1,403 @@
+/*********************************/
+/*  BECKHOFF TwinCAT Stylesheet  */
+/*  26.11.1999 15:30             */
+/*********************************/
+
+/*---------------------------*/
+/*Standard-Tags-Anpassung:   */
+
+body
+   {
+	padding: 0px 0px 0px 16px;
+	/*background: silver; 
+	background-image:url(../images/scroll.gif);
+	background-position:left;
+	background-position: 0 50%;
+	background-repeat:no-repeat;*/
+	color: #000000;
+	font-family: Arial, Helvetica, sans-serif;
+	margin-top: 4px;
+	margin-bottom: 4px;
+	margin-left: 4px;
+	margin-right: 14px;
+	text-align: left;
+	font-size: 9pt;
+	font-weight: 400;
+	
+		/*NEU*/
+	width:682px;
+	}
+
+/*neu*/
+img { 
+	border:none;
+}
+
+
+h1, h2, h3, h4, h5, h6
+        {
+        font-family: Arial, Helvetica, sans-serif;
+        text-align: left;
+		line-height: 15.0pt;
+        }
+
+h1, h2, h3, h4
+        {
+        /*margin-left: -10px;*/
+        }
+
+
+h1
+        {
+        font-size: 150%;
+        margin-top: 50px;		
+        margin-bottom: .5em;
+        }
+
+h2
+        {
+        font-size: 120%;
+        margin-top: 1em;
+		margin-bottom: .6em;
+        }
+
+h3
+        {
+        font-size: 100%;
+        margin-top: 1em;
+        margin-bottom: .6em;
+        }
+
+h4
+        {
+        font-size: 100%;
+        margin-top: 1em;
+        margin-bottom: .6em;
+        }
+
+h5
+        {                              /* MMM 18.02.2002 */
+        font-size: 100%;               /* MMM 18.02.2002 */
+        margin-top: 1em;               /* MMM 18.02.2002 */
+        margin-bottom: 0em;            /* MMM 18.02.2002 */
+        }
+
+p, tr p, td p
+	{
+	margin-top: -0.01pt;
+	margin-bottom: 0.6em;
+	text-align: left;
+	color: #000000;
+	}
+
+dl
+	{
+	margin-right: 0em; 
+	margin-left: 0em; 
+	margin-top: 0em; 
+	margin-bottom: 0em;  
+	}
+
+dd
+	{
+	margin-right: 0em; 
+	margin-left: 1.9em; 
+	margin-top: 0em; 
+	margin-bottom: 0em;  
+	}
+
+dt
+	{
+	margin-right: 0em; 
+	margin-left: 0em; 
+	margin-top: 0.6em; 
+	margin-bottom: 0em;  
+	}
+
+u
+	{
+	text-decoration: none
+	text-align: left;
+	color: #000000;
+	}
+
+a:link
+        {
+        /*color : #990000;*/
+		color: #ff0000;
+		font-family : Arial,Verdana,serif;
+        }
+
+a:visited
+        {
+        /*color : #990000;*/
+		color: #ff0000;
+        }
+
+a:hover
+        {
+/*color : #990000;*/
+		color: #ff0000;
+        }
+	
+ul, ul ul, ul ul ul, ul ul ul ul, ol, ol ol, ol ol ol, ol ol ol ol
+	{
+	margin-top: 0.5em; 	
+	margin-bottom: 1.5em;
+	margin-bottom: 1em;
+	margin-left: 3em;
+	padding-left: 4px;; 
+	text-align: left;
+	list-style-image:url(../../../../images/pfeil_sw.gif);
+	list-style-position: outside;
+	color: #000000;
+	}
+	
+ol, ol ol, ol ol ol, ol ol ol ol
+	{
+	list-style-type: decimal;
+	}
+	
+ul, ul ul, ul ul ul, ul ul ul ul
+	{
+	list-style-type: disc; 
+	}
+
+li
+	{
+	margin-top: 0.3em;
+	margin-bottom: 0.5em;
+	color: #000000;
+	}
+
+pre
+	{
+	background: #dddddd;
+	padding: 2pt,4pt;
+	cursor: text;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em; 
+	color: #000000;
+	}
+
+table
+	{
+	width: 100%;
+	background: #999999;
+	margin-top: .6em;
+	margin-bottom: .3em;
+	border-collapse: collapse;
+	border:1px solid #ddd;
+	}
+		
+th
+	{ 
+	padding: 4px 8px;
+	background: #ddd;
+	/*background: #990000;*/
+	text-align: left;
+	font-size: 9pt;
+	vertical-align: bottom;
+	/*color: white;*/
+	border:1px solid #ccc;
+	}
+		
+td
+	{ 
+	padding: 4px 8px;
+	background: #ffffff;
+	vertical-align: top;
+	font-size: 9pt;
+	border:1px solid #ddd;
+	}
+
+.table6 {
+	border: 1px solid black;}
+
+#table1 {
+	/*border: none;*/
+	width: 100%;
+}
+#table1 td{
+	/*border: none;*/
+}
+
+#table1 th{
+	/*background-color:#CCC;*/
+}
+
+#tablestart {
+	/*border: none;*/
+	width: 100%;
+}
+#tablestart td{
+	border: none;
+}
+
+/*
+#table3 {
+	border: none;
+	padding:0;
+	width: 500px;
+	margin:0;
+}
+#table3 td{
+	border: none;
+	padding:0;
+	padding-left: 1px;
+	margin:0;
+}*/
+
+
+
+div
+	{ 
+	}
+
+blockquote
+	{
+	margin-left: 1.2em;
+	margin-top: .6em;
+	margin-bottom: .6em;
+	}
+
+/* Ende                      */
+/*---------------------------*/
+
+
+/*---------------------------*/
+/*Eigene Formate:	            */
+
+.QuellCode, syntax
+	{
+	font: 100% Courier New, Courier, mono; 
+	width: 100%;
+	border: none;
+	padding: 4px 8px;
+	background: #dddddd;
+	}
+
+/*.buttonbarshade
+	{
+	position: relative;
+	margin: 0;
+	left: 10;
+	top: 0;
+	width: 1px;
+	height: 1px;
+	background-color: #FFFFFF;
+	color: #FFFFFF;
+	visibility: hidden;
+	}*/
+
+.buttonbarshade
+	{
+	position: absolute;
+	margin: 0;
+	left: 1px;
+	width: 570px;
+	height: 18px;
+	background-position: 0px 0px;
+	padding-top: 0px;
+	padding-left: 0px;
+	top: 0px;
+	color: #FF0000;
+	font-family: Arial, Helvetica, sans-serif;
+	font-style: normal;
+	font-weight: bold;
+  	font-size: 10pt;
+	visibility: hidden;
+	}
+
+
+
+.buttonbartable
+	{
+	position: absolute;
+	margin: 0;
+	left: 1px;
+	width: 570px;
+	height: 26px;
+	background-position: 0px 0px;
+	padding-top: 0px;
+	padding-left: 0px;
+	background-color: #FFFFFF;
+	top: 0px;
+	color: #000;
+	font-family: Arial, Helvetica, sans-serif;
+	font-style: normal;
+	font-weight: bold;
+  	font-size: 10pt;
+	padding:0;
+	border:none;
+	}
+
+
+.runninghead
+	{
+	height: 18px;
+	background-color: #ddd;
+	border: none;
+	padding:0 0;
+	margin:0;
+	padding-left: 10px;
+	padding-top:0px;
+	vertical-align: middle
+	/*	
+	padding-top:1px;
+	vertical-align:middle;
+	padding-bottom:1px;background-repeat: repeat;
+	background-attachment: scroll;
+	text-align: left;
+	color: #FFFFFF;
+	font-style: normal;
+	font-weight: bold;
+	background-position: left left;
+	left: 0px;
+	top: 0px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	padding:0;
+	margin:0;
+	padding-top:2px;
+	padding-left: 10px;
+	line-height: 12px;*/
+}
+
+
+/*---- Formatierungen für Sicherheitssymbole nach neuem Design --------------*/
+/*---- Eingefügt nach Vorlage von MMM 15.11.2007 ( 24.02.2009 CMA)---------- */
+
+td.notesymb {                           /* MMM 15.11.2007, Symbolzelle für neue Hinweise: */
+        text-align: center;		/* direkt neben Danger-, Attention- oder Note-Piktogramm */
+	font-weight: bold;		
+	/*border: solid 1px #000000;	 MMM 15.11.2007, Rahmenart, -breite und -farbe */
+	padding-top: 1px;		/* Abstand zwischen Zellenrand und Zelleninhalt */
+	padding-right: 1px;
+	padding-bottom: 1px;	
+	padding-left: 1px;
+	width: 1%;			/* Zellenbreite, (wird in der Praxis durch das Logo oder Text aufgespannt) */
+	height: 100%;			/* Zellenhöhe, (wird in der Praxis durch den Text aufgespannt) */
+        }
+
+td.notehead {                           /* MMM 15.11.2007, Kopfzelle für neue Hinweise: */
+        text-align: left;	        /* direkt neben Danger-, Attention- oder Note-Piktogramm */
+        font-weight: bold;
+	border-top: solid 1px #000000;	
+	border-right: solid 1px #ddd;
+	width: 99%;			/* Zellenbreite */
+	height: 1%;			/* Zellenhöhe, (wird in der Praxis durch den Text aufgespannt) */
+        }
+
+td.notetext {                           /* MMM 15.11.2007, Textzelle für neue Hinweise: */
+        text-align: left;	        /* direkt neben Danger-, Attention- oder Note-Piktogramm */
+	border-right: solid 1px #000000;
+	border-bottom: solid 1px #000000;
+	width: 99%;			/* Zellenbreite */
+        height: 99%;			/* Zellenhöhe, (wird in der Praxis durch den Text aufgespannt) */
+	}
+
+
+
+/* Ende                      */
+/*---------------------------*/

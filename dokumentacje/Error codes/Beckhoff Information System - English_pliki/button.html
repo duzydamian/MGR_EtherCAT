@@ -1,0 +1,175 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html><head>
+<title>Beckhoff Information System</title>
+<meta content="text/html; charset=windows-1252" http-equiv="Content-Type">
+
+<style type="text/css">
+<!-- 
+/* obere Navigation */
+
+.search
+{
+ font-family: Arial,Verdana,serif;
+ color: #000000;
+ font-size:10px;
+ width: 100px;
+ padding-left:2px;
+}
+
+.input
+{
+ font-family: Arial,Verdana,serif;
+ color: #000000;
+ font-size:12px;
+ width : 120px;
+}
+
+a
+{
+ font-family: Arial,Verdana,serif;
+ color: #000000;
+ font-size:12px;
+}
+
+#navcontainer{
+	margin: 0;
+	padding: 0;	
+	overflow: hidden;
+	float: left;
+	display: inline;
+}
+
+#navcontainer ul{
+	border: 0;
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+}
+
+
+#navcontainer ul li{
+	display: block;
+	margin: 0;
+	padding: 0;
+	width: 134px;
+	height: 29px;
+	/*background: #eeeeee;*/
+	float: left;
+}
+
+#navcontainer ul li a{
+	/*border-left: 1px solid #ffffff;
+	border-top: 1px solid #ffffff;*/
+	padding-top: 7px;
+	padding-bottom: 7px;
+	color: #ffffff;
+	text-decoration: none;
+	display: block;
+	font: bold 12px arial, verdana, sans-serif;
+}
+
+#navcontainer ul li{
+	border-right: 1px solid #ffffff;
+	/*border-top: 1px solid #ffffff;*/
+}
+#navcontainer ul li a {
+padding-left: 5px;
+}
+
+
+#navcontainer a{
+	padding-top: 0px;
+}
+
+#navcontainer ul li a:hover{
+	color: #fff;
+	background: #000000;
+}
+
+#navcontainer ul li#email { 
+	width:167px; 
+	background-image:url(../../images/mail.gif); 
+	background-position:150px; 
+	background-repeat:no-repeat;
+}
+#navcontainer ul li#email a:hover{ 
+	background-image:url(../../images/mail_over.gif); 
+	background-position:150px; 
+	background-repeat:no-repeat;
+}
+
+/* Floating & Clearer */
+.floatLeft {
+	float: left;
+}
+.floatRight {
+	float: right;
+}
+.clearLeft {
+	clear: left;
+}
+.clearRight {
+	clear: right;
+}
+.clearBoth {
+	clear: both;
+}
+
+.searchBox {
+	padding-left:5px; 
+	padding-top:5px;
+}
+
+#beckhoff_link a {
+	color:#FFFFFF; 
+	text-decoration:none; 
+	font-size:12px;;	
+}
+
+#beckhoff_link a:hover {
+text-decoration: underline;
+}
+ -->
+</style>
+<script type="text/javascript" src="button_data/mail.js"></script>
+</head>
+
+<body style="padding:0; margin:0; background-color:#ef0000">
+<form action="../../search/search.aspx" method="POST" name="QForm" target="main">
+<div style="background-color:#ef0000; height:80px; width:100%; min-width:800px;">
+	<div style="min-width:990px;">
+   	  <div class="floatLeft" style="height:58px; width:648px"><img src="button_data/logo_nat2.gif" alt="" name="bu_index" style="margin-top:16px; margin-left:8px;" align="middle" border="0" height="28" width="323"></div>
+        <div style="font-size:24px; color:#FFF; font-family:Arial, Helvetica, sans-serif; padding-top:19px;">Beckhoff Information System</div>
+    </div>
+    
+	<div style="height:1px ;clear:both; background-color:#ffffff;width:100%; margin:0; padding:0"><img src="button_data/t.gif" border="0" height="1" width="1"></div>
+    
+<div style="min-width:990px;">
+    <div class="floatLeft" style="width:236px; height:29px; border-right:1px solid white">
+    	<div class="floatLeft" style="padding-left:15px; padding-top:5px;"><input onfocus="javascript:if (document.QForm.txtSearch.value == 'Search') document.QForm.txtSearch.value = '';" name="txtSearch" value="Search" maxlength="130" class="search" style="width: 150px; border: 1px solid black" type="Text"></div>
+    	<div class="floatLeft" style="padding-top:7px;padding-left:5px;">&nbsp;<input name="button" src="button_data/lupe.gif" type="image"><input name="folder" value="1033" type="Hidden"><input name="language" value="en" size="" maxlength="" type="hidden"></div>
+    </div>
+    
+    <div class="floatLeft" id="navcontainer" style="width:745px;">
+	<ul id="navlist">
+		<li><a href="http://infosys.beckhoff.com/index_en.htm" title="" target="_top">&nbsp;Home</a></li>
+		<li><a href="http://www.beckhoff.com/english.asp?beckhoff/world.htm" target="_blank">&nbsp;Contact</a></li>
+		<li><a href="http://www.beckhoff.com/" target="_blank" style="">www.beckhoff.com</a></li>
+		<li id="email" style="width:165px; background-image:url(../../images/mail2.gif); background-position:150px; background-repeat:no-repeat;"><a href="javascript:sendpage()">email this page</a></li>
+        <li style="width:160px;  padding-top:0px; padding-bottom:0px; text-align:center"><form method="get" target="_top" action="redirect.asp"><select name="language" onchange="javascript: parent.frames.location.href=this.form.language.options[this.form.language.selectedIndex].value; return false;" style="width:140px; margin-top:3px;">
+		  <option selected="selected" value="http://infosys.beckhoff.com/index.htm">[Select language]</option>
+			<option value="http://infosys.beckhoff.com/index_en.htm">---------------------------------</option>
+			<option value="http://infosys.beckhoff.com/index.htm">German</option>
+			<option value="http://infosys.beckhoff.com/index_en.htm">English</option>
+			<option value="http://infosys.beckhoff.com/index_es.htm">Espanol</option>
+			<option value="http://infosys.beckhoff.com/index_it.htm">Italiano</option>
+		</select></form></li>
+	</ul>
+</div>
+</div>
+ <div style="height:1px ;clear:both; background-color:#FFffff;width:100%; margin:0; padding:0"><img src="button_data/t.gif" border="0" height="1" width="1"></div>
+</div></form>
+
+
+
+</body></html>
