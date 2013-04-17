@@ -32,3 +32,11 @@
 *.xdy
 *.tdo
 
+#TwinCAT ignore
+*.bak
+*.BAK
+*.SDB
+*.SYM
+*.DFR
+*.ci
+*.ri

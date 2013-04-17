@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<InitCmds>
+  <InitCmd>
+    <Transition>PS</Transition>
+    <Comment>Tncyc - NC cycle time</Comment>
+    <Timeout>0</Timeout>
+    <OpCode>3</OpCode>
+    <DriveNo>0</DriveNo>
+    <IDN>1</IDN>
+    <Elements>64</Elements>
+    <Data>d007</Data>
+    <MotorDataLevel>0</MotorDataLevel>
+  </InitCmd>
+  <InitCmd>
+    <Transition>PS</Transition>
+    <Comment>Tscyc - Comm cycle time</Comment>
+    <Timeout>0</Timeout>
+    <OpCode>3</OpCode>
+    <DriveNo>0</DriveNo>
+    <IDN>2</IDN>
+    <Elements>64</Elements>
+    <Data>d007</Data>
+    <MotorDataLevel>0</MotorDataLevel>
+  </InitCmd>
+  <InitCmd>
+    <Transition>PS</Transition>
+    <Comment>Operation mode</Comment>
+    <Timeout>0</Timeout>
+    <OpCode>3</OpCode>
+    <DriveNo>0</DriveNo>
+    <IDN>32</IDN>
+    <Elements>64</Elements>
+    <Data>0200</Data>
+    <MotorDataLevel>0</MotorDataLevel>
+  </InitCmd>
+  <InitCmd>
+    <Transition>PS</Transition>
+    <Comment>Thermal motor model</Comment>
+    <Timeout>0</Timeout>
+    <OpCode>3</OpCode>
+    <DriveNo>0</DriveNo>
+    <IDN>32830</IDN>
+    <Elements>64</Elements>
+    <Data>080008000000000000000000</Data>
+    <MotorDataLevel>0</MotorDataLevel>
+  </InitCmd>
+  <InitCmd>
+    <Transition>PS</Transition>
+    <Comment>Nominal main voltage</Comment>
+    <Timeout>0</Timeout>
+    <OpCode>3</OpCode>
+    <DriveNo>0</DriveNo>
+    <IDN>32969</IDN>
+    <Elements>64</Elements>
+    <Data>a00f</Data>
+    <MotorDataLevel>0</MotorDataLevel>
+  </InitCmd>
+  <InitCmd>
+    <Transition>PS</Transition>
+    <Comment>Main voltage positive tolerance range</Comment>
+    <Timeout>0</Timeout>
+    <OpCode>3</OpCode>
+    <DriveNo>0</DriveNo>
+    <IDN>32970</IDN>
+    <Elements>64</Elements>
+    <Data>6400</Data>
+    <MotorDataLevel>0</MotorDataLevel>
+  </InitCmd>
+  <InitCmd>
+    <Transition>PS</Transition>
+    <Comment>Main voltage negative tolerance range</Comment>
+    <Timeout>0</Timeout>
+    <OpCode>3</OpCode>
+    <DriveNo>0</DriveNo>
+    <IDN>32971</IDN>
+    <Elements>64</Elements>
+    <Data>6400</Data>
+    <MotorDataLevel>0</MotorDataLevel>
+  </InitCmd>
+</InitCmds>
