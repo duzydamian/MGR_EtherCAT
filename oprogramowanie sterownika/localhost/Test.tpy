@@ -4,7 +4,7 @@
 	<ProjectInfo>
 		<Path>C:\Documents and Settings\labplc\Pulpit\[MGR] EtherCAT\Test.pro</Path>
 		<IsLibrary>false</IsLibrary>
-		<ChangeDate>2013-06-12T00:30:14</ChangeDate>
+		<ChangeDate>2013-04-19T11:55:06</ChangeDate>
 		<Library>
 			<Name>STANDARD.LIB</Name>
 			<Path>C:\TWINCAT\PLC\LIB\STANDARD.LIB</Path>
@@ -13,10 +13,10 @@
 	</ProjectInfo>
 	<RoutingInfo>
 		<AdsInfo>
-			<NetId>5.5.171.47.1.1</NetId>
+			<NetId>5.5.143.5.1.1</NetId>
 			<Port>801</Port>
 			<TargetName>
-				<![CDATA[Target: BECK_CP_1 (5.5.171.47.1.1), Run Time: 1]]>
+				<![CDATA[Target: BECK_CX_1 (5.5.143.5.1.1), Run Time: 1]]>
 			</TargetName>
 		</AdsInfo>
 	</RoutingInfo>
@@ -831,7 +831,7 @@
 	</Functions>
 	<Programs>
 		<Program>
-			<Name Decoration="10000000" Crc32="0708233951" LastChange="2013-06-12T00:30:14">MAIN</Name>
+			<Name Decoration="10000000" Crc32="0708233951" LastChange="2013-04-18T13:16:52">MAIN</Name>
 			<PrgInfo>
 				<CodeIndex>49</CodeIndex>
 			</PrgInfo>
@@ -848,7 +848,7 @@
 				<Property>
 					<Name>LinkedWith</Name>
 					<Value>
-						<![CDATA[TIID^Device 2 (EtherCAT (v2.10 only))^Term 1 (EK1100)^Zielone (EL2004)^Channel 1^Output]]>
+						<![CDATA[TIID^Device 2 (EtherCAT (v2.10 only))^Term 1 (CX1100-0004)^Zielone (EL2004)^Channel 1^Output]]>
 					</Value>
 				</Property>
 			</Properties>
@@ -863,7 +863,7 @@
 				<Property>
 					<Name>LinkedWith</Name>
 					<Value>
-						<![CDATA[TIID^Device 2 (EtherCAT (v2.10 only))^Term 1 (EK1100)^Zielone (EL2004)^Channel 2^Output]]>
+						<![CDATA[TIID^Device 2 (EtherCAT (v2.10 only))^Term 1 (CX1100-0004)^Zielone (EL2004)^Channel 2^Output]]>
 					</Value>
 				</Property>
 			</Properties>
@@ -878,7 +878,7 @@
 				<Property>
 					<Name>LinkedWith</Name>
 					<Value>
-						<![CDATA[TIID^Device 2 (EtherCAT (v2.10 only))^Term 1 (EK1100)^Zielone (EL2004)^Channel 3^Output]]>
+						<![CDATA[TIID^Device 2 (EtherCAT (v2.10 only))^Term 1 (CX1100-0004)^Zielone (EL2004)^Channel 3^Output]]>
 					</Value>
 				</Property>
 			</Properties>
@@ -893,7 +893,7 @@
 				<Property>
 					<Name>LinkedWith</Name>
 					<Value>
-						<![CDATA[TIID^Device 2 (EtherCAT (v2.10 only))^Term 1 (EK1100)^Zielone (EL2004)^Channel 4^Output]]>
+						<![CDATA[TIID^Device 2 (EtherCAT (v2.10 only))^Term 1 (CX1100-0004)^Zielone (EL2004)^Channel 4^Output]]>
 					</Value>
 				</Property>
 			</Properties>
@@ -908,7 +908,7 @@
 				<Property>
 					<Name>LinkedWith</Name>
 					<Value>
-						<![CDATA[TIID^Device 2 (EtherCAT (v2.10 only))^Term 1 (EK1100)^Czerwone (EL2004)^Channel 1^Output]]>
+						<![CDATA[TIID^Device 2 (EtherCAT (v2.10 only))^Term 1 (CX1100-0004)^Czerwone (EL2004)^Channel 1^Output]]>
 					</Value>
 				</Property>
 			</Properties>
@@ -923,7 +923,7 @@
 				<Property>
 					<Name>LinkedWith</Name>
 					<Value>
-						<![CDATA[TIID^Device 2 (EtherCAT (v2.10 only))^Term 1 (EK1100)^Czerwone (EL2004)^Channel 2^Output]]>
+						<![CDATA[TIID^Device 2 (EtherCAT (v2.10 only))^Term 1 (CX1100-0004)^Czerwone (EL2004)^Channel 2^Output]]>
 					</Value>
 				</Property>
 			</Properties>
@@ -938,7 +938,7 @@
 				<Property>
 					<Name>LinkedWith</Name>
 					<Value>
-						<![CDATA[TIID^Device 2 (EtherCAT (v2.10 only))^Term 1 (EK1100)^Czerwone (EL2004)^Channel 3^Output]]>
+						<![CDATA[TIID^Device 2 (EtherCAT (v2.10 only))^Term 1 (CX1100-0004)^Czerwone (EL2004)^Channel 3^Output]]>
 					</Value>
 				</Property>
 			</Properties>
@@ -953,7 +953,7 @@
 				<Property>
 					<Name>LinkedWith</Name>
 					<Value>
-						<![CDATA[TIID^Device 2 (EtherCAT (v2.10 only))^Term 1 (EK1100)^Czerwone (EL2004)^Channel 4^Output]]>
+						<![CDATA[TIID^Device 2 (EtherCAT (v2.10 only))^Term 1 (CX1100-0004)^Czerwone (EL2004)^Channel 4^Output]]>
 					</Value>
 				</Property>
 			</Properties>
@@ -968,7 +968,7 @@
 				<Property>
 					<Name>LinkedWith</Name>
 					<Value>
-						<![CDATA[TIID^Device 2 (EtherCAT (v2.10 only))^Term 1 (EK1100)^Przyciski (EL1004)^Channel 1^Input]]>
+						<![CDATA[TIID^Device 2 (EtherCAT (v2.10 only))^Term 1 (CX1100-0004)^Przyciski (EL1004)^Channel 1^Input]]>
 					</Value>
 				</Property>
 			</Properties>
@@ -983,7 +983,7 @@
 				<Property>
 					<Name>LinkedWith</Name>
 					<Value>
-						<![CDATA[TIID^Device 2 (EtherCAT (v2.10 only))^Term 1 (EK1100)^Przyciski (EL1004)^Channel 2^Input]]>
+						<![CDATA[TIID^Device 2 (EtherCAT (v2.10 only))^Term 1 (CX1100-0004)^Przyciski (EL1004)^Channel 2^Input]]>
 					</Value>
 				</Property>
 			</Properties>
@@ -998,7 +998,7 @@
 				<Property>
 					<Name>LinkedWith</Name>
 					<Value>
-						<![CDATA[TIID^Device 2 (EtherCAT (v2.10 only))^Term 1 (EK1100)^Przyciski (EL1004)^Channel 3^Input]]>
+						<![CDATA[TIID^Device 2 (EtherCAT (v2.10 only))^Term 1 (CX1100-0004)^Przyciski (EL1004)^Channel 3^Input]]>
 					</Value>
 				</Property>
 			</Properties>
@@ -1013,7 +1013,7 @@
 				<Property>
 					<Name>LinkedWith</Name>
 					<Value>
-						<![CDATA[TIID^Device 2 (EtherCAT (v2.10 only))^Term 1 (EK1100)^Przyciski (EL1004)^Channel 4^Input]]>
+						<![CDATA[TIID^Device 2 (EtherCAT (v2.10 only))^Term 1 (CX1100-0004)^Przyciski (EL1004)^Channel 4^Input]]>
 					</Value>
 				</Property>
 			</Properties>
@@ -1028,7 +1028,7 @@
 				<Property>
 					<Name>LinkedWith</Name>
 					<Value>
-						<![CDATA[TIID^Device 2 (EtherCAT (v2.10 only))^Term 1 (EK1100)^Term 6 (EL3102)^Channel 1^Value]]>
+						<![CDATA[TIID^Device 2 (EtherCAT (v2.10 only))^Term 1 (CX1100-0004)^Term 6 (EL3102)^Channel 1^Value]]>
 					</Value>
 				</Property>
 			</Properties>
@@ -1043,7 +1043,7 @@
 				<Property>
 					<Name>LinkedWith</Name>
 					<Value>
-						<![CDATA[TIID^Device 2 (EtherCAT (v2.10 only))^Term 1 (EK1100)^Term 6 (EL3102)^Channel 2^Value]]>
+						<![CDATA[TIID^Device 2 (EtherCAT (v2.10 only))^Term 1 (CX1100-0004)^Term 6 (EL3102)^Channel 2^Value]]>
 					</Value>
 				</Property>
 			</Properties>
@@ -1088,7 +1088,7 @@
 				<Property>
 					<Name>LinkedWith</Name>
 					<Value>
-						<![CDATA[TIID^Device 2 (EtherCAT (v2.10 only))^Term 1 (EK1100)^Term 2 (EL4132)^Channel 1^Output]]>
+						<![CDATA[TIID^Device 2 (EtherCAT (v2.10 only))^Term 1 (CX1100-0004)^Term 2 (EL4132)^Channel 1^Output]]>
 					</Value>
 				</Property>
 			</Properties>
@@ -1103,7 +1103,7 @@
 				<Property>
 					<Name>LinkedWith</Name>
 					<Value>
-						<![CDATA[TIID^Device 2 (EtherCAT (v2.10 only))^Term 1 (EK1100)^Term 2 (EL4132)^Channel 2^Output]]>
+						<![CDATA[TIID^Device 2 (EtherCAT (v2.10 only))^Term 1 (CX1100-0004)^Term 2 (EL4132)^Channel 2^Output]]>
 					</Value>
 				</Property>
 			</Properties>
