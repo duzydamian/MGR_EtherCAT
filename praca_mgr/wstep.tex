@@ -6,11 +6,18 @@ Tematem projektu, którego dotyczy ta praca jest: „Projekt i~realizacja stanow
 Na potrzeby realizacji projektu wykorzystano dwa różne istniejące stanowiska laboratoryjne, które składały się odpowiednio~z:
 \begin{table}[!htb]
 \begin{center}
-\begin{tabular}{| p{0.5\textwidth} || p{0.5\textwidth} |}\hline
+\begin{tabular}{| p{0.51\textwidth} || p{0.51\textwidth} |}\hline
 Stanowisko typu CP (Rysunek~\ref{stanowisko:cp}) & Stanowisko typu CX (Rysunek~\ref{stanowisko:cx})  \\\hline
 \begin{enumerate}
 \item 2~silniki AM3021-0C00-0000,
-\item Wyspa EK1100 z~zestawem modułów~IO,
+\item Wyspa EK1100 z~zestawem modułów~IO:
+\begin{itemize}
+\item Terminal sieci EtherCAT EK1100,
+\item 2-kanałowy moduł wyjść analogowych EL4132,
+\item 4-kanałowy moduł wejść cyfrowych EL1004,
+\item 2 4-kanałowe moduły wyjść cyfrowych EL2004,
+\item 2-kanałowy moduł wejść analogowych EL3102,
+\end{itemize}
 \item Napęd serwomechnizmów AX5203 (2~osiowy napęd),
 \item Komputer przemysłowy C6925,
 \item Zasilacz.
@@ -18,9 +25,22 @@ Stanowisko typu CP (Rysunek~\ref{stanowisko:cp}) & Stanowisko typu CX (Rysunek~\
 &
 \begin{enumerate}
 \item 2~silniki AM3021-0C00-0000,
-\item Wyspa EK1100 z~zestawem modułów IO,
+\item Zestaw modułów IO:
+\begin{itemize}
+\item 2-kanałowy moduł wyjść analogowych EL4132,
+\item 4-kanałowy moduł wejść cyfrowych EL1004,
+\item 2 4-kanałowe moduły wyjść cyfrowych EL2004,
+\item 2-kanałowy moduł wejść analogowych EL3102,
+\end{itemize}
+\item Terminal sieci EtherCAT EK1100,
 \item Napęd serwomechnizmów AX5203 (2~osiowy napęd),
-\item Modułowy komputer przemysłowy CX1020,
+\item Modułowy komputer przemysłowy CX1020:
+\begin{itemize}
+\item Interfejs USB/DVI CX1020-N010 ,
+\item Ethernet CX1020-N000,
+\item CPU CX1020-0113,
+\item Zasilacz CPU i magistrali I/O CX1100-0004,
+\end{itemize}
 \item Zasilacz.
 \end{enumerate}
 \\\hline                                            
@@ -35,6 +55,11 @@ Stanowisko typu CP (Rysunek~\ref{stanowisko:cp}) & Stanowisko typu CX (Rysunek~\
 \input{schematCX} %
 
 \subsubsection{Sterownik PLC}
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+soft plc
+ahrd plc
+opisać zasadę działania plc w beckhoffie
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Sterownik PLC wykorzystywany do realizacji projektu był wyposażony w następujące moduły:
 \begin{enumerate}
 \item SIMATIC S7-300, Jednostka centralna S7-300 CPU 315F-2 PN/DP,
@@ -48,14 +73,23 @@ Sterownik PLC wykorzystywany do realizacji projektu był wyposażony w następuj
 Konfigurację sterownika wraz z modułami przedstawia Rysunek~\ref{conf}.
 %\begin{figure}[!htb] 	\centering 	\includegraphics[width=0.75\textwidth]{obrazki/conf.png} \caption{Konfiguracja sterownika PLC} \label{conf} \end{figure}
 \subsubsection{Komputer}
-Projekt w całości był realizowany na laptopie autora, podłączanym do~sieci w~laboratorium. Na~komputerze uruchomiane były dwie maszyny wirtualne. Na~jednej zainstalowane było środowisko Step~7 do~programowania sterownika, a~na~drugiej WinCC flexible 2008 do~tworzenia i~uruchamiania wizualizacji. Wizualizacje tworzone w środowisku WinCC flexible są~dedykowane do~paneli operatorskich, jednak ta~stworzona przez autora na~potrzeby projektu była uruchamiana na komputerze za~pomocą runtime system.
+Projekt w całości był realizowany na laptopie autora, podłączanym do~sieci w~laboratorium. Na~komputerze uruchomiana była maszyna wirtualna. Na~jednej zainstalowane było środowisko TwinCAT do~programowania sterownika oraz do~tworzenia i~uruchamiania wizualizacji. Wizualizacje tworzone w~środowisku TwinCAT można uruchomić bezpośrednio na~komputerze wyposażonym w~odpowiednie oprogramowanie lub na~urządzeniu docelowym po~podpięciu do~niego monitora (o~ile urządzenie docelowe posiada wyjście DVI lub odpowiedni interfejs systemowy w~postaci odrębnego modułu).
 
-!!!!!!!!
-%\subsection{•}
 \subsection{Analiza tematu}
 Analiza tematu polegała przede wszystkim na zapoznaniu się z~narzędziami programistycznymi do~tworzenia oprogramowania sterownika oraz wizualizacji.
-W~wyniku analizy autor poznał podstawy języków: LAD~\cite{step1,step2,step3}, STL~\cite{step1,step2,step3}, FBD~\cite{step1,step2,step3}, GRAPH~\cite{step3}, SCL~\cite{scl1,scl2,scl3} i AWL do~tworzenia programu sterownika oraz VBScript do~tworzenia skryptów w~wizualizacji.
-Poznanie tych podstaw pozwoliło dobrać język odpowiedni do~realizacji poszczególnych zadań.
+W~wyniku analizy autor poznał podstawy obsługi środowiska TwinCAT oraz jego elementów składowych a w szczególności:
+\begin{itemize}
+\item TwinCAT System Manager - centralne narzędzie konfiguracyjne,
+\item TwinCAT PLC - narzędzie do tworzenia programów,
+\item TwinCAT NC/CNC - grupa narzędzi do sterowania osiami w różnych trybach.
+\end{itemize} 
+
+\subsection{EtherCAT}
+zasada działania
+topologia
+źródła opóźnień
+wady/zalety
+itd.
 
 \subsection{Założenia}
 Oprogramowanie dla dostępnego stanowiska laboratoryjnego powinno zostać stworzone przy użyciu środowiska TwinCAT. Funkcjonalności robota wchodzące w~skład projektu, to:
