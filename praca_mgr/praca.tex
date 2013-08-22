@@ -8,7 +8,6 @@
 \usepackage{graphicx}
 \usepackage{setspace}
 \usepackage{ifthen}
-%\usepackage[utf8]{inputenc}
 \usepackage{a4wide}
 \usepackage{fullpage}
 \usepackage{verbatim}
@@ -19,6 +18,10 @@
 \usepackage{mdwlist}
 \usepackage{titlesec}
 \usepackage{lipsum}
+\usepackage{multirow}
+
+\usepackage{tikz}
+\usetikzlibrary{automata,positioning,shapes,shadows,arrows,backgrounds,trees}
 
 \hypersetup{
 	bookmarks=true,
@@ -31,14 +34,14 @@
 	citecolor=Black,
 	urlcolor=Black
 	}
-
+	
 \let\subsubsubsection\paragraph
 %\setcounter{secnumdepth}{6} % subsubparagraph ???
 % that is, subsubsubsubsubsection :-)
 \setcounter{secnumdepth}{4}
 
 \newcommand{\tytul}{Projekt i realizacja stanowiska laboratoryjnego do badania zależności czasowych w sieci EtherCAT}
-\newcommand{\data}{czerwiec 2013}
+\newcommand{\data}{\today}
 \newcommand{\promotor}{dr~inż. Jacek Stój}
 \newcommand{\autor}{Damian Karbowiak}
 \newcommand{\konsultant}{}
@@ -48,6 +51,14 @@
 \titlespacing{\subsubsection}{1cm}{*4}{*1.5}
 
 \begin{document}
+
+\tikzstyle{abstract}=[rectangle, draw=black, rounded corners, fill=blue!40, drop shadow,
+        text centered, anchor=north, text=white, text width=4cm]
+\tikzstyle{comment}=[rectangle, draw=black, rounded corners, fill=green, drop shadow,
+        text centered, anchor=north, text=white, text width=4cm]
+\tikzstyle{myarrow}=[->, >=open triangle 90, thick]
+\tikzstyle{line}=[-, thick]
+
 \lstset{backgroundcolor=\color{white}, boxpos=c, captionpos=b}
 \lstset{numbers=left, stepnumber=1, numbersep=10pt, frame=single}
 \lstset{frameround=tttt}
@@ -71,6 +82,7 @@
 \include{podsumowanie} %
 \include{wnioski} %
 \include{bibliografia} %
+
 \section{Spis rysunków, tablic i kodów źródłowych}
 \subsection{Spis rysunków}
 %\listoffigures
@@ -82,5 +94,7 @@
 \subsection{Spis kodów źródłowych}
 \renewcommand*\numberline[1]{Kod źródłowy\,#1:\indent}
 \lstlistoflistings
+
 \include{zalaczniki} %
+
 \end{document}
