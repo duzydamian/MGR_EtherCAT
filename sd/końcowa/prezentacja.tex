@@ -16,6 +16,7 @@
   \titlepage
 \end{frame}
 
+\section{Wstęp}
 \begin{frame}
 \frametitle{Opis}
 Zakres pracy obejmuje projekt i realizację stanowiska laboratoryjnego złożonego z co najmniej dwóch sterowników produkcji Beckhoff do prezentacji zależności czasowych z sieci EtherCAT. Do tego celu oprócz sterowników należy użyć serwonapędów.
@@ -70,29 +71,96 @@ Zakres pracy obejmuje projekt i realizację stanowiska laboratoryjnego złożone
 \end{enumerate}
 \end{frame}
 
+\section{Postępy}
 \begin{frame}
 \frametitle{Co zostało zrobione}
 \begin{enumerate}
     \item Konfiguracja systemu dla wszystkich 4 stanowisk
     \item Implementacja projektu na sterownik PLC pozwalającego przetestować działanie konfiguracji, tj. obsługa przycisków, diod, regulację prędkości obrotowej poprzez potencjometr
+    \item Rozwiązane problemy o których była mowa na poprzednim seminarium
 \end{enumerate}
 \end{frame}
 
+\begin{frame}
+\frametitle{Główny widok projektu}
+\begin{figure}[!htb]	
+\centering 	          
+\includegraphics[width=1.04\textwidth]{images/main_view}
+\end{figure}
+\end{frame}
+
+\section{Problemy}
+\begin{frame}
+\frametitle{Rozwiązane problemy}
+\begin{enumerate}
+    \item Problem z uruchomieniem jednego silnika - nie wykrywany przez system
+    \item Problem z uruchomieniem automatycznym projektu po restarcie stanowiska - pomimo konfiguracji analizy działania w testach.
+\end{enumerate}
+\end{frame}
+
+\subsection{Problem 1}
+\begin{frame}
+\frametitle{Konfiguracja osi A}
+\begin{figure}[!htb]	
+\centering 	          
+\includegraphics[width=1.04\textwidth]{images/config_axis1}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\frametitle{Konfiguracja osi B}
+\begin{figure}[!htb]	
+\centering 	          
+\includegraphics[width=1.04\textwidth]{images/config_axis2}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\frametitle{Działanie osi A}
+\begin{figure}[!htb]	
+\centering 	          
+\includegraphics[width=1.04\textwidth]{images/axis1}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\frametitle{Działanie osi B}
+\begin{figure}[!htb]	
+\centering 	          
+\includegraphics[width=1.04\textwidth]{images/axis2}
+\end{figure}
+\end{frame}
+
+\subsection{Problem 2}
+\begin{frame}
+\frametitle{Stworzenie bootowalnego projektu}
+\begin{figure}[!htb]	
+\centering 	          
+\includegraphics[width=1.0\textwidth]{images/boot}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\frametitle{Stworzenie bootowalnego projektu}
+\begin{enumerate}
+    \item Zbudowanie projektu:
+    \begin{itemize}
+		\item Edit
+		\item Rebuild all
+	\end{itemize}
+    \item Zalogowanie do sterownika (Login)
+    \item Stworzenie bootowalnego projektu (Create Bootproject)
+    
+\end{enumerate}
+\end{frame}
+
+\section{Podsumowanie}
 \begin{frame}
 \frametitle{Aktualny stan pracy}
 \begin{enumerate}
-    \item Implementacja oprogramowania sterującego dwoma silnika
-    \item Wymyślanie algorytmu pomiaru opóźnienia
-\end{enumerate}
-\end{frame}
-
-\begin{frame}
-\frametitle{Napotkane problemy}
-\begin{enumerate}
-    \item Problem z uruchomieniem jednego silnika - nie wykrywany przez system
-    \item Problem z uruchomieniem automatycznym projektu po restarcie stanowiska - pomimo konfiguracji
-	\item Średni dostęp do informacji w sieci
-	\item Bardzo rozbudowana i słabo opisana lista zmiennych wejściowych i wyjściowych w dokumentacji, konieczność analizy działania w testach.
+    \item Przygotowanie aktualnego projektu do przeprowadzenia badań
+    \item Przeprowadzenie zaplanowanych badań
+    \item Dokończenie książki
 \end{enumerate}
 \end{frame}
 
