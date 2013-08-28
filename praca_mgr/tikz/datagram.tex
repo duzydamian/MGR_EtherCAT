@@ -1,0 +1,22 @@
+\begin{figure}[htbp]
+ \centering
+        \tikzstyle{background grid}=[draw, black!50,step=.25cm]
+	\begin{tikzpicture}[node distance=2mm, auto]%, show background grid]
+	\tikzset{
+    	mynode/.style={rectangle,rounded corners,draw=black, top color=white, very thick, inner sep=4mm, 		text centered,font=\footnotesize},
+    	mynodemini/.style={rectangle,rounded corners,draw=black, top color=white, thick, inner sep=2mm, text centered,font=\scriptsize},    	
+	    myarrow/.style={->, >=latex', shorten >=1pt, ultra thick},
+	    myline/.style={-, =latex', shorten >=1pt, rounded corners, ultra thick},
+	    mylabel/.style={text centered, font=\scriptsize\bfseries} 
+	} 
+	\node[bottom color=gray!50, mynode] (datagram) {Datagram};  
+	\node[bottom color=gray!50, mynode, below=1cm of datagram] (part1) {Data};   		
+	\node[bottom color=gray!50, mynode, left=of part1] (part2) {Nagłówek};   		
+	\node[bottom color=gray!50, mynode, right=of part1] (part3) {Licznik};   				
+ 
+	\draw[myline,black,dotted] (datagram.south west) -- (part2.north west); 	
+	\draw[myline,black,dotted] (datagram.south east) -- (part3.north east); 
+\end{tikzpicture} 
+\caption{Budowa datagramu}
+\label{etherCAT:ramka}
+\end{figure}

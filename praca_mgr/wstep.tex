@@ -3,7 +3,7 @@
 Tematem projektu, którego dotyczy ta praca jest: „Projekt i~realizacja stanowiska laboratoryjnego do badania zależności czasowych w~sieci EtherCAT". Zagadnienia związane z~tworzeniem oprogramowania dla sterowników przemysłowych są dla autora niezwykle interesujące, a zrealizowany projekt miał na~celu dalsze pogłębienie jego wiedzy z tego zakresu. Wyboru tego konkretnego tematu autor dokonał, ponieważ protokół EtherCAT jest jeszcze nowością i według wielu źródeł stanowi przyszłość branży informatyki przemysłowej \cite{art1, art2}, a~praca nad tym tematem wydaje się być pomocna i~wartościowa w przyszłej pracy zawodowej lub na~ewentualnym dalszym etapie kształcenia.
 
 \subsection{Stanowisko laboratoryjne}
-Na potrzeby realizacji projektu wykorzystano dwa różne istniejące stanowiska laboratoryjne, które składały się odpowiednio~z:
+Na potrzeby realizacji projektu wykorzystano dwa różne istniejące stanowiska laboratoryjne, które składały się~z~elementów opisanych w Tabeli~\ref{stanowiska}.
 \begin{table}[!htb]
 \begin{center}
 \begin{tabular}{| p{0.51\textwidth} || p{0.51\textwidth} |}\hline
@@ -48,30 +48,40 @@ Stanowisko typu CP (Rysunek~\ref{stanowisko:cp}) & Stanowisko typu CX (Rysunek~\
 \end{center}
 \vspace*{-6mm}
   \caption{Dostępne stanowiska laboratoryjne}
-	\label{in}
+	\label{stanowiska}
 \end{table}
 
-\input{schematCP} %
-\input{schematCX} %
+\input{tikz/schematCP} %
+\input{tikz/schematCX} %
 
 \subsubsection{Sterownik PLC}
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 soft plc
-ahrd plc
+hard plc
 opisać zasadę działania plc w beckhoffie
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Sterownik PLC wykorzystywany do realizacji projektu był wyposażony w następujące moduły:
-\begin{enumerate}
-\item SIMATIC S7-300, Jednostka centralna S7-300 CPU 315F-2 PN/DP,
-\item SIMATIC S7-300, Zasilacz PS 307,
-\item SIMATIC S7-300, Wejścia/Wyjścia cyfrowe SM 323,
-\item SIMATIC S7-300, Wejścia/Wyjścia analogowe SM 334.
-\end{enumerate}
-%\begin{figure}[!htb] 	\centering 	\includegraphics[width=0.75\textwidth]{obrazki/sterownik.png} 	\caption{Siemens SIMATIC S7-300} \end{figure}
+W~realizacji wykorzystane zostały stanowiska firmy Beckhoff wyposażone w jednostki centralne pracujące pod kontrolą Windowsa CE (Microsoft Windows Compact Edition). Na~takiej jednostce uruchamiane są programy do~sterowania z~poziomu komputera (ang. Soft PLC). Jest to rozwiązanie alternatywne dla~klasyczny sterowników swobodnie programowalnych w~postaci dedykowanego urządzenia (ang. Hard PLC).
+Taki ,,sterownik PLC w komputerze PC'' wykorzystuje standardowe języki programowania sterowników~PLC (zgodność z~normą IEC~61131-3) do~tworzenia logiki sterującej takiej jak:
+\begin{itemize}
+\item IL -- \textbf{I}nstruction \textbf{L}ist to~tekstowy język programowania składający się z~serii instrukcji, z~których każda zaczyna~się z~nowej linii i~zawiera operator z~jednym lub więcej argumentem (zależnie od~funkcji),
+
+\item LD -- \textbf{L}adder \textbf{D}iagram jest graficznym językiem programowania, który swoją struktura przypomina obwód elektryczny. Doskonały do~łączenia POUs (Progam Organization Units). LD~składa~się z~sieci cewek i~styków ograniczonej przez linie prądowe. Linia z~lewej strony przekazuje wartość logiczną TRUE, z~tej strony zaczyna~się też wykonywać linia pozioma.
+
+\item FBD -- \textbf{F}unction \textbf{B}lock \textbf{D}iagram jest graficznym językiem programowania przypominającym sieć, której elementy to~struktury reprezentujące funkcje logiczne bądź wyrażenia arytmetyczne, wywołania bloków funkcyjnych~itp.
+
+\item SFC -- \textbf{S}equential \textbf{F}unction \textbf{C}hart to~graficzny język programowania, w~którym łatwo jest ukazać chronologię wykonywania przez program różnych procesów.
+
+\item ST -- \textbf{S}truktured \textbf{T}ext jest tekstowym językiem programowania, złożonym z~serii instrukcji takich jak If..then lub For...do.
+
+\item CFC -- \textbf{C}ontinuous \textbf{F}unction \textbf{C}hart jest graficznym językiem programowania, który w~przeciwieństwie do~FBD nie~działa w sieci, a~w~luźno poło onej strukturze, co~pozwala na np.~stworzenie sprzężenia zwrotnego.
+\end{itemize}
+
 \indent
-\indent Sterownik podłączony jest do sieci lokalnej Ethernet w~laboratorium, więc komunikacja z~nim odbywa się tak samo jak z~każdym innym urządzeniem sieciowym. Podstawy programowania i korzystania ze sterowników autor poznał zapoznając się z odpowiednią literaturą \cite{plc1,plc2,plc4,plc5,plc6}.
-Konfigurację sterownika wraz z modułami przedstawia Rysunek~\ref{conf}.
-%\begin{figure}[!htb] 	\centering 	\includegraphics[width=0.75\textwidth]{obrazki/conf.png} \caption{Konfiguracja sterownika PLC} \label{conf} \end{figure}
+\indent Stanowiska podłączone są do sieci lokalnej Ethernet w~laboratorium, więc komunikacja z~nimi odbywa się tak samo jak z~każdym innym urządzeniem sieciowym. Podstawy programowania i korzystania ze sterowników autor poznał zapoznając się z odpowiednią literaturą \cite{plc1,plc2,plc4,plc5,plc6} oraz uczęszczając w toku studiów na zajęcia obowiązkowe oraz specjalizacyjne.
+Konfigurację sterowników wraz z modułami przedstawiają Rysunki~\ref{conf:cp}~oraz~\ref{conf:cx}.
+\begin{figure}[!htb] 	\centering 	\includegraphics[width=0.75\textwidth]{images/confCP} \caption{Konfiguracja stanowiska typu CP} \label{conf:cp} \end{figure}
+\begin{figure}[!htb] 	\centering 	\includegraphics[width=0.75\textwidth]{images/confCX} \caption{Konfiguracja stanowiska typu CX} \label{conf:cx} \end{figure}
+
 \subsubsection{Komputer}
 Projekt w całości był realizowany na laptopie autora, podłączanym do~sieci w~laboratorium. Na~komputerze uruchomiana była maszyna wirtualna. Na~jednej zainstalowane było środowisko TwinCAT do~programowania sterownika oraz do~tworzenia i~uruchamiania wizualizacji. Wizualizacje tworzone w~środowisku TwinCAT można uruchomić bezpośrednio na~komputerze wyposażonym w~odpowiednie oprogramowanie lub na~urządzeniu docelowym po~podpięciu do~niego monitora (o~ile urządzenie docelowe posiada wyjście DVI lub odpowiedni interfejs systemowy w~postaci odrębnego modułu).
 
@@ -90,6 +100,9 @@ topologia
 źródła opóźnień
 wady/zalety
 itd.
+\input{tikz/topologia} %
+\input{tikz/ramka} %
+\input{tikz/datagram} %
 
 \subsection{Założenia}
 Oprogramowanie dla dostępnego stanowiska laboratoryjnego powinno zostać stworzone przy użyciu środowiska TwinCAT. Funkcjonalności robota wchodzące w~skład projektu, to:

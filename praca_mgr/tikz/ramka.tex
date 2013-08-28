@@ -1,0 +1,30 @@
+\begin{figure}[htbp]
+ \centering
+        \tikzstyle{background grid}=[draw, black!50,step=.25cm]
+	\begin{tikzpicture}[node distance=2mm, auto]%, show background grid]
+	\tikzset{
+    	mynode/.style={rectangle,rounded corners,draw=black, top color=white, very thick, inner sep=4mm, 		text centered,font=\footnotesize},
+    	mynodemini/.style={rectangle,rounded corners,draw=black, top color=white, thick, inner sep=2mm, text centered,font=\scriptsize},    	
+	    myarrow/.style={->, >=latex', shorten >=1pt, ultra thick},
+	    myline/.style={-, =latex', shorten >=1pt, rounded corners, ultra thick},
+	    mylabel/.style={text centered, font=\scriptsize\bfseries} 
+	} 
+	\node[bottom color=gray!50, mynode] (ethhdr) {Ethernet header};  
+	\node[bottom color=gray!50, mynode, below=of ethhdr] (ethhdr2) {SL};  
+	\node[mylabel, below=of ethhdr2] (ethhdradr) {EtherType 0x88A4};
+	
+	\node[bottom color=yellow!50, mynode, right=of ethhdr, text width=2cm] (ecat) {EtherCAT};
+	\node[bottom color=yellow!50, mynodemini, below=of ecat, text width=2.4cm] (ecathdr) {EtherCAT header};
+	
+	\node[bottom color=yellow!50, mynode, right=of ecat, text width=6.3cm] (ecatt) {EtherCAT telegram};
+	\node[bottom color=yellow!50, mynodemini, below=of ecatt.193] (ecatd1) {Datagram 1};  	 
+	\node[bottom color=yellow!50, mynodemini, right=of ecatd1] (ecatd2) {Datagram 2};  	 	 		
+	\node[bottom color=yellow!50, mynodemini, right=0.9cm of ecatd2] (ecatdn) {Datagram n};  	 	 			 		
+		
+	\node[bottom color=gray!50, mynode, right=of ecatt] (ethhdr) {Ethernet};  		
+ 
+	\draw[myline,black,dotted] (ecatd2) -- (ecatdn); 	
+\end{tikzpicture} 
+\caption{Ramka w transmisji EtherCAT i jej podział na datagramy}
+\label{etherCAT:ramka}
+\end{figure}
