@@ -1,0 +1,45 @@
+\subsection{EtherCAT}
+%zasada działania
+%topologia
+%źródła opóźnień
+%wady/zalety
+%itd.
+Standard EtherCAT został wprowadzony i jest rozwijany przez organizację EtherCAT Technology Group. Nazwa standardu jest w gruncie rzeczy skrótem od hasła „Ethernet for Control Automation Technology”
+
+Zastosowano jednak istotnie inną metodę, która pozwoliła uzyskać dokładną synchronizacje i krótkie opóźnienia transmisji.
+
+EtherCAT - Ethernet for Control Automation Technology \\
+
+Zamiast dzielić czas transmisji na dane priorytetowe i mniej ważne lub nadawać priorytety wszystkim pakietom, skorzystano z faktu, że większość danych i rozkazów transmitowanych przez urządzenia przemysłowe wymagające krótkich czasów reakcji jest bardzo mała. W praktyce rozmiar porcji informacji wymienianych jednorazowo przez pojedyncze przyrządy podłączone do sieci jest nawet mniejszy niż minimalny rozmiar ramki stosowanej w klasycznym Ethernecie. Korzystając z tego faktu, twórcy standardu EtherCAT potraktowali ramkę ethernetową jak pewnego rodzaju pamięć RAM, do której zapisywane i z której odczytywane są dowolne informacje w oparciu o adresy lokalizujące pożądane dane w tej pamięci.
+
+Kolejne ramki nadawane są przez urządzenie pełniące rolę kontrolera i przesyłane do najbliższego urządzenia podrzędnego. Urządzenie to ma przydzielony adres, który jednoznacznie identyfikuje pewien fragment ramki (zwany datagramem), dzięki czemu może odczytać przeznaczone dla siebie dane. W przypadku gdy urządzenie podrzędne samo chce zainicjować komunikację, zapisuje pod odpowiednim adresem w odebranej ramce informacje przeznaczone dla innego urządzenia podłączonego do sieci EtherCAT. Niezależnie od tego, czy urządzenie coś zapisało, czy też tylko odczytywało fragment ramki, przesyła ją dalej do kolejnego z urządzeń. Duża szybkość tej metody transmisji wynika m.in. z tego, że nie ma potrzeby dekodowania całej ramki danych ani enkapsulacji w protokoły TCP/IP danych zapisywanych. Pozwala to błyskawicznie przekazywać ramki pomiędzy urządzeniami.
+
+
+Wydajność tego rozwiązania jest dosyć duża, choć zależy od liczby elementów podłączonych do sieci. W praktyce czas opóźnienia nie wzrasta powyżej 1 ms i zazwyczaj jest znacznie (kilku- lub kilkunastokrotnie) krótszy. Czas synchronizacji nie przekracza 1 $\mu s$.
+
+\subsubsection{Determinizm, przepustowość}
+\subsubsection{Przetwarzanie ,,w locie''}
+\subsubsection{Transmisja i synchronizacja w sieciach EtherCAT}
+
+\subsubsection{EtherCAT Technology Group}
+\begin{figure}[!htb] 	\centering 	\includegraphics[width=0.3\textwidth]{images/logoETG} \caption{Logo EtherCAT Technology Group (http://www.ethercat.org).} \label{logoETG} \end{figure}
+
+Standard EtherCAT został opracowany w~2003 roku przez Beckhoff Automation, niemiecką firmę z~branży automatyki przemysłowej. Następnie powołano organizację EtherCAT Technology Group (ETG), która zajęła~się standaryzacją tego protokołu. Stowarzyszenie~to obecnie zajmuje~się też organizowaniem szkoleń oraz popularyzacją tego standardu. 
+
+Aktualnie w~skład ETG wchodzi ponad 2480 firm (dane na dzień 1~września~2013). Najważniejszym członkiem organizacji jest oczywiście firma BECKHOFF Automation. Pozostałe duże i~znane firmy wchodzące w~jej skład~to między innymi: ABB, Brother Industries, BMW Group, Częstochowa University of Technology, Epson, FANUC, Festo, GE Intelligent Platforms, Hitachi, Hochschule Ingolstadt, Mitsubishi, Microchip Technology, Mentor Graphics, Nikon, National Instruments, OLYMPUS, Panasonic, Rzeszów University of Technology, Red Bull Technology, Samsung Electronics, TRW Automotive, Volvo Group, Volkswagen oraz Xilinx.
+
+Jak widać na powyższej liście w~skład organizacji wchodzą firmy z~bardzo wielu branż, a~nawet ośrodki naukowe. Autor pracy wybrał duże i~dobrze znane sobie firmy, aby pokazać jak wiele firm interesuje~się rozwojem przemysłowych protokołów komunikacyjnych.
+
+\subsubsection{Telegram EtherCAT}
+Jako pokazano na rysunku 2, telegram EtherCAT jest inkapsulowany w  ramce Ethernet i  zawiera jeden lub więcej datagramów EtherCAT dostarczanych do urządzeń slave. 
+
+Każdy datagram EtherCAT jest komendą, która zawiera nagłówek, dane i licznik roboczy. Nagłówek i  dane są używane do wyspecyfikowania operacji, które muszą być wykonane przez slave, natomiast licznik roboczy jest aktualizowany przez slave informując mastera, że slave odebrał i przetwarza komendę.
+\subsubsection{}
+\subsubsection{}
+\subsubsection{}
+\subsubsection{}
+\subsubsection{}
+\input{tikz/topologia} %
+\input{tikz/ramka} %
+\input{tikz/datagram} %
+\input{tikz/wykorzystanie} %
