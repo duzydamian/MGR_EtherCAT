@@ -1,8 +1,21 @@
 \section{Wnioski}
-Tworzenie rozbudowanego oprogramowania do obsługi robota 3D pracującego w~magazynie wysokiego składowania wymaga rozwiązania wielu problemów programistycznych. Autor w pierwszej kolejności zapoznał się z~kursami programowania w~środowisku Step~7 oraz WinCC flexible \cite{kurs1,kurs2,kurs3} dostępnymi w~sieci.
+Protokół EtherCAT jest rozwiązaniem zdecydowanie bardzo nowoczesnym, zaawansowanym oraz pomysłowym. Pozwala bardzo dobrze wykorzystać wzrastające moce obliczeniowe sterowników~PLC, przy zachowaniu wszelkich rygorów czasowych.
+Zdecydowanie ogromny wpływ na~tak szybki rozwój ma~fakt, że~technologia jest bardzo otwarta i~postawiona na~współpracę wszystkich zainteresowanych rozwojem stron. Olbrzymim plusem jest fakt wykorzystania standardowej struktury Ethernetu co upraszcza proces integracji w obrębie jednego systemu obu standardów.
 
-W~procesie tworzenia oprogramowania autor zapoznał się z~wieloma zagadnieniami typowymi dla sterowników firmy Beckhoff. Przykładowo, 
+Temat zdecydowanie nadaje~się do~pogłębiania i~dalszych badań. Autor dopuszcza taką możliwość w~ramach prac badawczych w~toku swoich studiów doktoranckich. Zarówno same sterowniki firmy Beckhoff oparte o koncepcję ,,soft PLC'' jak i sam badany protokół EtherCAT są na~tyle rozbudowane i rozwojowe, że zawsze znajdzie się jakiś aspekt do~przeanalizowania od strony teoretycznej i~eksperymentalnej. W momencie powstawania niniejszej pracy dwa bardzo interesujące kwestie wydają się autorowi ciekawą postawą do przeprowadzenia badań.
 
-Wykonanie pojedynczego cyklu sterownika stworzonego przez autora oprogramowania w czasie testowania wynosiło od 1 do 3~ms. Czas ten jest zadowalający biorąc pod uwagę, że sterownik bez funkcji użytkownika oraz z~pustym blokiem OB1 ma czas wykonania cyklu równy 1~ms oraz to, że oprogramowanie przynajmniej zdaniem autora jest rozbudowane.
+Po pierwsze przetestowanie elementów sieci EtherCAT pochodzących od innych producentów.
 
-Wizualizacja stanu robota stanowi bardzo atrakcyjną formę korzystania z~urządzenia, która jest jednocześnie wyjątkowo przystępna dla osób nie znających zagadnień związanych z programowaniem sterowników przemysłowych. Wizualizacja będzie pełniła ważną rolę w~prowadzeniu zajęć laboratoryjnych związanych ze~sterownikami firmy Beckhoff
+IMPLEMENTACJA U INNYCH PRODUCENTÓW PORÓWNANIE - ASIC ARM< SINTARA ITD.
+
+
+Drugim ciekawym rozwiązaniem i pomysłem na~które autor natrafił w~sieci w~czasie analizy tematu, rozwiązywania problemów oraz pisania niniejszej pracy jest EtherLab. Jest to technologia łącząca sprzęt i oprogramowanie w celach testowych oraz do~sterowania procesów przemysłowych. Jest~to niejako technika zbudowana z~dobrze znanych i~niezawodnych elementów.
+EtherLab pracuje jako działający w czasie rzeczywistym moduł jądra otwartego systemu Linux, który komunikuje się z urządzeniami peryferyjnymi poprzez protokół EtherCAT. Rozwiązanie jest całkowicie darmowe i otwarte co na~pewno jest jego olbrzymią zaletą. Można zdecydować się na pobranie sobie wszystkich komponentów i~ich samodzielne uruchomienie lub zakup gotowego preinstalowanego zestawu startowego bezpośrednio od twórców. 
+Oprogramowanie całego zestawu może zostać wygenerowane przy użyciu Simulinka/RTW lub napisane ręcznie w C. Następnie tak przygotowane jest uruchamiane w środowisku kontrolującym proces (jądro Linuksa oraz moduł czasu rzeczywistego) komunikującym się z ,,obiektem przemysłowym'' poprzez EtherCAT. Dodatkowo można rozszerzyć możliwości całego zestawu poprzez Ethernet TCP/IP dołączając interfejs użytkownika (ang. Frontend) w wersji dla Linuksa lub Windowsa albo jeden z innych dodatkowych serwisów. Przykładowe serwisy to:
+\begin{itemize}
+\item Raportowanie poprzez SMS,
+\item Zdalne usługi: Internet, ISDN, DSL,
+\item Usługi sieciowe: Web, DHCP, Drukowanie,
+\item Logowanie danych (ang. data logging).
+\end{itemize}
+Jeżeli autor będzie miał taką możliwość to~na~pewno chętnie przyjrzy się tej koncepcji ze~względu na swoją sympatię do~systemu Linux oraz wszystkich rozwiązań go wykorzystujących. Ciekawe wydają~się badania wydajności takiego rozwiązania oraz porównanie ich z drogimi rozwiązaniami komercyjnymi.

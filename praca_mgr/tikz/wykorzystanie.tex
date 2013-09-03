@@ -2,12 +2,15 @@
  \centering
 \begin{tikzpicture}
 \begin{axis}[
-		ybar stacked,
+		ybar stacked, bar width=\baselineskip,
+%		grid=major,
 		ymin=0,ymax=110, 
-		yticklabels={0\%, 20\%, 40\%, 60\%, 80\%, 100\%},
+		ylabel={Wykorzystanie [\%]},
+		yticklabels={0, 20, 40, 60, 80, 100},
 		xtick=data,
 		xticklabel style={text centered, text width=2.5cm},
-	    xticklabels={Pooling Timeslicing, Broadcast Master/Slave, EtherCAT},
+	    xticklabels={Odpytywanie w~przedziale czasowym, Nadawanie Master/Slave, EtherCAT},
+	    enlarge x limits=0.2,
 		every node near coord/.style={font=\tiny},
 	    ]  
 	    

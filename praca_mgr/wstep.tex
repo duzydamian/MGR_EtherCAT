@@ -1,45 +1,60 @@
 \section{Wstęp}
 %\subsection{Geneza}
-Tematem projektu, którego dotyczy ta praca jest: „Projekt i~realizacja stanowiska laboratoryjnego do badania zależności czasowych w~sieci EtherCAT". Zagadnienia związane z~tworzeniem oprogramowania dla sterowników przemysłowych są dla autora niezwykle interesujące, a zrealizowany projekt miał na~celu dalsze pogłębienie jego wiedzy z tego zakresu. Wyboru tego konkretnego tematu autor dokonał, ponieważ protokół EtherCAT jest jeszcze nowością i według wielu źródeł stanowi przyszłość branży informatyki przemysłowej \cite{art1, art2}, a~praca nad tym tematem wydaje się być pomocna i~wartościowa w przyszłej pracy zawodowej lub na~ewentualnym dalszym etapie kształcenia.
+Tematem projektu, którego dotyczy ta praca jest: „Projekt i~realizacja stanowiska laboratoryjnego do badania zależności czasowych w~sieci EtherCAT". Zagadnienia związane z~tworzeniem oprogramowania dla sterowników przemysłowych są dla autora niezwykle interesujące, a zrealizowany projekt miał na~celu dalsze pogłębienie jego wiedzy z tego zakresu. Wyboru tego konkretnego tematu autor dokonał, ponieważ protokół EtherCAT jest jeszcze nowością i według wielu źródeł stanowi przyszłość branży informatyki przemysłowej \cite{art1_etherCAT, art2_etherCAT}, a~praca nad tym tematem wydaje się być pomocna i~wartościowa w przyszłej pracy zawodowej lub na~ewentualnym dalszym etapie kształcenia.
 
 \subsection{Stanowisko laboratoryjne}
 Na potrzeby realizacji projektu wykorzystano dwa różne istniejące stanowiska laboratoryjne, które składały się~z~elementów opisanych w Tabeli~\ref{stanowiska}.
 \begin{table}[!htb]
 \begin{center}
-\begin{tabular}{| p{0.51\textwidth} || p{0.51\textwidth} |}\hline
+\begin{tabular}{| p{0.5\textwidth} | p{0.5\textwidth} |}\hline
 Stanowisko typu CP (Rysunek~\ref{stanowisko:cp}) & Stanowisko typu CX (Rysunek~\ref{stanowisko:cx})  \\\hline
-\begin{enumerate}
+\begin{enumerate}[leftmargin=7mm]
+\setlength{\itemsep}{5pt}
+\setlength{\parskip}{0pt}
+\setlength{\parsep}{0pt}
 \item 2~silniki AM3021-0C00-0000,
 \item Wyspa EK1100 z~zestawem modułów~IO:
-\begin{itemize}
+\begin{itemize}[leftmargin=3mm]
+\setlength{\itemsep}{3pt}
+\setlength{\parskip}{0pt}
+\setlength{\parsep}{0pt}
 \item Terminal sieci EtherCAT EK1100,
 \item 2-kanałowy moduł wyjść analogowych EL4132,
 \item 4-kanałowy moduł wejść cyfrowych EL1004,
 \item 2 4-kanałowe moduły wyjść cyfrowych EL2004,
 \item 2-kanałowy moduł wejść analogowych EL3102,
 \end{itemize}
-\item Napęd serwomechnizmów AX5203 (2~osiowy napęd),
+\item Napęd serwomechnizmów AX5203 (2~osiowy),
 \item Komputer przemysłowy C6925,
 \item Zasilacz.
 \end{enumerate}
 &
-\begin{enumerate}
+\begin{enumerate}[leftmargin=7mm]
+\setlength{\itemsep}{5pt}
+\setlength{\parskip}{0pt}
+\setlength{\parsep}{0pt}
 \item 2~silniki AM3021-0C00-0000,
 \item Zestaw modułów IO:
-\begin{itemize}
+\begin{itemize}[leftmargin=3mm]
+\setlength{\itemsep}{3pt}
+\setlength{\parskip}{0pt}
+\setlength{\parsep}{0pt}
 \item 2-kanałowy moduł wyjść analogowych EL4132,
 \item 4-kanałowy moduł wejść cyfrowych EL1004,
 \item 2 4-kanałowe moduły wyjść cyfrowych EL2004,
 \item 2-kanałowy moduł wejść analogowych EL3102,
 \end{itemize}
 \item Terminal sieci EtherCAT EK1100,
-\item Napęd serwomechnizmów AX5203 (2~osiowy napęd),
+\item Napęd serwomechnizmów AX5203 (2~osiowy),
 \item Modułowy komputer przemysłowy CX1020:
-\begin{itemize}
+\begin{itemize}[leftmargin=3mm]
+\setlength{\itemsep}{3pt}
+\setlength{\parskip}{0pt}
+\setlength{\parsep}{0pt}
 \item Interfejs USB/DVI CX1020-N010 ,
 \item Ethernet CX1020-N000,
 \item CPU CX1020-0113,
-\item Zasilacz CPU i magistrali I/O CX1100-0004,
+\item Zasilacz CPU i magistrali I/O CX1100,
 \end{itemize}
 \item Zasilacz.
 \end{enumerate}
@@ -55,12 +70,17 @@ Stanowisko typu CP (Rysunek~\ref{stanowisko:cp}) & Stanowisko typu CX (Rysunek~\
 \input{tikz/schematCX} %
 
 \subsubsection{Sterownik PLC}
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-soft plc
-hard plc
-opisać zasadę działania plc w beckhoffie
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-W~realizacji wykorzystane zostały stanowiska firmy Beckhoff wyposażone w jednostki centralne pracujące pod kontrolą Windowsa CE (Microsoft Windows Compact Edition). Na~takiej jednostce uruchamiane są programy do~sterowania z~poziomu komputera (ang. Soft PLC). Jest to rozwiązanie alternatywne dla~klasyczny sterowników swobodnie programowalnych w~postaci dedykowanego urządzenia (ang. Hard PLC).
+W~realizacji wykorzystane zostały stanowiska firmy Beckhoff wyposażone w jednostki centralne pracujące pod kontrolą Windowsa CE (Microsoft Windows Compact Edition). Na~jednostce takiej uruchamiane są programy do~sterowania z poziomu komputera (ang. Soft PLC). Jest to rozwiązanie alternatywne dla~klasyczny sterowników swobodnie programowalnych w~postaci dedykowanego urządzenia (ang.~Hard~PLC), nazywanych przez niektórych prawdziwymi (ang.~True~PLC).
+Koncepcja~ta powstała i~jest rozwijana, ponieważ te~klasyczne sterowniki posiadają zbyt małe możliwości obliczeniowe oraz szybkość działania jednostki centralnej. W~tradycyjnych rozwiązaniach niestety zwiększanie tych możliwości (ilość dostępnej pamięci oraz szybkości działania) powoduje bardzo szybki wzrost ceny gotowego urządzenia.
+Niezbędnym elementem konfiguracji zestawu, który przekształcamy w~,,soft PLC'' jest karta komunikacyjna umożliwiająca połączenie sterownika z~modułami sygnałowymi i~wykonawczymi na~obiekcie z~wykorzystaniem sieci przemysłowej.
+Tego typu podejście i~rozwiązanie~ma następujące zalety:
+\begin{itemize}
+\item duże zwiększenie możliwości obliczeniowych przy stosunkowo niewielkim wzroście kosztów,
+\item możliwość integracji PLC i~systemu SCADA na~jednym urządzeniu (podobnie jak w~panelach operatorskich ze~zintegrowanymi sterownikami~PLC),
+\item możliwość zastosowania istniejącej infrastruktury na~obiekcie w~przypadku przebudowy, należy jedynie podmienić istniejący sterownik typu ,,hard'' na~jednostkę wyposażoną w~odpowiedni moduł komunikacyjny,
+\item teoretycznie możliwość zastosowania istniejącego oprogramowania z jednostki ,,hard PLC'', po modyfikacji ewentualnych różnic między systemami.
+\end{itemize}
+
 Taki ,,sterownik PLC w komputerze PC'' wykorzystuje standardowe języki programowania sterowników~PLC (zgodność z~normą IEC~61131-3) do~tworzenia logiki sterującej takiej jak:
 \begin{itemize}
 \item IL -- \textbf{I}nstruction \textbf{L}ist to~tekstowy język programowania składający się z~serii instrukcji, z~których każda zaczyna~się z~nowej linii i~zawiera operator z~jednym lub więcej argumentem (zależnie od~funkcji),
@@ -79,8 +99,8 @@ Taki ,,sterownik PLC w komputerze PC'' wykorzystuje standardowe języki programo
 \indent
 \indent Stanowiska podłączone są do sieci lokalnej Ethernet w~laboratorium, więc komunikacja z~nimi odbywa się tak samo jak z~każdym innym urządzeniem sieciowym. Podstawy programowania i korzystania ze sterowników autor poznał zapoznając się z odpowiednią literaturą \cite{plc1,plc2,plc4,plc5,plc6} oraz uczęszczając w toku studiów na zajęcia obowiązkowe oraz specjalizacyjne.
 Konfigurację sterowników wraz z modułami przedstawiają Rysunki~\ref{conf:cp}~oraz~\ref{conf:cx}.
-\begin{figure}[!htb] 	\centering 	\includegraphics[width=0.75\textwidth]{images/confCP} \caption{Konfiguracja stanowiska typu CP} \label{conf:cp} \end{figure}
-\begin{figure}[!htb] 	\centering 	\includegraphics[width=0.75\textwidth]{images/confCX} \caption{Konfiguracja stanowiska typu CX} \label{conf:cx} \end{figure}
+\begin{figure}[!htb] 	\centering 	\includegraphics[width=0.9\textwidth]{images/confCP} \caption{Konfiguracja stanowiska typu CP} \label{conf:cp} \end{figure}
+\begin{figure}[!htb] 	\centering 	\includegraphics[width=0.9\textwidth]{images/confCX} \caption{Konfiguracja stanowiska typu CX} \label{conf:cx} \end{figure}
 
 \subsubsection{Komputer}
 Projekt w całości był realizowany na laptopie autora, podłączanym do~sieci w~laboratorium. Na~komputerze uruchomiana była maszyna wirtualna. Na~jednej zainstalowane było środowisko TwinCAT do~programowania sterownika oraz do~tworzenia i~uruchamiania wizualizacji. Wizualizacje tworzone w~środowisku TwinCAT można uruchomić bezpośrednio na~komputerze wyposażonym w~odpowiednie oprogramowanie lub na~urządzeniu docelowym po~podpięciu do~niego monitora (o~ile urządzenie docelowe posiada wyjście DVI lub odpowiedni interfejs systemowy w~postaci odrębnego modułu).
@@ -94,18 +114,20 @@ W~wyniku analizy autor poznał podstawy obsługi środowiska TwinCAT oraz jego e
 \item TwinCAT NC/CNC - grupa narzędzi do sterowania osiami w różnych trybach.
 \end{itemize} 
 
+Dodatkowo autor przeczytał wiele artykułów polsko oraz anglojęzycznych poświęconych właśnie protokołowi EtherCAT. Kilka z~nich (starszych) traktowało~go jako coś bardzo przyszłościowego i~obiecującego, natomiast pozostała część opisywała go już jako coś co~aktualnie bardzo szybko popularyzuje się i~usprawnia procesy przemysłowe.
+
 \input{etherCAT}
 
-\subsection{Założenia}
-Oprogramowanie dla dostępnego stanowiska laboratoryjnego powinno zostać stworzone przy użyciu środowiska TwinCAT. Funkcjonalności robota wchodzące w~skład projektu, to:
-\begin{itemize}
-\item sterowanie ręczne z~pilota podłączonego bezpośrednio do~sterownika,
-\item sterowanie ręczne z~wizualizacji,
-\item sterowanie automatyczne, 
-\item wizualizacja stanu stanowiska.
-\end{itemize}
-\indent
-\indent Powyżej zostały wymienione założenia podstawowe, jednak autor nie wyklucza zrealizowania dodatkowych zadań, które nie zostały zamieszczone w~pierwotnej koncepcji realizacji projektu.
+%\subsection{Założenia}
+%Oprogramowanie dla dostępnego stanowiska laboratoryjnego powinno zostać stworzone przy użyciu środowiska TwinCAT. Funkcjonalności robota wchodzące w~skład projektu, to:
+%\begin{itemize}
+%\item sterowanie ręczne z~pilota podłączonego bezpośrednio do~sterownika,
+%\item sterowanie ręczne z~wizualizacji,
+%\item sterowanie automatyczne, 
+%\item wizualizacja stanu stanowiska.
+%\end{itemize}
+%\indent
+%\indent Powyżej zostały wymienione założenia podstawowe, jednak autor nie wyklucza zrealizowania dodatkowych zadań, które nie zostały zamieszczone w~pierwotnej koncepcji realizacji projektu.
 
 \subsection{Plan pracy}
 Realizacja projektu została podzielona na następujące etapy:
