@@ -1,0 +1,59 @@
+\begin{figure}[htbp]
+ \centering
+        \tikzstyle{background grid}=[draw, black!50,step=.25cm]
+        % Define a few styles and constants
+	\tikzstyle{red}=[draw, fill=red!30, text width=5em, text centered, very thick]
+	\tikzstyle{naveqs} = [red, text width=6em, fill=white!20, minimum height=1.8cm, rounded corners, very thick]
+	\tikzset{
+    	mynode/.style={rectangle,rounded corners,draw=black, fill=red!15,very thick, inner sep=1em, minimum size=2.5em, 		text centered, text width=2.5cm},
+    	mynodemini/.style={rectangle,rounded corners,draw=black, fill=red!15,very thick, inner sep=.5em, text centered, text width=2.5cm},    	
+	    myarrow/.style={<->, >=latex', shorten >=1pt, ultra thick},
+	    myline/.style={-, =latex', shorten >=1pt, rounded corners, ultra thick},
+	    mylabel/.style={text width=7em, text centered} 
+	} 
+	    
+    \def\blockdist{1.6}
+	\def\edgedist{2.5}
+
+\begin{tikzpicture}
+    \node (core) [naveqs] {Rdzeń ARM Cortex-A8};
+    \node (memory) [naveqs, below=1mm of core] {Pamięć};    
+    % Note the use of \path instead of \node at ... below. 
+    \path (core.north east)+(\blockdist,-0.45) node (mi) [red] {MIII x2};
+    \path (core.east)+(\blockdist,-0.3) node (uart) [red] {UART};
+    \path (core.south east)+(\blockdist,-0.2) node (pru) [red] {PRU x2};
+
+    \node (IMU) [below of=pru, text centered, text width=2cm] {Jednostka \\ PRU};
+    \path (core.north)+(1.5, 0.45) node (INS) {AM335x};
+    
+	\node[mynodemini, right=6cm of core.east] (layer1) {Warstwa \\ fizyczna};
+	\node[right=of layer1] (empty1) {};
+	\node[mynodemini, right=6cm of memory.east] (layer2) {Warstwa \\ fizyczna};  	 	 		
+	\node[right=of layer2] (empty2) {};	
+	
+	\draw[myarrow] (core.east) ++(3.55,0) -- (layer1);	
+	\draw[myarrow] (memory.east) ++(3.55,0) -- (layer2);	
+				
+	\draw[myarrow] (layer1) -- (empty1);	
+	\draw[myarrow] (layer2) -- (empty2);  
+	  
+    % Now it's time to draw the colored IMU and INS rectangles.
+    % To draw them behind the blocks we use pgf layers. This way we  
+    % can use the above block coordinates to place the backgrounds   
+    \begin{pgfonlayer}{background}
+        % Compute a few helper coordinates
+        \path (core.north |- mi.east)+(5,1.2) node (a) {};        
+        \path (INS.south -| memory.west)+(-0.5,-4.2) node (b) {};
+        \path[fill=blue!15,rounded corners, draw=black!100, very thick]
+            (a) rectangle (b);
+            
+        \path (mi.north west)+(-0.2,0.2) node (a) {};
+        \path (IMU.south -| mi.east)+(+0.2,-0.2) node (b) {};
+        \path[fill=red!15,rounded corners, draw=black!100, very thick]
+            (a) rectangle (b);
+    \end{pgfonlayer}
+\end{tikzpicture}
+
+\caption{Budowa układu FPGA z wbudowanym procesorem.}
+\label{etherCAT:FPGA}
+\end{figure}
