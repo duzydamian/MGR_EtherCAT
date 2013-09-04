@@ -35,6 +35,20 @@ Kolejne ramki nadawane są przez urządzenie pełniące rolę kontrolera i przes
 
 \subsubsection{Synchronizacja}
 
+\subsubsection{Realizacja węzłów EtherCAT}
+Wiele najprostszych i najtańszych urządzeń z interfejsem EtherCAT można zrealizować z wykorzystaniem pojedynczego układu scalonego FPGA lub ASIC. Przykładami takich prostych urządzeń z zastosowaniem tego rozwiązania są moduły wejść/wyjść cyfrowych. Tego typu węzły nie wymagają tworzenia dodatkowego oprogramowania, ponieważ cała funkcjonalność jest realizowana w~pełni sprzętowo. Uogólniona i uproszczona architektura tej metody realizacji została przedstawiona na Rysunku~\ref{etherCAT:FPGA_ASIC}.
+\input{tikz/FPGA_ASIC} %
+
+Jeżeli węzeł potrzebuje dodatkowej mocy obliczeniowej lub wymaga realizacji jakiegoś złożonego oprogramowania, którego nie~da~się zrealizować w~prosty sposób sprzętowo (w układzie FPGA) do~układu ASIC/FPGA EtherCAT dołączany jest zewnętrzny procesor często wyposażony w~pamięć typu Flash tak jak na~Rysunku~\ref{etherCAT:FPGA_ASIC+proc}. Procesor taki ma zapewnić obsługę przetwarzania na~poziomie aplikacji. Niestety koszt tego typu architektury jest wyższy niż w prostszym przypadku pozbawionym zewnętrznej jednostki, ale konstruktor bazujący na tym rozwiązaniu ma większe pole manewru w~doborze procesora odpowiedniego dla wymagań i~budżetu realizowanego projektu.
+\input{tikz/FPGA_ASIC+proc} %
+
+Kolejnym możliwym do~wykorzystania rozwiązaniem jest zastosowanie układu FPGA z~wbudowanym procesorem jak na~Rysunku~\ref{etherCAT:FPGA}. Wspólną cechą przedstawionych dotychczas możliwych konstrukcji jest fakt, że~wymagają z~reguły zastosowania dwóch układów. Wynika z tego niestety, ze zajmują więcej miejsca oraz zwiększają koszty urządzenia docelowego. Alternatywą pozwalającą wyeliminować oba opisane problemy jest zastosowanie elementów jednoukładowych. Ich wykorzystanie pozwala zredukować całkowity koszt konstrukcji nawet o 30\%.
+\input{tikz/FPGA} %
+
+Jednym z~przykładów opisanego jednoukładowego rozwiązania~są mikrokontrolery z~rdzeniem ARM~Cortex-A8 z~rodziny Sitara AM335x produkowanymi przez amerykańską firmę Texas Instruments (Rysunek~\ref{etherCAT:Sitara}). Kluczowym elementem takiego scalaka jest programowalna jednostka czasu rzeczywistego (ang. programmable real-time unit, w~skrócie PRU). 
+
+W~PRU zaimplementowana została warstwa MAC standardu EtherCAT. Dzięki temu odpowiada~ona bezpośrednio za~przetwarzanie przepływających przez nią telegramów, dekodowanie adresów urządzeń oraz wykonywanie zapisanych w datagramie komend. W~wyniku takiego rozwiązania, że~wszystkie założenia oraz cała funkcjonalność jest realizowana właśnie przy użyciu opisywanego PRU, zamontowany wewnątrz procesor może~być zastosowany do~realizacji bardziej zaawansowanych oraz złożonych zadań wynikających ze~specyfiki konkretnego sprzętu.
+\input{tikz/Sitara} %
 
 %\subsubsection{EtherCAT Technology Group}
 %\begin{figure}[!htb] 	\centering 	\includegraphics[width=0.3\textwidth]{images/logoETG} \caption{Logo EtherCAT Technology Group (http://www.ethercat.org).} \label{logoETG} \end{figure}
@@ -45,12 +59,6 @@ Kolejne ramki nadawane są przez urządzenie pełniące rolę kontrolera i przes
 %
 %Jak widać na powyższej liście w~skład organizacji wchodzą firmy z~bardzo wielu branż, a~nawet ośrodki naukowe. Autor pracy wybrał duże i~dobrze znane sobie firmy, aby pokazać jak wiele firm interesuje~się rozwojem przemysłowych protokołów komunikacyjnych.
 
-\subsubsection{Realizacja węzłów EtherCAT}
-\input{tikz/FPGA_ASIC} %
-\input{tikz/FPGA_ASIC+proc} %
-\input{tikz/FPGA} %
-\input{tikz/Sitara} %
-
-\subsubsection{}
+\subsubsection{Test na strasznie długą nazwę jakiegoś rozdziału czy się rozjedzie w spisie czy nie}
 \input{tikz/topologia} %
 

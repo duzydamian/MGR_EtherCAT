@@ -54,13 +54,6 @@
 
 \begin{document}
 
-\tikzstyle{abstract}=[rectangle, draw=black, rounded corners, fill=blue!40, drop shadow,
-        text centered, anchor=north, text=white, text width=4cm]
-\tikzstyle{comment}=[rectangle, draw=black, rounded corners, fill=green, drop shadow,
-        text centered, anchor=north, text=white, text width=4cm]
-\tikzstyle{myarrow}=[->, >=open triangle 90, thick]
-\tikzstyle{line}=[-, thick]
-
 \lstset{backgroundcolor=\color{white}, boxpos=c, captionpos=b}
 \lstset{numbers=left, stepnumber=1, numbersep=10pt, frame=single}
 \lstset{frameround=tttt}
@@ -88,11 +81,25 @@
 
 \section{Spis rysunków, tablic i kodów źródłowych}
 \subsection{Spis rysunków}
-%\listoffigures
-\renewcommand*\numberline[1]{Rysunek\,#1:\indent}
+
+\newlength{\fig}
+\settowidth{\fig}{Rysunek\,99:~}
+\renewcommand*\numberline[1]{\llap{\makebox[\fig][l]{Rysunek\,#1:~}}}
+\makeatletter
+\renewcommand*\l@figure[2]{\leftskip\fig\noindent#1\par}
+\renewcommand*\l@figure{\@dottedtocline{1}{3cm}{0cm}}
+\makeatother
 \listoffigures
+
 \subsection{Spis tablic}
-\renewcommand*\numberline[1]{Tablica\,#1:\indent}
+%\renewcommand*\numberline[1]{Tablica\,#1: \indent}
+\newlength{\fig}
+\settowidth{\fig}{Tablica\,99:~}
+\renewcommand*\numberline[1]{\llap{\makebox[\fig][l]{Tablica\,#1:~}}}
+\makeatletter
+\renewcommand*\l@table[2]{\leftskip\fig\noindent#1\par}
+\renewcommand*\l@table{\@dottedtocline{1}{2.8cm}{0cm}}
+\makeatother
 \listoftables
 \subsection{Spis kodów źródłowych}
 \renewcommand*\numberline[1]{Kod źródłowy\,#1:\indent}
