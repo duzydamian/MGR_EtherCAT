@@ -79,9 +79,7 @@ Jako medium komunikacyjne w~sieciach EtherCAT można wykorzystać kable miedzian
 W~obrębie jednej sieci EtherCAT można dowolnie zmieniać medium transmisyjne zależnie od~potrzeb. Na przykład wewnatrz szafy sterowniczej gdzie występują niewielkie odległości miedzy węzłami można zastosować z powodzeniem łącze E-bus, natomiast do połączenia szafy z modułami znajdujacymi się przy maszynach wykonawczych możemy zastosować kabel miedzieny lub światłowód w~przypadku zdecydowanie większych odległości oraz prowadzenia przewodów w~otoczeniu występowania zaburzeń elektromagnetycznych. Niestety operacja takiego łączenia wymaga zastosowania dotatkowych modułów. Na przykład, aby połaczyć ze sobą swykłą skrętke miedzianą oraz przewód światłowodowy należy zastosować moduł sprzęgający EK1501 oraz terminal przyłączy EK1521 (oba produkcji firmy Beckhoff).
 
 \subsubsection{Synchronizacja}
-\showclock{4}{50}
-\ClockFrametrue\ClockStyle=1\clock{12}{0}
-Idealna synchronizacja elementów składowych systemu jest bardzo istotna, a szczególnie w przypadku równoległej realizacji zależnych od siebie zadań.Specjalnie opracowana dla protokołu EtherCAT technika zegara rozproszonego pozwala zsynchronizować ze sobą urządzenia z dewiacją mniejszą niż 1~$\mu s$.
+Idealna synchronizacja elementów składowych systemu jest bardzo istotna, a szczególnie w przypadku równoległej realizacji zależnych od siebie zadań.Specjalnie opracowana dla protokołu EtherCAT technika zegara rozproszonego pozwala zsynchronizować ze sobą urządzenia z dewiacją mniejszą niż 1~$\mu s$. Podejście to polega na~wykorzystaniu znaczników czasu zapisywanych przez każdy węzeł podrzędny. Na~ich podstawie węzeł~master oblicza opóźnienia propagacji sygnałów dla każdego węzła slave. Zegar w~każdym węźle podrzędnym jest regulowany z~wykorzystaniem wyliczonych opóźnień. Po zainicjowaniu połączenia w~celu utrzymania synchronizacji zegarów muszą one przekazywać miedzy sobą regularnie informację, by uniknąć powstania ewentualnych różnic.
 \input{tikz/synchronizacja} %
 
 \subsubsection{Realizacja węzłów EtherCAT}
