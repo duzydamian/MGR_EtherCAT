@@ -20,6 +20,8 @@
 \usepackage{lipsum}
 \usepackage{multirow}
 \usepackage{enumitem}
+\usepackage[clock]{ifsym}
+\usepackage{clock}
 
 \usepackage{pgfplots}
 \usepackage{tikz}
@@ -52,6 +54,8 @@
 \titlespacing{\subsection}{1cm}{*4}{*1.5}
 \titlespacing{\subsubsection}{1cm}{*4}{*1.5}
 
+%\linespread{1.3}
+
 \begin{document}
 
 \lstset{backgroundcolor=\color{white}, boxpos=c, captionpos=b}
@@ -66,6 +70,13 @@
 
 \include{tytulowa} %
 
+\begin{abstract}
+\thispagestyle{plain}
+\pagenumbering{Roman}
+\input{abstrakt_tresc}
+\end{abstract}
+
+\pagenumbering{arabic}
 \tableofcontents
 \addtocontents{toc}{\protect\vspace*{.05\baselineskip}}
 \clearpage
@@ -93,7 +104,6 @@
 
 \subsection{Spis tablic}
 %\renewcommand*\numberline[1]{Tablica\,#1: \indent}
-\newlength{\fig}
 \settowidth{\fig}{Tablica\,99:~}
 \renewcommand*\numberline[1]{\llap{\makebox[\fig][l]{Tablica\,#1:~}}}
 \makeatletter

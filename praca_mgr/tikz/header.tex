@@ -1,0 +1,25 @@
+\begin{figure}[htbp]
+ \centering
+        \tikzstyle{background grid}=[draw, black!50,step=.25cm]
+	\begin{tikzpicture}[node distance=2mm, auto]%, show background grid]
+	\tikzset{
+    	mynode/.style={rectangle,rounded corners,draw=black, top color=white, very thick, inner sep=4mm, 		text centered,font=\footnotesize},
+    	mynodemini/.style={rectangle,rounded corners,draw=black, top color=white, thick, inner sep=2mm, text centered,font=\scriptsize},    	
+	    myarrow/.style={->, >=latex', shorten >=1pt, ultra thick},
+	    myline/.style={-, =latex', shorten >=1pt, rounded corners, ultra thick},
+	    mylabel/.style={text centered, font=\scriptsize\bfseries} 
+	} 
+	\node[bottom color=yellow!50, mynode] (header) {Nagłówek};  
+	\node[bottom color=yellow!50, mynode, below=1cm of header] (part1) {Zarezerwowany}; 
+	\node[mylabel, below=1mm of part1] (part1s) {1b};		  		
+	\node[bottom color=yellow!50, mynode, left=of part1] (part2) {Długość};   		
+	\node[mylabel, below=1mm of part2] (part2s) {11b};	
+	\node[bottom color=yellow!50, mynode, right=of part1] (part3) {Typ};   				
+	\node[mylabel, below=1mm of part3] (part3s) {4b};	
+	 
+	\draw[myline,black,dotted] (datagram.south west) -- (part2.north west); 	
+	\draw[myline,black,dotted] (datagram.south east) -- (part3.north east); 
+\end{tikzpicture} 
+\caption{Budowa nagłówka EtherCAT}
+\label{etherCAT:header}
+\end{figure}

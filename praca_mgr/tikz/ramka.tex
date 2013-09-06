@@ -11,21 +11,34 @@
 	} 
 	\node[bottom color=gray!50, mynode] (ethhdr) {Ethernet header};  
 	\node[bottom color=gray!50, mynodemini, below=of ethhdr.205] (da) {DA};
+	\node[mylabel, below=1mm of da] (das) {6B};	
 	\node[bottom color=gray!50, mynodemini, right=of da] (sa) {SA};  
+	\node[mylabel, below=1mm of sa] (sas) {6B};	
 	\node[bottom color=gray!50, mynodemini, right=of sa] (typ) {Typ};	
-	\node[mylabel, below=of sa] (ethhdradr) {EtherType 0x88A4};
+	\node[mylabel, below=1mm of typ] (typs) {2/4B};	
+	\node[mylabel, below=of sas] (ethhdradr) {EtherType 0x88A4};
 	
 	\node[bottom color=yellow!50, mynode, right=of ethhdr, text width=2cm] (ecat) {EtherCAT};
 	\node[bottom color=yellow!50, mynodemini, below=of ecat, text width=2.4cm] (ecathdr) {EtherCAT header};
+	\node[mylabel, below=1mm of ecathdr] (ecathdrs) {2B};
 	
 	\node[bottom color=yellow!50, mynode, right=of ecat, text width=6.3cm] (ecatt) {EtherCAT telegram};
 	\node[bottom color=yellow!50, mynodemini, below=of ecatt.193] (ecatd1) {Datagram 1};  	 
-	\node[bottom color=yellow!50, mynodemini, right=of ecatd1] (ecatd2) {Datagram 2};  	 	 		
-	\node[bottom color=yellow!50, mynodemini, right=0.9cm of ecatd2] (ecatdn) {Datagram n};  	 	 			 		
-		
+	\node[mylabel, below=1mm of ecatd1] (ecatd1s) {(10+n+2)B};
+	\node[bottom color=yellow!50, mynodemini, right=of ecatd1] (ecatd2) {Datagram 2};
+	\node[mylabel, below=1mm of ecatd2] (ecatd2s) {(10+m+2)B};  	 	 		
+	\node[bottom color=yellow!50, mynodemini, right=0.9cm of ecatd2] (ecatdn) {Datagram n};
+	\node[mylabel, below=1mm of ecatdn] (ecatdns) {(10+k+2)B};
+	\node [fit=(ecatd1s) (ecatdns) (ecatdns)] (fit) {};  
+ 	%\draw [decorate, xshift=-20pt,line width=4pt] (fit.south east) -- (fit.north east);
+	\draw [decorate,decoration={brace,amplitude=10pt}, line width=1pt] (fit.south east) ++(-0.3,0.3) -- ++(-6.9,0) (fit.south west);		
+	\node[mylabel, below=1mm of fit] (fits) {44--1498B};
+			
 	\node[bottom color=gray!50, mynode, right=of ecatt] (eth) {Ethernet};
 	\node[bottom color=gray!50, mynodemini, below=of eth.222] (pad) {Pad.};
-	\node[bottom color=gray!50, mynodemini, right=of pad] (fcs) {FCS}; 	  		
+	\node[mylabel, below=1mm of pad] (pads) {0--32B};
+	\node[bottom color=gray!50, mynodemini, right=of pad] (fcs) {FCS}; 	 
+	\node[mylabel, below=1mm of fcs] (fcss) {4B}; 		
  
 	\draw[myline,black,dotted] (ecatd2) -- (ecatdn); 	
 	

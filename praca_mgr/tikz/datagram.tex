@@ -9,10 +9,13 @@
 	    myline/.style={-, =latex', shorten >=1pt, rounded corners, ultra thick},
 	    mylabel/.style={text centered, font=\scriptsize\bfseries} 
 	} 
-	\node[bottom color=gray!50, mynode] (datagram) {Datagram};  
-	\node[bottom color=gray!50, mynode, below=1cm of datagram] (part1) {Dane};   		
-	\node[bottom color=gray!50, mynode, left=of part1] (part2) {Nagłówek};   		
-	\node[bottom color=gray!50, mynode, right=of part1] (part3) {Licznik};   				
+	\node[bottom color=yellow!50, mynode] (datagram) {Datagram};  
+	\node[bottom color=yellow!50, mynode, below=1cm of datagram] (part1) {Dane};   
+	\node[mylabel, below=1mm of part1] (part1s) {32--1486B};				
+	\node[bottom color=yellow!50, mynode, left=of part1] (part2) {Nagłówek};   	
+	\node[mylabel, below=1mm of part2] (part2s) {10B};			
+	\node[bottom color=yellow!50, mynode, right=of part1] (part3) {Licznik};   				
+	\node[mylabel, below=1mm of part3] (part3s) {2B};	
  
 	\draw[myline,black,dotted] (datagram.south west) -- (part2.north west); 	
 	\draw[myline,black,dotted] (datagram.south east) -- (part3.north east); 

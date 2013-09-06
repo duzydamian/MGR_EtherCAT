@@ -58,11 +58,6 @@
 \renewcommand*{\refname}{\vspace*{-13mm}}
 \renewcommand{\lstlistingname}{Kod źródłowy} 
 
-Głównym celem pracy było oprogramowanie sterownika PLC Siemens S7-300 do sterowania pracą modelu Robota~3D firmy Fischertechnik oraz stworzenie graficznej prezentacji pracy tego modelu. Dodatkowym elementem zrealizowanej pracy inżynierskiej jest element pozainformatyczny, czyli zbudowanie modelu magazynu z~którym robot będzie współpracował. Magazyn po zakończeniu projektu posłuży jako pomoc dydaktyczna do~ćwiczeń laboratoryjnych.
-
-Model robota posiada 4~silniki umożliwiajace mu poruszania się w 3~osiach oraz poruszanie chwytakiem. W ramach pracy powstał kod sterowania pojedynczym silnikiem, który po gruntownym testowaniu podlegał dalszemu rozwojowi. Wszystkie silniki poprzez odpowiednie wysterowanie przez sterownik mogą pracować w trybach: automatycznym, ręcznym z dołączonego do sterownika zadajnika sygnałów dyskretnych oraz ręcznym z poziomu stworzonej wizualizacji. Tak przygotowane oprogramowanie zostało wykorzystane do stworzenia kodu umożliwiającego obsługę zbudowanego przez autora modelu magazynu z wykorzystaniem kolejki zadań do realizacji. Każde zadanie składa się z indeksu komórki w magazynie oraz zmiennej mówiącej o ruchu chwytaka (zabranie lub upuszczenie przedmiotu). Wszystkie operacje wykonywane na magazynie są wykonywane z wykorzystaniem zaimplementowanej kolejki FIFO od momentu kliknięcia przycisku w wizualizacji aż do jej opróżnienia.
-
-Podczas realizacji zostały rozwiązane problemy, z których najważniejszym zdaniem autora była bezwładność silników. W jej wyniku silnik po wyłączeniu dalej poruszał się przez nieokreślony czas aż do samoistnego zatrzymania. Wyeliminowanie negatywnych efektów tego zjawiska pozwoliło stworzyć w pełni funkcjonalne oprogramowanie spełniające stawiane przed nim zadania.
-W~procesie tworzenia oprogramowania autor poruszył i wykorzystał do realizacji wiele zagadnień typowych dla sterowników firmy Siemens. Przykładowo bloki wywoływane podczas startu sterownika (OB100 / OB101 / OB102) z~czego na sterowniku S7-300 dostępnym w~laboratorium dostępny jest tylko blok OB100, czyli tzw. gorący restart (ang. \emph{warm restart}) wywoływany przy każdym przejściu ze~stanu STOP do RUN/RUN-P oraz podczas uruchomienia po zaniku zasilania. Kolejne charakterystyczne bloki to~te~wywoływane jako cykliczne przerwania (OB30~do~OB38). Tutaj niestety również występuje ograniczenie i~dostępny jest jedynie blok OB35, wywoływany domyślnie co 100~ms.
+\include{abstrakt_tresc}
 
 \end{document}
