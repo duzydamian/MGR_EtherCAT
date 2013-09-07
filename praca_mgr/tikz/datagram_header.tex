@@ -10,14 +10,15 @@
 	    mylabel/.style={text centered, font=\scriptsize\bfseries} 
 	} 
 	\node[bottom color=yellow!50, mynode] (header) {Nagłówek datagramu};  
-	\node[bottom color=yellow!50, mynode, below=1cm of header.south west, text width=3.2cm] (mainadress) {Address};	
+	\node[bottom color=yellow!50, mynode, below=1.3cm of header.south west, text width=3.2cm] (mainadress) {Address};	
 	\node[mylabel, above=1mm of mainadress] (mainadresss) {4B};		
-	\node[bottom color=yellow!50, mynode, below=2cm of mainadress.25] (offset) {Offset}; 
+	\node[bottom color=yellow!50, mynode, below=2.2cm of mainadress.25] (offset) {Offset}; 
 	\node[bottom color=yellow!50, mynode, below=1mm of offset] (offset2) {Offset}; 	
 	\node[mylabel, above=1mm of offset] (offsets) {2B};		  		
 	\node[bottom color=yellow!50, mynode, left=of offset] (position) {Position};
 	\node[bottom color=yellow!50, mynode, below=1mm of position] (adress) {Address}; 
 	\node[bottom color=yellow!50, mynode, below=1mm of adress.south east, text width=3.2cm] (ladress) {Logical Address}; 			   		
+	\node[below=3mm of ladress] (spacing) {};
 	\node[mylabel, above=1mm of position] (positions) {2B};
 	
 	\node[bottom color=yellow!50, mynode, left=of mainadress] (idx) {Idx};   		
