@@ -20,6 +20,10 @@ Po utworzeniu oprogramowania sterownika~PLC~oraz po odpowiednim skonfigurowaniu 
 
 \item Problem z~wykryciem jednego z~silników:\\[1mm]
 aa
+
+\item Utrata komunikacji z~jednym ze sterowników:\\[1mm]
+Przy pewnej modyfikacji konfiguracji stanowiska typu~CX związanej z~próbą uruchomienia silników została utracona komunikacja z urządzeniem. Dokładnie przestało ono odpowiadać na~poprzednim adresie. Sytuacja była o~tyle dziwna, że system na urządzeniu działał całkowicie normalnie. Po~podpięciu zewnętrznego monitora okazało się, że w systemie operacyjnym karty sieciowe są skonfigurowane prawidłowo oraz udaje się nawiązać połączenie i~uzyskać żądany adres (konfiguracja adresów jest statyczna). Próby wykorzystania programu ping nie~dały początkowo żadnego efektu, ponieważ urządzenie nie odpowiadało. W licznych próbach i~pomysłach udało się ustalić, że urządzenie podczas uruchamiania (dokładnie podczas uruchamiania systemu operacyjnego) odpowiada na kilka zapytań (od 4 do 6 w kilku próbach), podobnie w momencie zamykania systemu. To~odkrycie zasugerowała autorowi, że~coś blokuje, przekonfigurowywuje lub wywłaszcza urządzenia. Pierwszy został przeanalizowany autostart systemu Windows lecz okazał się on pusty. Pojawił się pomysł przywrócenia urządzenia do ustawień fabrycznych lecz nie~udało się odnaleźć takiej możliwości. Problem udało się rozwiązać uruchamiając w~systemie operacyjnym standardowy menadżer plików (w~tym przypadku explorer), odnajdując stworzone pliki konfiguracji TwinCAT i~usuwając~je. ($\backslash Hard Disk\backslash TwinCAT\backslash Boot\backslash$)
+
 \end{itemize}
 \indent
 \indent Wszystkie problemy zostały rozwiązane i~w~ostatecznej wersji oprogramowania nie wpływają one w~negatywny sposób na~pracę modelu.
