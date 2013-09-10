@@ -1,0 +1,20 @@
+\begin{figure}[htbp]
+ \centering
+ \begin{tikzpicture}[x=0.5cm,y=10cm]
+
+
+ \draw[latex-latex, thin, draw=gray] (0,1.25)--(20,1.25) node [right] {$x$}; % l'axe des abscisses
+ \draw[latex-latex, thin, draw=gray] (0,1.25)--(0,2) node [above] {$y$}; % l'axe des ordonnées
+ \draw[thick] (0,1.5)--(20,1.58); % l'axe des abscisses
+
+    \foreach \i in {0,...,20}{% 
+\foreach \Point in {(\i ,1.5+0.004*\i)}{
+    \node at \Point {\textbullet}; } ;}     
+
+% to ensure that the points are being properly centered:
+\draw [dotted, gray] (0,1.25) grid (20,2);
+
+\end{tikzpicture}
+\caption{Współczynnik wykorzystania kanału transmisyjnego w Ethernecie (dwa pierwsze wykresy od lewej strony) i EtherCAT}
+\label{etherCAT:wykorzystanie}
+\end{figure}
