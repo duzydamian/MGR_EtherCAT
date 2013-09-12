@@ -7,7 +7,7 @@ W~niniejszym rozdziale opisany został przebieg przeprowadzonych badań oraz ana
 Badanie miało na~celu sprawdzenie czy zgodnie z~zapewnieniami producenta faktycznie możliwe jest rozłączanie i~podłączanie urządzeń do~sieci ,,w locie'' bez większych problemów i~bez konieczności żadnej dodatkowej ingerencji. Do przeprowadzenia pomiarów autor odłączał wtyczkę i~podłączał ja~ponownie do~gniazda. Oczywiście metoda da~może mieć minimalny wpływ na~dokładność dokonywanych pomiarów, ale zdaniem autora jest on minimalna ze względu na to, że od~momentu odłączenia do wykrycia tego faktu przez urządzenie nadzorujące pracę sieci mija pewien czas, który w optymistycznym przypadku może być krótszy niż sam proces ingerencji autora. Aby poprawić dokładność można by zastosować specjalnie stworzone samodzielnie urządzenie co zostanie opisane w~perspektywach rozwoju niniejszej pracy.
 
 \subsubsection{Pojedyncze urządzenie}
-Eksperyment miał na~celu sprawdzenie jak szybko po~odłączeniu i~ponownym podłączeniu pojedynczego węzła sieci zaczyna on~funkcjonować poprawnie. Zaburzoną pracę sieci przedstawia Rysunek~\ref{one_slave}, który został wygenerowany przy użyciu środowiska TwinCAT System Manager i jest to~jedna z~jego opcji. Jak widać wybrany został węzeł końcowy w topologii.
+Eksperyment miał na~celu sprawdzenie jak szybko po~odłączeniu i~ponownym podłączeniu pojedynczego węzła sieci zaczyna on~funkcjonować poprawnie. Zaburzoną pracę sieci przedstawiono na~Rysunku~\ref{one_slave}, który został wygenerowany przy użyciu środowiska TwinCAT System Manager i jest to~jedna z~jego opcji. Jak widać wybrany został węzeł końcowy w topologii.
 
 \begin{figure}[!htb] 	\centering 	\includegraphics[width=0.9\textwidth]{images/topologyCXerror} \caption{Topologia stanowiska z odłączonym jednym węzłem} \label{one_slave} \end{figure}
 %2,6s do 2,7s
@@ -24,14 +24,13 @@ Wartości zmierzone po ówczesnej obróbce zostały zebrane i przedstawione w Ta
   \caption{Wyniki przeprowadzonego badania}
 	\label{badania:wyniki:stabilizacja_jeden}
 \end{table}
-
 Na podstawie zmierzonych wartości oraz po dokonaniu stosownych obliczeń udało się wygenerować wykres przedstawiony na Rysunku~\ref{badania:wykres:stabilizacja_jeden}
 \input{tikz/stabilizacja_jeden}
 
 Jak wykazują wyniki przeprowadzonego eksperymentu faktycznie można pozwolić sobie na odłączenie i~ponowne podłączenie pojedynczego węzła sieci ,,w locie''. Czas potrzebny na stabilizację połączenia po jego utracie jest zdaniem autora zadowalający. Analiza uzyskanego wykresu pozwala zauważyć, że różnice pomiędzy kolejnymi iteracjami eksperymentu są bardzo małe i~wpływ na~nie może mieć zastosowana metoda pomiarowa.
 
 \subsubsection{Wyspa z modułami I/O}
-Eksperyment miał na~celu sprawdzenie jak szybko po~odłączeniu i~ponownym podłączeniu wyspy z~dołączonymi kilkoma modułami wejścia/wyjścia zaczynają funkcjonować poprawnie wszystkie węzły. Zaburzoną pracę sieci przedstawia Rysunek~\ref{coupler}.
+Eksperyment miał na~celu sprawdzenie jak szybko po~odłączeniu i~ponownym podłączeniu wyspy z~dołączonymi kilkoma modułami wejścia/wyjścia zaczynają funkcjonować poprawnie wszystkie węzły. Zaburzoną pracę sieci przedstawiono na~Rysunku~\ref{coupler}.
 \begin{figure}[!htb] 	\centering 	\includegraphics[width=0.9\textwidth]{images/topologyCPerror} \caption{Topologia stanowiska z odłączoną wyspą} \label{coupler} \end{figure}
 %1,5s wyspa i każdy kolejny moduł I/O z opóźnieniem 4ms
 
@@ -47,7 +46,6 @@ Wartości zmierzone po ówczesnej obróbce zostały zebrane i przedstawione w Ta
   \caption{Wyniki przeprowadzonego badania}
 	\label{badania:wyniki:stabilizacja_wyspa}
 \end{table}
-
 Na podstawie zmierzonych wartości oraz po dokonaniu stosownych obliczeń udało się wygenerować wykres przedstawiony na Rysunku~\ref{badania:wykres:stabilizacja_wyspa}. Różnymi kolorami są oznaczone kolejne iteracje badania, a kolejne punkty tego samego koloru przedstawiają kolejne węzły.
 \input{tikz/stabilizacja_wyspa}
 

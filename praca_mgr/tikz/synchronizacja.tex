@@ -1,3 +1,4 @@
+ \vspace{-0.2cm}
 \begin{figure}[htbp]
  \centering
         \tikzstyle{background grid}=[draw, black!50,step=.25cm]
@@ -20,7 +21,7 @@
 	\node[mylabel, above=-2mm of sclock1]{S};
 	\draw[myline,black] (slave1.north) -- ++(0,0.38) (sclock1.south);	
 
-	\node[mynodemini, below=2cm of slave1] (io1) {I/O};
+	\node[mynodemini, below=1.5cm of slave1] (io1) {I/O};
 	\node[above=2mm of io1](sio1){\showclock{3}{10}};
 	\node[mylabel, above=-2mm of sio1]{S};
 	\draw[myline,black] (io1.north) -- ++(0,0.38) (sio1.south);	
@@ -54,9 +55,10 @@
 	\draw[myarrow] (master.east) -| (slave1.west);
 	\draw[myarrow] (slave1.east)  -| (slave2.west);
 	\draw[myarrow, dotted] (slave2.east) -| (slaven.west);	
-	\draw[myarrow] (slave1.west) ++(0,-0.5) -| ++(-0.3,-3.16) -| (io1.west);	
+	\draw[myarrow] (slave1.west) ++(0,-0.5) -| ++(-0.3,-2.36) -| (io1.west);	
  
 \end{tikzpicture} 
 \caption{Schemat pracy zegarów rozproszonych}
+ \vspace{-1cm}
 \label{etherCAT:synchronizacja}
 \end{figure}

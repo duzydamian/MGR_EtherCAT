@@ -1,4 +1,6 @@
-\tikzset{
+\begin{figure}[htb]
+ \centering
+ \tikzset{
 %Define standard arrow tip
 >=stealth',
 %Define style for different line styles
@@ -9,15 +11,12 @@ connection/.style={thick, dotted},
 }
 \newcommand\A{\ensuremath{\mathcal{A}}}
 \newcommand\B{\ensuremath{\mathcal{B}}}
-
-\begin{figure}[htbp]
- \centering
 	\subfloat[System typu ,,hard'']{
 		\label{wstęp:funkcja_zysku:1}	
 		\begin{tikzpicture}
 
 		% horizontal axis
-		\draw[->] (0,0) -- (5,0) node[anchor=north] {$t$};
+		\draw[->] (-0.2,0) -- (5,0) node[anchor=north] {$t$};
 		% labels
 		\draw	(1.1,0) node[anchor=north east] {$t_0$}
 				(3,0) node[anchor=north east] {$t_T$};
@@ -26,6 +25,7 @@ connection/.style={thick, dotted},
 		\draw[->] (0,-1) -- (0,3) node[anchor=east] {$z(t)$};
 		% labels
 		\draw	(0.1,1.9) node[anchor=south east] {$u$}
+				(0,-0.1) node[anchor=south east] {$0$}		
 				(0,-1.2) node[anchor=south east] {$-\infty$};
 						
 		% ciągłe
