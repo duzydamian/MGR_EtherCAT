@@ -1,6 +1,101 @@
 \section{Wstęp}
-%\subsection{Geneza}
 Tematem projektu, którego dotyczy ta praca jest: „Projekt i~realizacja stanowiska laboratoryjnego do badania zależności czasowych w~sieci EtherCAT". Zagadnienia związane z~tworzeniem oprogramowania dla sterowników przemysłowych są dla autora niezwykle interesujące, a zrealizowany projekt miał na~celu dalsze pogłębienie jego wiedzy z tego zakresu. Wyboru tego konkretnego tematu autor dokonał, ponieważ protokół EtherCAT jest jeszcze nowością i według wielu źródeł stanowi przyszłość branży informatyki przemysłowej \cite{art1_etherCAT, art2_etherCAT}, a~praca nad tym tematem wydaje się być pomocna i~wartościowa w przyszłej pracy zawodowej lub na~ewentualnym dalszym etapie kształcenia.
+
+\subsection{Geneza}
+Informatyka przemysłowa to dziedzina wiedzy z~pogranicza nauk informatycznych oraz szeroko pojętych nauk o~technologiach przemysłowych łącząca te~dwa zakresy wiedzy. Informatyka przemysłowa to~dziedzina, która jest niezwykle pomocna, zwłaszcza przy analizach danych, ale~również podczas tworzenia funkcjonalnych i~wydajnych maszyn dla nowoczesnych gałęzi gospodarki. Specjaliści z~zakresu informatyki przemysłowej zajmują się takimi zagadnieniami jak monitorowanie produkcji przemysłowej czy też analizowaniem wybranych danych, które później służą do~porównań. Niezwykle ważne jest wykorzystanie tych danych, które dostarczą istotnej wiedzy dla każdego przemysłu, a~także sterowanie produkcji przemysłowej, która pomaga w~dynamicznym rozwoju każdej gałęzi funkcjonującej w~gospodarce. 
+Przemysł to~szczególna dziedzina gospodarki, która aby się rozwijać potrzebuje nowoczesnych rozwiązań. Jedną z~nich jest informatyka, która pozwala na~udoskonalanie wyprodukowanych już maszyn przemysłowych, a~także tych, które dopiero co są w~trakcie rozwoju technologicznego. Informatyka to aspekt, który zwraca uwagę na~nowoczesne zastosowanie komputerów w~celach przemysłowych. Wielu informatyków już teraz współpracuje z~firmami działającymi w~przemyśle, gdyż współpraca opłaca się obydwu stronom.
+
+Systemy komputerowe realizują bardzo odpowiedzialne zadania a współczesna technologia stawia coraz poważniejsze wymagania związane przede wszystkim z gwarantowanym i nieprzekraczalnym czasem realizacji pojedynczego cyklu sterowania bądź regulacji, co wymaga wprowadzenia rozwiązań gwarantujących determinizm czasowy. Determinizm czasowy oznacza, że wyniki działania systemu komputerowego pojawiają się w~określonym i skończonym czasie.
+
+System czasu rzeczywistego (ang. Real-Time System, w skrócie RTS) wg jednej z definicji jest to~system komputerowy, w~którym obliczenia są prowadzone równolegle z~przebiegiem zewnętrznego procesu w~otoczeniu systemu (w~sterowanym obiekcie), mają one na celu nadzorowanie, sterowanie oraz terminowe reagowanie na~zdarzenia zachodzące w~tym procesie. Uproszczony schemat działania przedstawia Rysunek~\ref{wstep:rts}.
+\input{tikz/rts} %
+
+System czasu rzeczywistego jest takim systemem, który do poprawnego działania musi spełniać następujące warunki:
+\begin{enumerate}
+\item Warunki logiczne -- odpowiedź systemu musi zawsze prawidłowa przy uwzględnieniu stanu systemu, tzn. odpowiedź zależy od stanu otoczenia i~występujących zdarzeń oraz jest zgodna z~założeniami technologicznymi,
+\item Warunki czasowe -- odpowiedź systemu musi nadejść we właściwym czasie (przed przekroczeniem czasu granicznego dla danego systemu)
+\end{enumerate}
+
+Dla określenie podziału systemów czasu rzeczywistego przydatne jest pojęcie funkcji zysku. Jest to funkcja zależna głównie od czasu i~dokonuje odwzorowania czasu wykonania zadania na korzyść wynikającą z~jego wykonania. Wartość korzyści niekoniecznie jest wielkością wymiarowaną. Źródłem występujących ograniczeń czasowych są~zazwyczaj zjawiska fizyczne zachodzące w~świecie rzeczywistym kontrolowanym przez system.
+
+Zadanie jest uznawane za~zrealizowane jako poprawne, jeśli w~chwili jego zakończenia wartość funkcji zysku jest większa od zera.
+\input{tikz/funkcja_zysku} %
+Założenia dla wykresów funkcji zysku:
+\begin{itemize}
+\item $t_0$ jest to moment w którym zadanie zostało zlecone oraz rozpoczęło się jego wykonywanie,
+\item $t_T$ jest to graniczny moment w~którym przetwarzanie może zostać zakończone,
+\item w przypadku jak na Rysunku~\ref{wstęp:funkcja_zysku:3} funkcja z(t) jest funkcją ciągłą w punktach $t_1$ i $t_T$,
+\item Dla wartości $t \leq t_0$ funkcji zysku nie wyznacza się, gdyż jest jest to sytuacja nie~możliwa, tzn. obliczany byłby zysk z~zakończenia zadania przed jego rozpoczęciem co~nie~może się zdarzyć i~nie ma najmniejszego sensu.
+\end{itemize}
+
+W tego typu systemach przekształcanie danych wymienianych między nim, a środowiskiem zewnętrznym zachodzi w deterministycznie określonym czasie. W opisach stosuje się pojęcie terminu (ang. deadline), oznaczające najdłuższy dopuszczalny czas reakcji systemu na~wystąpienie zdarzenia.
+Szybkość działania systemu czasu rzeczywistego nie~jest tak naprawdę bardzo ważna, istotne jest, aby spełnione były bezwarunkowo przyjęte ograniczenia czasowe.
+
+Jak wynika z przedstawionych na Rysunku~\ref{wstep:funkcja_zysku} teoretycznych funkcji zysku rozróżniamy trzy typy systemów czasu rzeczywistego:
+\begin{itemize}
+\item systemy o~ostrych ograniczeniach czasowych (ang. hard real-time) -- gdy przekroczenie terminu powoduje poważne, a~nawet katastrofalne skutki, jak np.~zagrożenie życia lub~zdrowia ludzi, uszkodzenie lub~zniszczenie urządzeń, przy czym nie~jest istotna wielkość przekroczenia terminu a~jedynie sam fakt jego przekroczenia. Wynika z~tego, ze informacja wygenerowana przez system po~przekroczeniu czasu granicznego $t_T$ oznacza poważny błąd systemu.
+
+\item systemy o~mocnych ograniczeniach czasowych (ang. firm real-time) -- gdyaa fakt przekroczenia terminu powoduje całkowitą nieprzydatność wypracowanego przez system wyniku, jednakże nie oznacza to zagrożenia dla ludzi lub sprzętu; pojęcie to stosowane jest głównie w opisie teoretycznym baz danych czasu rzeczywistego,
+
+\item systemy o~miękkich lub~łagodnych ograniczeniach czasowych (ang. soft real-time) -- gdy przekroczenie pewnego czasu powoduje negatywne skutki tym poważniejsze, im~bardziej ten czas został przekroczony; w~tym przypadku przez "negatywne skutki" rozumie się spadek funkcji zysku aż~do~osiągnięcia wartości zero.
+\end{itemize}
+
+Idealnymi przykładami praktycznymi z~życia codziennego wyjaśniającymi podział jak i~funkcję zysku~są:
+\begin{enumerate}
+\item W przypadku systemów typu  ,,hard real-time'' jest to reaktor jądrowy. Załóżmy, że system nadzorujący pracę takiego urządzenia nie~zdążyłby wystarczająco szybko zareagować na~podnoszenie się temperatury rdzenia i~doszłoby do~jego przegrzania lub nawet do~ częściowego stopienia. Jak pokazał przykład awarii reaktora jądrowego w~Czarnobylu tego typu zjawiska mają tragiczne i~wieloletnie skutki. Jest to~idealny przykład, że~nie pojawienie się odpowiedzi systemu na~czas jest tragiczne w~skutkach i~nie~ma znaczenia o ile czas graniczny został przekroczony.
+\item W przypadku systemów typu  ,,soft real-time'' jest to bankomat. Jak wiadomo bankomat musi zareagować na~żądania zgłaszane przez klienta w skończonym czasie. Jeżeli czas ten będzie zbyt długi, tzn. będzie przekraczał czas czas graniczny to~negatywnym skutkiem będzie spadające zadowolenie klienta wynikające z~jakości świadczonej usługi. Wiadomo, że~nie~wolno ignorować tego faktu, bo~niezadowolenie klienta może spowodować, że~nie~skorzysta on~więcej z~danej sieci bankomatów. Na~tym przykładzie dobrze widać, że przekroczenie czasu granicznego nie~jest tragiczne w~skutkach, ale powoduje spadek wartości funkcji zysku, którą jest w~tym przypadku zadowolenie klienta.
+\end{enumerate}
+
+Systemu czasu rzeczywistego najczęściej pracują pod kontrolą specjalnych systemów operacyjnych spełniających reżimy czasu rzeczywistego. System operacyjny czasu rzeczywistego (ang. Real-Time Operating System, w~skrócie RTOS) jest to system operacyjny, który został opracowany tak, aby~spełniać wymagania narzucone na~czas wykonania zadanych operacji. Podstawowym wymaganiem dla systemu typu RTOS jest określenie najdłuższego możliwego czasu po którym urządzenie wypracuje odpowiedź na wystąpienie zdarzenia (określenie przypadku pesymistycznego). Ze względu na~kryterium ograniczeń czasowych systemy te~dzielimy na:
+\begin{itemize}
+\item Twarde (ang. Hard RTOS) -- są to systemy dla których znany jest najdłuższy i nie przekraczalny gwarantowany czas odpowiedzi,
+\item Miękkie (ang. Soft RTOS) -- są to systemy, które starają się odpowiedzieć w~możliwie najkrótszym czasie, ale niestety nie jest znany najdłuższy możliwy czas odpowiedzi.
+\end{itemize}
+
+Zaawansowanym problemem występujących w systemach operacyjnych tego typu jest dobór algorytmu szeregowania oraz przydziału czasu. W~systemie czasu czasu rzeczywistego ze względu na ograniczone zasoby trzeba wybrać, który z~procesów będzie miał w~danym momencie przydzielony procesor oraz jak~długo przydział taki powinien trwać, aby wszystkie wykonywane procesy spełniły określone dla nich ograniczenia czasowe.
+
+Na rynku dostępnych jest aktualnie wiele systemów operacyjnych czasu rzeczywistego od różnych producentów lub otwartych, których przykłady przedstawia Tabela~\ref{rtos}.
+\begin{table}[!htb]
+\begin{center}
+\begin{tabular}{| p{0.03\textwidth} | p{0.17\textwidth} | p{0.3\textwidth} | p{0.4\textwidth} |}\hline
+\textbf{Nr} & \textbf{Nazwa} & \textbf{Producent} & \textbf{Platformy} \\\hline\hline
+1 & Solaris & Sun Microsystems & Sparc \\\hline
+2 & Windows CE & Microsoft & ARM, MIPS, PowerPC, SH, x86, Strong ARM, NEC, VR4111 \\\hline
+3 & QNX Neutrino & QNX Software Systems & MIPS, MPC8xx, PowerPC, SH, ARM, Strong~RM \\\hline
+4 & RT Linux & Open Source & ARM, PowerPC, x86, SH3, MIPS \\\hline
+5 & LynxOS & LynuxWorks & 68K, MIPS, MPC8xx, PowerPC, x86, Sparc \\\hline
+6 & VxWorks & Wind River Systems & 68K, i869, ARM, MIPS, PowerPC, x86, SH, SPARC \\\hline
+7 & eCOS & Open Source & ARM, MIPS, MPC8xx, PowerPC, Sparc \\\hline
+\end{tabular}
+\end{center}
+\vspace*{-6mm}
+  \caption{Systemy czasu rzeczywistego}
+	\label{rtos}
+\end{table}
+
+Kolejnym niezbędnym elementem oprócz układów wejściowych i wyjściowych oraz kontrolowanych urządzeń (np. robotów) są deterministyczne sieci transmisyjne.
+W~sieciach przemysłowych dane przesyłane są~często, ale~są~one krótkie (mają niewielki rozmiar), w~przeciwieństwie do~sieci ogólnego przeznaczenia gdzie przesyła się dane rzadko~i~w~dużej ilości. Dane mają charakter np. wartości
+pomiaru, rozkazów start/stop, alarmu, przekazania wartości zadanej do~zrealizowania przez regulator itd. Bardzo często właściwa informacja w~tych sieciach to~jeden bit albo jedno słowo.
+
+W~sieciach, w~których zagwarantowany jest determinizm czasowy transmisji, okres od wysłania pakietu danych od~nadawcy do~jego odbioru po~stronie odbiorcy jest z~góry znany i~pozostaje niezmienny. Wówczas komunikacja między węzłami sieci może być realizowana w~czasie rzeczywistym, łatwiejsza jest też ich synchronizacja. Obie te kwestie są kluczowe dla sprawnego działania systemów sterowania. Dodatkowo sieci takie muszą zapewniać wszelkiego rodzaju mechanizmy kontroli poprawności przesyłu danych oraz zabezpieczać przez ewentualną ich utratą. Kolejnym wymaganiem stawianym przed sieciami tego typu jest odporność na~zakłócenia zewnętrzne w~tym szczególnie zakłócenia elektromagnetyczne. Rola komunikacji jest krytyczna z~punktu widzenia technologii, ekonomii i~bezpieczeństwa prowadzenia procesu.
+Podsumowanie najważniejszych wymagań stawianych przemysłowym sieciom informatycznym:
+\begin{itemize}
+\item Niezawodność,
+\item Przewidywalność procesu komunikacji:
+\begin{itemize}
+\item Relacja pomiędzy węzłami w~sieci,
+\item Praca w~czasie rzeczywistym,
+\end{itemize}
+\item Efektywność w przekazywaniu krótkich wiadomości,
+\item Standaryzacja interfejsów, łatwość podłączania dużej liczby urządzeń,
+\item Możliwość podłączenia do zewnętrznych sieci,
+\item Łatwość lokalizowania usterek.
+\end{itemize}
+
+Aby system składający się z~wielu komponentów był systemem czasu rzeczywistego, konieczne jest spełnianie wymogów przez każdy z~elementów składowych. W przypadku systemów informatycznych oznacza to, że~zarówno sprzęt, system operacyjny, jak i~oprogramowanie aplikacyjne muszą gwarantować dotrzymanie zdefiniowanych ograniczeń czasowych.
+
+Jak wykazuje powyższa geneza systemu czasu rzeczywistego są~bardzo ważnym elementem nie~tylko w~przemyśle, ale również w~życiu codziennym. Przemysłowe sieci komputerowe są~bardzo istotnym elementem tych systemów, dlatego właśnie istotne jest, aby przebadać i~poznać je~dokładnie oraz ustalić jakie zależności czasowe w~nich występują.
+Sieć EtherCAT będąca tematem niniejszej pracy bardzo dobrze spełnia wszystkie wymagania stawiane nowoczesnym protokołom pracującym w~warunkach przemysłowych dlatego autor uważa, że~warto przyjrzeć mu się bliżej i~przeprowadzić na~nim badania oraz znaleźć ewentualne perspektywy na~kolejne prace badawcze w~przyszłości.
 
 \subsection{Stanowisko laboratoryjne}
 Na potrzeby realizacji projektu wykorzystano dwa różne istniejące stanowiska laboratoryjne, które składały się~z~elementów opisanych w Tabeli~\ref{stanowiska}.
@@ -100,9 +195,6 @@ Taki ,,sterownik PLC w komputerze PC'' wykorzystuje standardowe języki programo
 
 \indent
 \indent Stanowiska podłączone są do sieci lokalnej Ethernet w~laboratorium, więc komunikacja z~nimi odbywa się tak samo jak z~każdym innym urządzeniem sieciowym. Podstawy programowania i korzystania ze sterowników autor poznał zapoznając się z odpowiednią literaturą \cite{plc1,plc2,plc4,plc5,plc6} oraz uczęszczając w toku studiów na zajęcia obowiązkowe oraz specjalizacyjne.
-Konfigurację sterowników wraz z modułami przedstawiają Rysunki~\ref{conf:cp}~oraz~\ref{conf:cx}.
-\begin{figure}[!htb] 	\centering 	\includegraphics[width=0.99\textwidth]{images/confCP} \caption{Konfiguracja stanowiska typu CP} \label{conf:cp} \end{figure}
-\begin{figure}[!htb] 	\centering 	\includegraphics[width=0.99\textwidth]{images/confCX} \caption{Konfiguracja stanowiska typu CX} \label{conf:cx} \end{figure}
 
 \subsubsection{Komputer}
 Projekt w całości był realizowany na laptopie autora, podłączanym do~sieci w~laboratorium. Na~komputerze uruchomiana była maszyna wirtualna. Na~jednej zainstalowane było środowisko TwinCAT do~programowania sterownika oraz do~tworzenia i~uruchamiania wizualizacji. Wizualizacje tworzone w~środowisku TwinCAT można uruchomić bezpośrednio na~komputerze wyposażonym w~odpowiednie oprogramowanie lub na~urządzeniu docelowym po~podpięciu do~niego monitora (o~ile urządzenie docelowe posiada wyjście DVI lub odpowiedni interfejs systemowy w~postaci odrębnego modułu).

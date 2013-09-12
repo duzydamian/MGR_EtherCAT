@@ -1,20 +1,25 @@
 \begin{figure}[htbp]
  \centering
- \begin{tikzpicture}[x=0.5cm,y=10cm]
+ \begin{tikzpicture}[x=1cm,y=5cm]
 
 
- \draw[latex-latex, thin, draw=gray] (0,1.25)--(20,1.25) node [right] {$x$}; % l'axe des abscisses
- \draw[latex-latex, thin, draw=gray] (0,1.25)--(0,2) node [above] {$y$}; % l'axe des ordonnées
- \draw[thick] (0,1.5)--(20,1.58); % l'axe des abscisses
+ \draw[latex-latex, thin, draw=gray] (0,0)--(10,0) node [right] {$x$}; % l'axe des abscisses
+ \draw[latex-latex, thin, draw=gray] (0,0)--(0,2) node [above] {$t[s]$}; % l'axe des ordonnées
+ \draw[thick] (0,1.5)--(10,1.54); % l'axe des abscisses
+  \draw[thick,red] (0,1.6)--(10,1.64); % l'axe des abscisses
 
-    \foreach \i in {0,...,20}{% 
+    \foreach \i in {0,...,10}{% 
 \foreach \Point in {(\i ,1.5+0.004*\i)}{
     \node at \Point {\textbullet}; } ;}     
 
+    \foreach \i in {0,...,10}{% 
+\foreach \Point in {(\i ,1.6+0.004*\i)}{
+    \node[red] at \Point {\textbullet}; } ;}
+    
 % to ensure that the points are being properly centered:
-\draw [dotted, gray] (0,1.25) grid (20,2);
+\draw [dotted, gray] (0,0) grid (10,2);
 
 \end{tikzpicture}
-\caption{Współczynnik wykorzystania kanału transmisyjnego w Ethernecie (dwa pierwsze wykresy od lewej strony) i EtherCAT}
-\label{etherCAT:wykorzystanie}
+\caption{Pomiary czasu ponownego podłączenia oraz obliczona wartość średnia}
+\label{badania:wykres:stabilizacja_wyspa}
 \end{figure}

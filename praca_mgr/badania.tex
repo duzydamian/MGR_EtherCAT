@@ -3,14 +3,63 @@ W~niniejszym rozdziale opisany został przebieg przeprowadzonych badań oraz ana
 
 %\subsection{Opóźnienia pojedynczego odcinka sieci}
 %\subsection{Wpływ topologi na opóźnienia}
-\subsection{Czas stabilizacji sieci po zmianach}
-Badanie miało na~celu sprawdzenie czy zgodnie z~zapewnieniami producenta faktycznie możliwe jest rozłączanie i~podłączanie urządzeń do~sieci.
+\subsection{Czas stabilizacji sieci po odłączeniu i~podłączeniu dowolnego urządzenia}
+Badanie miało na~celu sprawdzenie czy zgodnie z~zapewnieniami producenta faktycznie możliwe jest rozłączanie i~podłączanie urządzeń do~sieci ,,w locie'' bez większych problemów i~bez konieczności żadnej dodatkowej ingerencji. Do przeprowadzenia pomiarów autor odłączał wtyczkę i~podłączał ja~ponownie do~gniazda. Oczywiście metoda da~może mieć minimalny wpływ na~dokładność dokonywanych pomiarów, ale zdaniem autora jest on minimalna ze względu na to, że od~momentu odłączenia do wykrycia tego faktu przez urządzenie nadzorujące pracę sieci mija pewien czas, który w optymistycznym przypadku może być krótszy niż sam proces ingerencji autora. Aby poprawić dokładność można by zastosować specjalnie stworzone samodzielnie urządzenie co zostanie opisane w~perspektywach rozwoju niniejszej pracy.
+
 \subsubsection{Pojedyncze urządzenie}
-2,6s do 2,7s
+Eksperyment miał na~celu sprawdzenie jak szybko po~odłączeniu i~ponownym podłączeniu pojedynczego węzła sieci zaczyna on~funkcjonować poprawnie. Zaburzoną pracę sieci przedstawia Rysunek~\ref{one_slave}, który został wygenerowany przy użyciu środowiska TwinCAT System Manager i jest to~jedna z~jego opcji. Jak widać wybrany został węzeł końcowy w topologii.
+
+\begin{figure}[!htb] 	\centering 	\includegraphics[width=0.9\textwidth]{images/topologyCXerror} \caption{Topologia stanowiska z odłączonym jednym węzłem} \label{one_slave} \end{figure}
+%2,6s do 2,7s
+
+Wartości zmierzone po ówczesnej obróbce zostały zebrane i przedstawione w Tabeli~\ref{badania:wyniki:stabilizacja_jeden}.
+\begin{table}[!htb]
+\begin{center}
+\begin{tabular}{| c | c | c | c |}\hline
+\textbf{Liczba próbek} & \textbf{Wartość średnia} & \textbf{Wartość minimalna} & \textbf{Wartość maksymalna} \\\hline\hline
+12 & 2.678s & 2.654s & 2.774s \\\hline
+\end{tabular}
+\end{center}
+\vspace*{-6mm}
+  \caption{Wyniki przeprowadzonego badania}
+	\label{badania:wyniki:stabilizacja_jeden}
+\end{table}
+
+Na podstawie zmierzonych wartości oraz po dokonaniu stosownych obliczeń udało się wygenerować wykres przedstawiony na Rysunku~\ref{badania:wykres:stabilizacja_jeden}
+\input{tikz/stabilizacja_jeden}
+
+Jak wykazują wyniki przeprowadzonego eksperymentu faktycznie można pozwolić sobie na odłączenie i~ponowne podłączenie pojedynczego węzła sieci ,,w locie''. Czas potrzebny na stabilizację połączenia po jego utracie jest zdaniem autora zadowalający. Analiza uzyskanego wykresu pozwala zauważyć, że różnice pomiędzy kolejnymi iteracjami eksperymentu są bardzo małe i~wpływ na~nie może mieć zastosowana metoda pomiarowa.
 
 \subsubsection{Wyspa z modułami I/O}
-1,5s wyspa i każdy kolejny moduł I/O z opóźnieniem 4ms
+Eksperyment miał na~celu sprawdzenie jak szybko po~odłączeniu i~ponownym podłączeniu wyspy z~dołączonymi kilkoma modułami wejścia/wyjścia zaczynają funkcjonować poprawnie wszystkie węzły. Zaburzoną pracę sieci przedstawia Rysunek~\ref{coupler}.
+\begin{figure}[!htb] 	\centering 	\includegraphics[width=0.9\textwidth]{images/topologyCPerror} \caption{Topologia stanowiska z odłączoną wyspą} \label{coupler} \end{figure}
+%1,5s wyspa i każdy kolejny moduł I/O z opóźnieniem 4ms
+
+Wartości zmierzone po ówczesnej obróbce zostały zebrane i przedstawione w Tabeli~\ref{badania:wyniki:stabilizacja_wyspa}.
+\begin{table}[!htb]
+\begin{center}
+\begin{tabular}{| c | c | c | c |}\hline
+\textbf{Liczba próbek} & \textbf{Wartość średnia} & \textbf{Wartość minimalna} & \textbf{Wartość maksymalna} \\\hline\hline
+2 & 1.51+5*0.02 & 1.45+5*0.024 & 1.56+5*0.02 \\\hline
+\end{tabular}
+\end{center}
+\vspace*{-6mm}
+  \caption{Wyniki przeprowadzonego badania}
+	\label{badania:wyniki:stabilizacja_wyspa}
+\end{table}
+
+Na podstawie zmierzonych wartości oraz po dokonaniu stosownych obliczeń udało się wygenerować wykres przedstawiony na Rysunku~\ref{badania:wykres:stabilizacja_wyspa}. Różnymi kolorami są oznaczone kolejne iteracje badania, a kolejne punkty tego samego koloru przedstawiają kolejne węzły.
 \input{tikz/stabilizacja_wyspa}
+
+Jak widać zwiększenie liczby odłączanych i~podłączanych ponownie węzłów nie~wpłynęło w sposób negatywny na~możliwość dokonywania tej operacji w czasie pracy sieci. Ciekawy wydaje się równy czas wynoszący 2ms pomiędzy podłączeniem się pierwszego urządzenia z~zestawu, a~każdym kolejnym. Tak więc liczba modułów wejścia/wyjścia ma~proporcjonalnie mały wpływ na czas potrzebny do ustabilizowania się całego zdalnego zestawu.
+
+\subsubsection{Problemy}
+W~czasie XYZ przeprowadzonych testów ku~zaskoczeniu aktora wystąpiły sytuację w których sieć nie~powróciła już do~prawidłowego działania. Jest to sprzeczne z zapewnieniami twórców standardu i~dlatego wszystkie te~przypadki zostaną tu zawarte i~opisane.
+
+\begin{enumerate}
+\item Device 2 (EtherCAT (v2.10 only)': 'INIT to PREOP' failed! Error: 'read slave count'. Communication Error '0x707 (1799)'. \\[1mm]
+ADS, problem ze stanem urządzenia
+\end{enumerate}
 
 \subsection{Badania niewykonalne}
 

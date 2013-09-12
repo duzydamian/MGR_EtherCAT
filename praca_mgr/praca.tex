@@ -22,6 +22,7 @@
 \usepackage{enumitem}
 \usepackage[clock]{ifsym}
 \usepackage{clock}
+\usepackage{amsmath}
 
 \usepackage{pgfplots}
 \usepackage{tikz}
@@ -54,6 +55,8 @@
 \titlespacing{\subsection}{1cm}{*4}{*1.5}
 \titlespacing{\subsubsection}{1cm}{*4}{*1.5}
 
+%\linespread{1.1}
+%\linespread{1.2}
 %\linespread{1.3}
 
 \begin{document}
@@ -67,6 +70,10 @@
 \renewcommand{\listtablename}{\vspace*{-13mm}}
 \renewcommand*{\refname}{\vspace*{-13mm}}
 \renewcommand{\lstlistingname}{Kod źródłowy} 
+
+\newcommand{\rowstyle}[1]{\gdef\currentrowstyle{#1}%
+#1\ignorespaces
+}
 
 \include{tytulowa} %
 
@@ -93,7 +100,6 @@
 
 \section{Spis rysunków, tablic i kodów źródłowych}
 \subsection{Spis rysunków}
-
 \newlength{\fig}
 \settowidth{\fig}{Rysunek\,99:~}
 \renewcommand*\numberline[1]{\llap{\makebox[\fig][l]{Rysunek\,#1:~}}}

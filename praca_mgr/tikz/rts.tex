@@ -1,0 +1,22 @@
+\begin{figure}[htbp]
+ \centering
+        \tikzstyle{background grid}=[draw, black!50,step=.25cm]
+	\begin{tikzpicture}[node distance=1cm, auto]%, show background grid]
+	\tikzset{
+    	mynode/.style={rectangle,rounded corners,draw=black, fill=white!15,very thick, inner sep=1.2em, minimum size=2.5em, 		text centered, text width=2.5cm},
+	    myarrow/.style={->, >=latex', shorten >=1pt, ultra thick},
+	    myline/.style={-, =latex', shorten >=1pt, rounded corners, ultra thick},
+	    mylabel/.style={text width=7em, text centered} 
+	} 
+	\node[mynode] (device2) {Obiekt (otoczenie)};  
+	\node[mynode, fill=white!15, left=5cm of device2] (device1) {System \\ czasu \\ rzeczywistego};
+	\node[right=0.1cm of device2] (loop) {};
+	
+	\draw[myarrow] ([yshift=6mm]device2.west) -- ([yshift=6mm]device1.east) node [midway,yshift=3.5mm,fill=white] {Zdarzenia};		
+		\draw[myarrow] ([yshift=0mm]device2.west) -- ([yshift=0mm]device1.east) node [midway,yshift=3.5mm,fill=white] {Stan systemu};
+	\draw[myarrow] ([yshift=-6mm]device1.east) -- ([yshift=-6mm]device2.west) node [midway,yshift=-3.5mm,fill=white] {Odpowiedzi};		
+ 
+\end{tikzpicture} 
+\caption{Schemat działania systemu czasu rzeczywistego.}
+\label{wstep:rts}
+\end{figure}

@@ -18,6 +18,8 @@ Podczas tworzenia projektu napotkane i~przeanalizowane zostały następujące pr
 \item Problem z automatycznym uruchamianiem stworzonego projektu PLC:\\[1mm]
 Po utworzeniu oprogramowania sterownika~PLC~oraz po odpowiednim skonfigurowaniu go w oprogramowaniu TwinCAT System Manager tj. linkowaniu zmiennych programu do~odpowiednich fizycznych wejść oraz wyjść modelu oraz aktywowaniu tak przygotowanej konfiguracji, które z~kolei wymusza zresetowanie systemu nie~następuje uruchomienie projektu sterownika PLC. W początkowej fazie autor przełączał się na oprogramowanie TwinCAT PLC Control gdzie logował się do~sterownika i~ręcznie uruchamiał stworzony przez siebie kod. Niestety to~rozwiązanie na~dłuższą metę okazało~się męczące i~czasochłonne. Okazało się, że~w~sterownikach firmy Beckhoff trzeba w~specjalny sposób przygotować oprogramowanie, które ma~być uruchamiane w~sposób automatyczny, tzn. trzeba utworzyć projekt, który jest bootowalny. Początkowo takie podejście wydało się autorowi bardzo dziwne, ale po~dłuższym zastanowieniu oraz kilku rozmowach z~bardziej doświadczonymi w~branży osobami okazało się, że~ma~ono swoje plusy. Przykładowo w~przypadku tworzenia oprogramowania w~fazie rozwojowej reset urządzenia pozwala przerwać całkowicie wykonywanie oprogramowania zawierającego błędy mające destrukcyjny wpływ na~model lub w~praktyce na~obiekt przemysłowy. Po~zastosowaniu nowej metody uruchamianie~i testowanie tworzonego oprogramowania stało~się zdecydowanie prostsze.
 
+\item Problem ze zbyt wysokim napięciem napędu serwomechanizmów:\\[1mm]
+
 \item Problem z~wykryciem jednego z~silników:\\[1mm]
 aa
 
