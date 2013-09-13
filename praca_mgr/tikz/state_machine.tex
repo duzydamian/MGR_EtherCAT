@@ -1,0 +1,34 @@
+\begin{figure}[htbp]
+ \centering
+        \tikzstyle{background grid}=[draw, black!50,step=.25cm]
+	\begin{tikzpicture}[node distance=2mm, auto]%, show background grid]
+	\tikzset{
+    	mynode/.style={rectangle,rounded corners,draw=black, top color=white, very thick, inner sep=4mm, 		text centered,font=\footnotesize},
+	    myarrowto/.style={ ->, shorten >=1pt, ultra thick},
+	    myarrowfrom/.style={ <-, shorten >=1pt, ultra thick},	    
+	    mylabel/.style={text centered, font=\scriptsize\bfseries} 
+	} 
+	\node[bottom color=cyan!40, mynode, text width=10cm] (init) {Init};  
+	\node[bottom color=cyan!40, mynode, text width=4cm, below=1.5cm of init.195] (preop) {Pre-Operational}; 
+	\node[bottom color=cyan!40, mynode, text width=4cm, below=3.5cm of init] (safeop) {Safe-Operational};   		
+	\node[bottom color=cyan!40, mynode, text width=6cm, below=6cm of init.195] (op) {Operational}; 
+	\node[bottom color=violet!20, mynode, text width=3cm, below=2.5cm of init.9] (bootstrap) {Bootstrap (opcjonalny)};   		
+	 
+	\draw[myarrowto,dotted] ([xshift=25mm]init.south) -- ([xshift=-9mm]bootstrap.north) node [midway,black] {(IB)};
+	\draw[myarrowfrom,dotted] ([xshift=40mm]init.south) -- ([xshift=6mm]bootstrap.north) node [midway,black] {(BI)};	
+	
+	\draw[myarrowto] ([xshift=-30mm]init.south) -- ([xshift=-10mm]preop.north) node [midway,black] {(IP)};
+	\draw[myarrowfrom] ([xshift=-10mm]init.south) -- ([xshift=10mm]preop.north) node [midway,black] {(PI)};		
+	
+	\draw[myarrowto] ([xshift=5mm]preop.south) -- ([xshift=-15mm]safeop.north) node [midway,black] {(PS)};
+	\draw[myarrowfrom] ([xshift=17mm]preop.south) -- ([xshift=-1mm]safeop.north) node [midway,black] {(SP)};		
+	
+	\draw[myarrowto] ([xshift=-30mm]safeop.south) -- ([xshift=-10mm]op.north) node [midway,black] {(SO)};
+	\draw[myarrowfrom] ([xshift=-10mm]safeop.south) -- ([xshift=10mm]op.north) node [midway,black] {(OS)};					
+	\draw[myarrowfrom] ([xshift=5mm]init.south west) -- ([xshift=5mm]op.north west) node [midway,black] {(OI)};
+	\draw[myarrowfrom] ([xshift=10mm]preop.south west) -- ([xshift=-14mm]op.north) node [midway,black] {(OP)};
+	\draw[myarrowfrom] ([xshift=10mm]init.south) -- ([xshift=13mm]safeop.north) node [midway,black] {(SI)};		
+\end{tikzpicture} 
+\caption{Maszyna stanów EtherCAT (ang. \textit{EtherCAT State Machine})}
+\label{etherCAT:state_machine}
+\end{figure}

@@ -1,11 +1,11 @@
 \begin{figure}[htbp]
  \centering
- \begin{tikzpicture}[x=2cm,y=5cm]
+ \begin{tikzpicture}[x=2cm,y=20cm]
 
 
- \draw[-latex, thin, draw=gray] (0,2)--(7,2) node [right] {$x$}; % l'axe des abscisses
- \draw[-latex, thin, draw=gray] (0,1.8)--(0,3) node [above] {$t[s]$}; % l'axe des ordonnées
- \draw (0,2) node[left] {2};
+ \draw[-latex, thin, draw=gray] (0,2.5)--(7,2.5) node [right] {$x$}; % l'axe des abscisses
+ \draw[-latex, thin, draw=gray] (0,2.45)--(0,3) node [above] {$t[s]$}; % l'axe des ordonnées
+ \draw (0,2.5) node[left] {2,5};
  \draw[] (0,2.727)--(7,2.727) node[left=14cm] {2,727}; 
 
 %Pierwszy pomiar   
@@ -47,9 +47,38 @@
 	\node[green] at (6, 2.782) {\textbullet};
 	
     \draw[thick,green] (1, 2.764)--(6, 2.782);
-     
+
+%Piąty pomiar    
+	\node[orange] at (1, 2.634) {\textbullet};
+	\node[orange] at (2, 2.638) {\textbullet};
+	\node[orange] at (3, 2.642) {\textbullet};
+	\node[orange] at (4, 2.646) {\textbullet};
+	\node[orange] at (5, 2.650) {\textbullet};
+	\node[orange] at (6, 2.654) {\textbullet};
+	
+    \draw[thick,orange] (1, 2.634)--(6, 2.654);
+    
+%Szósty pomiar    
+	\node[violet] at (1, 2.634) {\textbullet};
+	\node[violet] at (2, 2.638) {\textbullet};
+	\node[violet] at (3, 2.642) {\textbullet};
+	\node[violet] at (4, 2.646) {\textbullet};
+	\node[violet] at (5, 2.650) {\textbullet};
+	\node[violet] at (6, 2.654) {\textbullet};
+	
+    \draw[thick,violet] (1, 2.634)--(6, 2.654);
+
+%Siódmy pomiar    
+	\node[magenta] at (1, 2.686) {\textbullet};
+	\node[magenta] at (2, 2.690) {\textbullet};
+	\node[magenta] at (3, 2.694) {\textbullet};
+	\node[magenta] at (4, 2.698) {\textbullet};
+	\node[magenta] at (5, 2.702) {\textbullet};
+	\node[magenta] at (6, 2.706) {\textbullet};
+	
+    \draw[thick,magenta] (1, 2.686)--(6, 2.706);             
 % to ensure that the points are being properly centered:
-\draw [dotted, gray] (0,2) grid (7,3);
+\draw [dotted, gray] (0,2.5) grid (7,3);
 
 \end{tikzpicture}
 \caption{Pomiary czasu ponownego podłączenia oraz obliczona wartość średnia}

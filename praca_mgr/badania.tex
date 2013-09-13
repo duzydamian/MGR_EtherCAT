@@ -1,10 +1,10 @@
 \section{Badania}
-W~niniejszym rozdziale opisany został przebieg przeprowadzonych badań oraz analiza ich wyników. W~kolejnych podrozdziałach zostaną przedstawione kolejne różne eksperymenty. 
+W~niniejszym rozdziale opisany został przebieg przeprowadzonych badań oraz analiza ich wyników. W~kolejnych podrozdziałach zostaną przedstawione kolejne różne eksperymenty. Dokładne otrzymane wyniki znajdują się na~dołączonej do pracy płycie~CD w~odpowiednich plikach, o~nazwach zgodnych z~podrozdziałem opisującym dane badanie i~jego wyniki.
 
 %\subsection{Opóźnienia pojedynczego odcinka sieci}
 %\subsection{Wpływ topologi na opóźnienia}
 \subsection{Czas stabilizacji sieci po odłączeniu i~podłączeniu dowolnego urządzenia}
-Badanie miało na~celu sprawdzenie czy zgodnie z~zapewnieniami producenta faktycznie możliwe jest rozłączanie i~podłączanie urządzeń do~sieci ,,w locie'' bez większych problemów i~bez konieczności żadnej dodatkowej ingerencji. Do przeprowadzenia pomiarów autor odłączał wtyczkę i~podłączał ja~ponownie do~gniazda. Oczywiście metoda da~może mieć minimalny wpływ na~dokładność dokonywanych pomiarów, ale zdaniem autora jest on minimalna ze względu na to, że od~momentu odłączenia do wykrycia tego faktu przez urządzenie nadzorujące pracę sieci mija pewien czas, który w optymistycznym przypadku może być krótszy niż sam proces ingerencji autora. Aby poprawić dokładność można by zastosować specjalnie stworzone samodzielnie urządzenie co zostanie opisane w~perspektywach rozwoju niniejszej pracy.
+Badanie miało na~celu sprawdzenie czy zgodnie z~zapewnieniami producenta faktycznie możliwe jest rozłączanie i~podłączanie urządzeń do~sieci ,,w locie'' bez większych problemów i~bez konieczności żadnej dodatkowej ingerencji. Do przeprowadzenia pomiarów autor odłączał wtyczkę i~podłączał ja~ponownie do~gniazda. Oczywiście metoda da~może mieć minimalny wpływ na~dokładność dokonywanych pomiarów, ale zdaniem autora jest on minimalna ze względu na to, że od~momentu odłączenia do wykrycia tego faktu przez urządzenie nadzorujące pracę sieci mija pewien czas, który w optymistycznym przypadku może być krótszy niż sam proces ingerencji autora. Aby poprawić dokładność można by zastosować specjalnie stworzone samodzielnie urządzenie co zostanie opisane w~perspektywach rozwoju niniejszej pracy. Wszystkie zmierzone czasy oraz treści komunikatów zostały odczytane w~środowisku TwinCAT System Manager, przykładowy został przedstawiony na Rysunku~\ref{}.
 
 \subsubsection{Pojedyncze urządzenie}
 Eksperyment miał na~celu sprawdzenie jak szybko po~odłączeniu i~ponownym podłączeniu pojedynczego węzła sieci zaczyna on~funkcjonować poprawnie. Zaburzoną pracę sieci przedstawiono na~Rysunku~\ref{one_slave}, który został wygenerowany przy użyciu środowiska TwinCAT System Manager i jest to~jedna z~jego opcji. Jak widać wybrany został węzeł końcowy w topologii.
@@ -17,7 +17,7 @@ Wartości zmierzone po ówczesnej obróbce zostały zebrane i przedstawione w Ta
 \begin{center}
 \begin{tabular}{| c | c | c | c |}\hline
 \textbf{Liczba próbek} & \textbf{Wartość średnia} & \textbf{Wartość minimalna} & \textbf{Wartość maksymalna} \\\hline\hline
-12 & 2.678s & 2.654s & 2.774s \\\hline
+20 & 2.678s & 2.654s & 2.774s \\\hline
 \end{tabular}
 \end{center}
 \vspace*{-6mm}
@@ -27,7 +27,7 @@ Wartości zmierzone po ówczesnej obróbce zostały zebrane i przedstawione w Ta
 Na podstawie zmierzonych wartości oraz po dokonaniu stosownych obliczeń udało się wygenerować wykres przedstawiony na Rysunku~\ref{badania:wykres:stabilizacja_jeden}
 \input{tikz/stabilizacja_jeden}
 
-Jak wykazują wyniki przeprowadzonego eksperymentu faktycznie można pozwolić sobie na odłączenie i~ponowne podłączenie pojedynczego węzła sieci ,,w locie''. Czas potrzebny na stabilizację połączenia po jego utracie jest zdaniem autora zadowalający. Analiza uzyskanego wykresu pozwala zauważyć, że różnice pomiędzy kolejnymi iteracjami eksperymentu są bardzo małe i~wpływ na~nie może mieć zastosowana metoda pomiarowa.
+Jak wykazują wyniki przeprowadzonego eksperymentu faktycznie można pozwolić sobie na odłączenie i~ponowne podłączenie pojedynczego węzła sieci ,,w locie''. Czas potrzebny na stabilizację połączenia po jego utracie jest zdaniem autora zadowalający. Analiza uzyskanego wykresu pozwala zauważyć, że różnice pomiędzy kolejnymi iteracjami eksperymentu są stosunkowo małe i~wpływ na~nie może mieć w~większości zastosowana metoda pomiarowa. Jak widać większość wyników skupia się w~otoczeniu wartości średniej.
 
 \subsubsection{Wyspa z modułami I/O}
 Eksperyment miał na~celu sprawdzenie jak szybko po~odłączeniu i~ponownym podłączeniu wyspy z~dołączonymi kilkoma modułami wejścia/wyjścia zaczynają funkcjonować poprawnie wszystkie węzły. Zaburzoną pracę sieci przedstawiono na~Rysunku~\ref{coupler}.
@@ -39,7 +39,7 @@ Wartości zmierzone po ówczesnej obróbce zostały zebrane i przedstawione w Ta
 \begin{center}
 \begin{tabular}{| c | c | c | c |}\hline
 \textbf{Liczba próbek} & \textbf{Wartość średnia} & \textbf{Wartość minimalna} & \textbf{Wartość maksymalna} \\\hline\hline
-2 & 1.51+5*0.02 & 1.45+5*0.024 & 1.56+5*0.02 \\\hline
+7 & 1.51+5*0.02 & 1.45+5*0.024 & 1.56+5*0.02 \\\hline
 \end{tabular}
 \end{center}
 \vspace*{-6mm}
@@ -52,11 +52,12 @@ Na podstawie zmierzonych wartości oraz po dokonaniu stosownych obliczeń udało
 Jak widać zwiększenie liczby odłączanych i~podłączanych ponownie węzłów nie~wpłynęło w sposób negatywny na~możliwość dokonywania tej operacji w czasie pracy sieci. Ciekawy wydaje się równy czas wynoszący 2ms pomiędzy podłączeniem się pierwszego urządzenia z~zestawu, a~każdym kolejnym. Tak więc liczba modułów wejścia/wyjścia ma~proporcjonalnie mały wpływ na czas potrzebny do ustabilizowania się całego zdalnego zestawu.
 
 \subsubsection{Problemy}
-W~czasie XYZ przeprowadzonych testów ku~zaskoczeniu aktora wystąpiły sytuację w których sieć nie~powróciła już do~prawidłowego działania. Jest to sprzeczne z zapewnieniami twórców standardu i~dlatego wszystkie te~przypadki zostaną tu zawarte i~opisane.
+W~czasie dziesiątek przeprowadzonych w~tym badaniu testów ku~zaskoczeniu autora wystąpiły sytuację w~których sieć nie~powróciła już samoczynnie do~prawidłowego działania. Jest to sprzeczne z zapewnieniami twórców standardu i~dlatego wszystkie te~przypadki zostaną tu zawarte i~opisane.
 
 \begin{enumerate}
 \item Device 2 (EtherCAT (v2.10 only)': 'INIT to PREOP' failed! Error: 'read slave count'. Communication Error '0x707 (1799)'. \\[1mm]
 ADS, problem ze stanem urządzenia
+Okazało się, ze problem ten można rozwiązać w~miarę prosto bez potrzeby restartowania całego stanowiska poprzez wymuszenie zmiany stanu węzła nadrzędnego z~INIT na OP.
 \end{enumerate}
 
 \subsection{Badania niewykonalne}
