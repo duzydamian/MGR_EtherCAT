@@ -114,5 +114,19 @@ Aktualnie w~skład ETG wchodzi ponad 2480 firm (dane na dzień 1~września~2013)
 
 Jak widać na powyższej liście w~skład organizacji wchodzą firmy z~bardzo wielu branż, a~nawet ośrodki naukowe. Autor pracy wybrał duże i~dobrze znane sobie firmy, aby pokazać jak wiele firm interesuje~się rozwojem przemysłowych protokołów komunikacyjnych.
 
+\subsubsection{coś}
+Są cztery stany, które powinny być wspierane przez węzeł podrzędny oraz jeden stan opcjonalny:
+\begin{itemize}
+\item Init
+\item Pre--Operational
+\item Safe--Operational
+\item Operational
+\item Bootstrap (opcjonalny)
+\end{itemize}
+
+Wszystkie stany oraz dopuszczalne przejścia między nimi zostałe przedstawione na Rysunku~\ref{etherCAT:state_machine}
+
+Warto zauważyć, że nie wszystkie teoretyczne przejścia są dozwolone w praktyce. Na przykład, aby~przejść ze stanu Init do stanu Operational należy wykonać następującą sekwencję:
+Init $\Rightarrow$ Pre-Operational $\Rightarrow$ Save-Operational $\Rightarrow$ Operational.
 
 \input{tikz/state_machine} %
