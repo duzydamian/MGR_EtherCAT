@@ -17,7 +17,6 @@
  	\draw [decorate,decoration={brace,amplitude=10pt}, line width=1pt] (fit.south east) -- (fit.south west);
  		
 	\node [left=of plc] (laptop) {\includegraphics[width=3cm]{images/laptop}};
-	\node[mynode, right=of plc] (zasilacz) {Zasilacz};
 	\node[below=2cm of plc] (dummy) {}; 
 	\node[mynode, left=of dummy] (io) {Zestaw  \\modułów~IO}; 
  	\node[mynodemini, left=of io] (io2) {EL1004};
@@ -40,10 +39,6 @@
 	\draw[myline,black,dotted] (fit.south) ++(0, -0.4) -- (plc.north);	
 	\draw[myline,black,dotted] (fit2.east) ++(0.4, 0) -- (io.west);
 	\draw[myline,blue] (laptop.east) -- ++(-1, 0) -- (plc.west);
-	
-	\draw[myline,black] (zasilacz.west) -- (plc.east);
-	\draw[myline,black] (zasilacz.south) -- (io.north);
-	\draw[myline,black] (zasilacz.south) -- (naped.north);	
 	
 	\draw[myline,purple] (plc.south) -- (io.north);	
 	\draw[myline,purple] (io.south) -- (ek.north);
@@ -69,6 +64,6 @@
     \draw [green, line width=6] (6,-4) -- (6.25,-4); \draw [orange, line width=6] (6.25,-4) -- (6.5,-4); 
     \node [text width=2cm] at (7.75,-4.25) {Sterowanie silnikiem};    
 \end{tikzpicture} 
-\caption{Schemat stanowiska typu CX}
+\caption{Schemat stanowiska typu CX.}
 \label{stanowisko:cx}
 \end{figure}

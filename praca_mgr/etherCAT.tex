@@ -6,30 +6,30 @@
 %itd.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-EtherCAT jest nowoczesnym protokołem sieciowym przeznaczonym do stosowania w~aplikacjach przemysłowych, szczególnie takich, które wymagają działania całego systemu w~czasie rzeczywistym. Nazwa standardu jest skrótem od hasła: „Ethernet for Control Automation Technology”. W~zakresie warstwy fizycznej bazuje na~Ethernecie. Dodatkowo zaimplementowano w!nim mechanizmy w zakresie organizacji transmisji danych pozwalające na!ominięcie głównych ograniczeń sieci Ethernet. Dzięki temu EtherCAT jest obecnie jednym z~popularniejszych oraz szybciej rozwijających się protokołów komunikacyjnych w przemyśle.
+EtherCAT jest nowoczesnym protokołem sieciowym przeznaczonym do stosowania w~aplikacjach przemysłowych, szczególnie takich, które wymagają działania całego systemu w~czasie rzeczywistym. Nazwa standardu jest skrótem od hasła: „Ethernet for Control Automation Technology”. W~zakresie warstwy fizycznej bazuje na~Ethernecie. Dodatkowo zaimplementowano w~nim mechanizmy w zakresie organizacji transmisji danych pozwalające na~pominięcie głównych ograniczeń sieci Ethernet. Dzięki temu EtherCAT jest obecnie jednym z~popularniejszych oraz szybciej rozwijających się protokołów komunikacyjnych w przemyśle.
 
 \subsubsection{Przetwarzanie ,,w locie''}
-W dużej części aplikacji przemysłowych dane mają mały rozmiar rzędu pojedynczych bajtów. Wykorzystując standardowy Ethernet i~jego ramki stosunek danych użytecznych do narzutu protokołu jest bardzo nie korzystny. 
-Minimalny rozmiar ramka ethernetowej wynosi 8~bajtów. Załóżmy przykładowo, że~urządzenie okresowo przesyła 4 bajty informacji, na przykład informację o~swoich aktualnych ustawieniach, a w odpowiedzi otrzymuje również 4~bajty danych, na~przykład zestaw komend i~informacji kontrolnych, przy założeniu nieskończenie krótkiego czas odpowiedzi węzła, użyteczna przepustowość wyniesie zaledwie $\frac{4}{84}\approx4,8\%$. Jeżeli średni czas odpowiedzi będzie dłuższy, na przykład wyniesie 10 $\mu s$, to użyteczna przepustowość spadnie do zaledwie $1,9\%$. Przykład takiej transmisji został przedstawiony na~Rysunku~\ref{etherCAT:ethernet}
+W dużej części aplikacji przemysłowych dane mają mały rozmiar rzędu pojedynczych bajtów. Wykorzystując standardowy Ethernet i~jego ramki stosunek danych użytecznych do narzutu protokołu jest bardzo niekorzystny. 
+Minimalny rozmiar ramki ethernetowej wynosi 8~bajtów. Zakładając, że~urządzenie okresowo przesyła 4 bajty informacji, na przykład informację o~swoich aktualnych ustawieniach, a w odpowiedzi otrzymuje również 4~bajty danych, na~przykład zestaw komend i~informacji kontrolnych, przy założeniu nieskończenie krótkiego czas odpowiedzi węzła, użyteczna przepustowość wyniesie zaledwie $\frac{4}{84}\approx4,8\%$. Jeżeli średni czas odpowiedzi będzie dłuższy, na przykład wyniesie 10 $\mu s$, to użyteczna przepustowość spadnie do zaledwie $1,9\%$. Przykład takiej transmisji został przedstawiony na~Rysunku~\ref{etherCAT:ethernet}.
 \input{tikz/ethernet}
 
-W~celu zapewnienie determinizmu oraz zwiększenia przepustowości stosuje się w~standardach przemysłowych różne rozwiązania. Jednym z przykładów jest zastępowanie procedury dostępu do medium transmisyjnego z~wykorzystaniem wielodostępu z~wykrywaniem nośnej oraz detekcją kolizji (ang. \textit{Carrier Sense Multiple Access/with Collision Detection} w~skrócie \textit{CSMA/CD}) na m.in mechanizm odpytywania.
-Nie jest istotnym jaką metodę dokładnie zastosujemy dopóki ramki są rozsyłane pojedynczo z oraz do urządzeń. Działania te nie wyeliminuje problemu marnowania przepustowości kanału transmisyjnego i jego wykorzystania. Dlatego ten właśnie element transmisji danych z wykorzystaniem Ethernetu został potraktowany bardzo szczególnie przy projektowaniu standardu EtherCAT.
+W~celu zapewnienia determinizmu oraz zwiększenia przepustowości stosuje się w~standardach przemysłowych różne rozwiązania. Jednym z przykładów jest zastępowanie procedury dostępu do medium transmisyjnego z~wykorzystaniem wielodostępu z~wykrywaniem nośnej oraz detekcją kolizji (ang. \textit{Carrier Sense Multiple Access/with Collision Detection} w~skrócie \textit{CSMA/CD}) na m.in mechanizm odpytywania.
+Nie jest istotnym jaką metodę dokładnie zastosujemy dopóki ramki są rozsyłane pojedynczo z oraz do urządzeń. Działania te nie wyeliminują problemu marnowania przepustowości kanału transmisyjnego i jego wykorzystania. Dlatego ten właśnie element transmisji danych z wykorzystaniem Ethernetu został potraktowany bardzo szczególnie przy projektowaniu standardu EtherCAT.
 
-Zatem zamiast standardowej dla Ethernetu transmisji pakietowej z~koniecznością odtwarzania pofragmentowanych danych zastosowano mechanizm wykorzystujący telegramy zbudowane z datagramów, które są szczegółowe opisane w podrozdziale~\ref{subsec:telegram} .
-Rozwiązanie to~polega na tym, że w pojedynczej ramce są zawarte informacje przeznaczone dla wielu różnych węzłów podrzędnych. Transmisja takiej ramka inicjowana jest przez węzeł nadrzędny, a~następnie przechodzi ona przez kolejne węzły podrzędne sieci, które przetwarzają ją w locie. W takim podejściu twórcy standardu EtherCAT potraktowali ramkę ethernetową jak pewnego rodzaju pamięć RAM, do której zapisywane i z~której odczytywane są dowolne informacje w~oparciu o~adresy lokalizujące pożądane dane w~tej pamięci.
-Przetwarzanie to polega, że w~momencie odebrania ramki sprawdzane jest czy znajduje się w~niej informacja przeznaczona dla tego właśnie węzła. Jeżeli zostanie wykryte, że~tak~jest  to węzeł odczytuje odpowiedni fragment danych oraz uzupełnia ewentualnie ją o~informacje potwierdzające odbiór lub~inne wymagane przez węzeł nadrzędny. Następnie ramka jest przesyłana do kolejnego w topologi węzła lub zawraca jeśli dany węzeł jest ostatnim w~sieci. 
+Zatem zamiast standardowej dla Ethernetu transmisji pakietowej z~koniecznością odtwarzania pofragmentowanych danych zastosowano mechanizm wykorzystujący telegramy zbudowane z datagramów, które są szczegółowo opisane w podrozdziale~\ref{subsec:telegram} .
+Rozwiązanie to~polega na tym, że w pojedynczej ramce są zawarte informacje przeznaczone dla wielu różnych węzłów podrzędnych. Transmisja takiej ramki inicjowana jest przez węzeł nadrzędny, a~następnie przechodzi ona przez kolejne węzły podrzędne sieci, które przetwarzają ją w locie. W takim podejściu twórcy standardu EtherCAT potraktowali ramkę ethernetową jak pewnego rodzaju pamięć RAM, do której zapisywane i z~której odczytywane są dowolne informacje w~oparciu o~adresy lokalizujące poszukiwane dane w~tej pamięci.
+Przetwarzanie to polega na tym, że w~momencie odebrania ramki sprawdzane jest czy znajduje się w~niej informacja przeznaczona dla tego właśnie węzła. Jeżeli zostanie wykryte, że~tak~jest to węzeł odczytuje odpowiedni fragment danych oraz uzupełnia je ewentualnie o~informacje potwierdzające odbiór lub~inne wymagane przez węzeł nadrzędny. Następnie ramka jest przesyłana do kolejnego w topologi węzła lub zawracana, jeśli dany węzeł jest ostatnim w~sieci. 
 
-Dzięki takiemu podejściu protokół charakteryzuje się bardzo dużym wykorzystaniem kanału transmisyjnego w porównaniu do odpytywania w przedziale czasowym (ang. \textit{Pooling Timeslicing}) oraz nadawania Master/Slave (ang. \textit{Broadcast Master/Slave}) znanych ze~zwykłego Ethernetu co pokazano na Rysunku~\ref{etherCAT:wykorzystanie}
+Dzięki takiemu podejściu protokół charakteryzuje się bardzo dużym wykorzystaniem kanału transmisyjnego w porównaniu do odpytywania w przedziale czasowym (ang. \textit{Pooling Timeslicing}) oraz nadawania Master/Slave (ang. \textit{Broadcast Master/Slave}) znanych ze~zwykłego Ethernetu co pokazano na Rysunku~\ref{etherCAT:wykorzystanie}.
 \input{tikz/wykorzystanie}
 
-Wydajność tego rozwiązania jest dosyć duża, choć zależy od~liczby elementów podłączonych do sieci. W~praktyce czas opóźnienia nie wzrasta powyżej 1~ms i~zazwyczaj jest znacznie (kilku- lub kilkunastokrotnie) krótszy. Czas synchronizacji nie przekracza 1~$\mu s$. Niniejsza praca miała na celu przebadanie i~sprawdzenie czy faktycznie protokół działa tak dobrze jak zapewniają jego twórcy.
+Wydajność tego rozwiązania jest dosyć duża, choć zależy od~liczby elementów podłączonych do sieci. W~praktyce czas opóźnienia nie wzrasta powyżej 1~ms i~zazwyczaj jest znacznie (kilku- lub kilkunastokrotnie) krótszy. Czas synchronizacji nie przekracza 1~$\mu s$. Niniejsza praca miała na celu przebadanie i~sprawdzenie, czy faktycznie protokół działa tak dobrze jak zapewniają jego twórcy.
 
 Bardzo ważnym elementem węzła sieci jest tak zwana jednostka zarządzania pamięcią FMMU (ang. \textit{fieldbus memory management unit}). Odpowiada ona między innymi za uniezależnienie szybkości transferu danych od wydajności i~mocy obliczeniowej jednostki lokalnej CPU, kontrolę ruchu bez opóźnień oraz za~odwzorowanie adresu logicznego na~adres fizyczny.
 
 \subsubsection{Telegram EtherCAT}
 \label{subsec:telegram}
-Jak pokazano na Rysunku~\ref{etherCAT:ramka}, telegram EtherCAT jest upakowany w  ramce Ethernet i  zawiera jeden lub więcej datagramów EtherCAT dostarczanych do urządzeń podrzędnych. Dane pomiędzy węzłami są~przekazywane jako obiekty danych procesowym (ang. \textit{process data objects}, w skrócie \textit{PDO}). Każdy obiekt tego typu zawiera adres konkretnego węzła lub kilku węzłów typu slave.
+Jak pokazano na Rysunku~\ref{etherCAT:ramka}, telegram EtherCAT jest upakowany w  ramce Ethernet i  zawiera jeden lub więcej datagramów EtherCAT dostarczanych do urządzeń podrzędnych. Dane pomiędzy węzłami są~przekazywane jako obiekty danych procesowych (ang. \textit{process data objects}, w skrócie \textit{PDO}). Każdy obiekt tego typu zawiera adres konkretnego węzła lub kilku węzłów typu slave.
 \input{tikz/ramka} %
 
 Dane w systemach opartych na sieciach EtherCAT mogą być przesyłane między różnymi sieciami poprzez protokół UDP, a nie tylko w ramach jednej podsieci. Tam gdzie konieczny jest routing pakietów w oparciu o~protokół IP, ramki EtherCAT są przesyłane w~ramach pakietów protokołu UDP lub TCP (Rysunki~\ref{etherCAT:ramkaUDP}~oraz~\ref{etherCAT:ramkaTCP}). Pakiety tego typu mogą zostać uformowane i nadane z wykorzystaniem zwykłych urządzeń ethernetowych, dzięki czemu możliwe jest sterowanie aparaturą polową EtherCAT z~poziomu klasycznego komputera~PC wyposażonego w~kartę sieciową.
@@ -62,7 +62,7 @@ Nagłówek datagramu przedstawiony na Rysunku~\ref{etherCAT:datagram_header}. Ja
 Oprócz części zawierającej dane pogrupowane w datagramy telegram EtherCAT zawiera również nagłówek, którego budowę  przedstawiono na Rysunku~\ref{etherCAT:header}. Pierwsze pole określa długość wszystkich datagramów w~danym telegramie, która zależy od ilości węzłów oraz długości wiadomości. Drugie pole jest bitem zarezerwowanym, a~jego wartość powinna wynosić 0. Ostatnie pole określa typ protokołu EtherCAT. 
 \input{tikz/header} %
 \clearpage
-Standard przewiduje 3~dopuszczalne typy:
+Standard przewiduje 3~dopuszczalne typy \cite{kurs1}:
 \begin{itemize}
 \item Typ 1: Protokół EtherCAT dla urządzeń -- Wymiana Datagramów (ang. \textit{EtherCAT Device Protocol}, \textit{EtherCAT Datagram(s)}),
 \item Typ 4: EAP Wymiana danych procesowych -- wymiany cykliczne (ang. \textit{EtherCAT Automation Protocol}, \textit{Process data communications}),
@@ -71,7 +71,7 @@ Standard przewiduje 3~dopuszczalne typy:
 Typ ten definiuje typ wiadomości, co~pozwala na prawidłową interpretację znajdujących się dalej danych. Zależnie od~typu różni się również sposób wymiany komunikatów np. cykliczne i~acykliczne.
 
 \subsubsection{Topologia}
-Kolejne ramki nadawane są przez urządzenie pełniące rolę kontrolera i~przesyłane do najbliższego urządzenia podrzędnego. Urządzenie to ma przydzielony adres, który jednoznacznie identyfikuje datagram, dzięki czemu może odczytać przeznaczone dla siebie dane. Niezależnie od tego, czy urządzenie coś zapisało, czy też tylko odczytywało fragment ramki, przesyła ją dalej do kolejnego z~urządzeń zgodnie z tym co pokazano na Rysunku~\ref{etherCAT:topologia}. Duża szybkość tej metody transmisji wynika m.in. z tego, że nie ma potrzeby dekodowania całej ramki danych. Pozwala to błyskawicznie przekazywać ramki pomiędzy urządzeniami.
+Kolejne ramki nadawane są przez urządzenie pełniące rolę kontrolera i~przesyłane do najbliższego urządzenia podrzędnego. Urządzenie to ma przydzielony adres, który jednoznacznie identyfikuje datagram, dzięki czemu może odczytać przeznaczone dla siebie dane. Niezależnie od tego, czy urządzenie coś zapisało, czy też tylko odczytywało fragment ramki, przesyła ją dalej do kolejnego z~urządzeń zgodnie z tym co pokazano na Rysunku~\ref{etherCAT:topologia}. Duża szybkość tej metody transmisji wynika m.in. z~tego, że nie ma potrzeby dekodowania całej ramki danych. Pozwala to przekazywać ramki pomiędzy urządzeniami ze znacznie większą prędkością.
 
 \input{tikz/topologia} %
 
@@ -81,10 +81,10 @@ Dosyć powszechnie spotykane są urządzenia z~dwoma lub trzema portami, a~te wy
 \subsubsection{Warstwa fizyczna}
 Jako medium komunikacyjne w~sieciach EtherCAT można wykorzystać kable miedziane (100Base-TX), światłowody (100Base-FX) lub łącze E-bus w~technologii LVDS. Te~ostatnie wprowadzono ze~względu na~to, że~transmisja w~sieciach EtherCAT często jest realizowana na~krótkich dystansach. E-bus sprawdza się w~realizacji łączności na~odległość do~ok. 10 m. Kable miedziane sprawdzają~się na~większych odległościach poniżej 100 metrów, natomiast użyteczna długość światłowodów może dochodzić do 20 kilometrów. Warunkiem wykorzystania światłowodów jest obsługa pełnego dupleksu. Wymóg ten wynika z~faktu, że~transmisja danych jest tak szybka iż z~reguły ramka odpowiedzi dociera do urządzenia nadrzędnego zanim całe zapytanie zostanie wysłane. Z~tego powodu, aby przesył danych pomiędzy urządzeniami nie był zakłócony musi istnieć możliwość jednoczesnego przekazywania informacji w dwóch kierunkach bez spadku transferu.
 
-W~obrębie jednej sieci EtherCAT można dowolnie zmieniać medium transmisyjne zależnie od~potrzeb. Na przykład wewnatrz szafy sterowniczej gdzie występują niewielkie odległości miedzy węzłami można zastosować z powodzeniem łącze E-bus, natomiast do połączenia szafy z modułami znajdujacymi się przy maszynach wykonawczych możemy zastosować kabel miedzieny lub światłowód w~przypadku zdecydowanie większych odległości oraz prowadzenia przewodów w~otoczeniu występowania zaburzeń elektromagnetycznych. Niestety operacja takiego łączenia wymaga zastosowania dotatkowych modułów, np. aby połączyć skrętkę miedzianą oraz światłowód należy zastosować moduł sprzęgający EK1501 oraz terminal przyłączy EK1521 (oba produkcji firmy Beckhoff).
+W~obrębie jednej sieci EtherCAT można dowolnie zmieniać medium transmisyjne zależnie od~potrzeb. Na przykład wewnątrz szafy sterowniczej gdzie występują niewielkie odległości miedzy węzłami można zastosować z powodzeniem łącze E-bus, natomiast do połączenia szafy z modułami znajdującymi się przy maszynach wykonawczych można zastosować kabel miedzieny lub światłowód w~przypadku zdecydowanie większych odległości oraz prowadzenia przewodów w~otoczeniu występowania zaburzeń elektromagnetycznych. Niestety operacja takiego łączenia wymaga zastosowania dotatkowych modułów, np. aby połączyć skrętkę miedzianą oraz światłowód należy zastosować moduł sprzęgający EK1501 oraz terminal przyłączy EK1521 (oba produkcji firmy Beckhoff).
 
 \subsubsection{Synchronizacja}
-Idealna synchronizacja elementów składowych systemu jest bardzo istotna, a szczególnie w przypadku równoległej realizacji zależnych od siebie zadań. Specjalnie opracowana dla protokołu EtherCAT technika zegara rozproszonego pozwala zsynchronizować ze sobą urządzenia z dewiacją mniejszą niż 1~$\mu s$. 
+Dobra synchronizacja elementów składowych systemu jest bardzo istotna, a szczególnie w przypadku równoległej realizacji zależnych od siebie zadań. Specjalnie opracowana dla protokołu EtherCAT technika zegara rozproszonego pozwala zsynchronizować ze sobą urządzenia z dokładnością większą niż 1~$\mu s$. 
 \input{tikz/synchronizacja} %
 
 Podejście to polega na~wykorzystaniu znaczników czasu zapisywanych przez każdy węzeł podrzędny. Na~ich podstawie węzeł~master oblicza opóźnienia propagacji sygnałów dla każdego węzła slave. Zegar w~każdym węźle podrzędnym jest regulowany z~wykorzystaniem wyliczonych opóźnień. Po zainicjowaniu połączenia w~celu utrzymania synchronizacji zegarów muszą one przekazywać miedzy sobą regularnie informację, by uniknąć powstania ewentualnych różnic. Rozwiązanie to jest zgodne z~protokołem precyzyjnej synchronizacji zegara dla sieciowych systemów kontrolno-pomiarowych lub inaczej protokół czasu precyzyjnego (ang. \textit{Precision Time Protocol}, w skrócie \textit{PTP}) IEEE~1588 opisanym w~\cite{ieee}.
@@ -100,7 +100,7 @@ Jeżeli węzeł potrzebuje dodatkowej mocy obliczeniowej lub wymaga realizacji j
 Kolejnym możliwym do~wykorzystania rozwiązaniem jest zastosowanie układu FPGA z~wbudowanym procesorem jak na~Rysunku~\ref{etherCAT:FPGA}. Wspólną cechą przedstawionych dotychczas możliwych konstrukcji jest fakt, że~wymagają z~reguły zastosowania dwóch układów. Wynika z tego niestety, ze zajmują więcej miejsca oraz zwiększają koszty urządzenia docelowego. Alternatywą pozwalającą wyeliminować oba opisane problemy jest zastosowanie elementów jednoukładowych. Ich wykorzystanie pozwala zredukować całkowity koszt konstrukcji nawet o 30\%.
 \input{tikz/FPGA} %
 
-Jednym z~przykładów opisanego jednoukładowego rozwiązania~są mikrokontrolery z~rdzeniem ARM~Cortex-A8 z~rodziny Sitara AM335x produkowanymi przez amerykańską firmę Texas Instruments (Rysunek~\ref{etherCAT:Sitara}). Kluczowym elementem takiego scalaka jest programowalna jednostka czasu rzeczywistego (ang. \textit{programmable real-time unit}, w~skrócie \textit{PRU}). 
+Jednym z~przykładów opisanego jednoukładowego rozwiązania~są mikrokontrolery z~rdzeniem ARM~Cortex-A8 z~rodziny Sitara AM335x produkowanymi przez amerykańską firmę Texas Instruments (Rysunek~\ref{etherCAT:Sitara}). Kluczowym elementem takiego układu scalonego jest programowalna jednostka czasu rzeczywistego (ang. \textit{programmable real-time unit}, w~skrócie \textit{PRU}). 
 \input{tikz/Sitara} %
 \clearpage
 
@@ -112,9 +112,13 @@ Standard EtherCAT został opracowany w~2003 roku przez Beckhoff Automation, niem
 
 Aktualnie w~skład ETG wchodzi ponad 2480 firm (dane na dzień 1~września~2013). Najważniejszym członkiem organizacji jest oczywiście firma BECKHOFF Automation. Pozostałe duże i~znane firmy wchodzące w~jej skład~to między innymi: ABB, Brother Industries, BMW Group, Częstochowa University of Technology, Epson, FANUC, Festo, GE Intelligent Platforms, Hitachi, Hochschule Ingolstadt, Mitsubishi, Microchip Technology, Mentor Graphics, Nikon, National Instruments, OLYMPUS, Panasonic, Rzeszów University of Technology, Red Bull Technology, Samsung Electronics, TRW Automotive, Volvo Group, Volkswagen oraz Xilinx.
 
-Jak widać na powyższej liście w~skład organizacji wchodzą firmy z~bardzo wielu branż, a~nawet ośrodki naukowe. Autor pracy wybrał duże i~dobrze znane sobie firmy, aby pokazać jak wiele firm interesuje~się rozwojem przemysłowych protokołów komunikacyjnych.
+Na~powyższej liście można zaobserwować, że~w~skład organizacji wchodzą firmy z~bardzo wielu branż, a~nawet ośrodki naukowe. Autor pracy wybrał duże i~dobrze znane sobie firmy, aby pokazać jak wiele firm interesuje~się rozwojem przemysłowych protokołów komunikacyjnych.
 
-\subsubsection{coś}
+\subsubsection{Maszyna stanu EtherCAT}
+Maszyna stanów EtherCAT (ang. \textit{EtherCAT State Machine}, w skrócie \textit{ESM}) jest rozwiązaniem odpowiedzialnym za koordynowanie oprogramowania węzłów nadrzędnych i~podrzędnych podczas ich uruchamiania oraz w~czasie ich normalnej pracy.
+Zmiana stanów jest zazwyczaj zapoczątkowana poprzez żądanie wysłane przez węzeł master. Zmiana taka jest potwierdzana przez lokalną aplikację po wykonaniu powiązanych z~tym operacji. Dobrowolne zmiany stanów dowolnego węzła również są możliwe.
+Proste urządzenia bez dodatkowej logiki np. w~postaci mikrokontrolera mogą być skonfigurowane do~wykorzystywania emulowanej maszyny stanów. Takie urządzenie po~prostu przyjmuje i~akceptuje dowolne zmiany stanów w~sposób automatyczny.
+
 Są cztery stany, które powinny być wspierane przez węzeł podrzędny oraz jeden stan opcjonalny:
 \begin{itemize}
 \item Init
@@ -123,10 +127,57 @@ Są cztery stany, które powinny być wspierane przez węzeł podrzędny oraz je
 \item Operational
 \item Bootstrap (opcjonalny)
 \end{itemize}
-
-Wszystkie stany oraz dopuszczalne przejścia między nimi zostałe przedstawione na Rysunku~\ref{etherCAT:state_machine}
-
-Warto zauważyć, że nie wszystkie teoretyczne przejścia są dozwolone w praktyce. Na przykład, aby~przejść ze stanu Init do stanu Operational należy wykonać następującą sekwencję:
-Init $\Rightarrow$ Pre-Operational $\Rightarrow$ Save-Operational $\Rightarrow$ Operational.
-
+Wszystkie stany oraz dopuszczalne przejścia między nimi zostały przedstawione na~Rysunku~\ref{etherCAT:state_machine}.
 \input{tikz/state_machine} %
+
+Warto zauważyć, że nie wszystkie teoretyczne przejścia są dozwolone w praktyce. Na przykład, aby~przejść ze stanu Init do stanu Operational należy wykonać następującą sekwencję: Init $\Rightarrow$ Pre-Operational $\Rightarrow$ Save-Operational $\Rightarrow$ Operational.
+Każdy stan definiuje wymagane serwisy. Przed zmianą stanu węzeł potwierdza czy wszystkie serwisy wymagane przez żądany stan zostały odpowiednio dostarczone lub zatrzymane.
+
+\begin{table}[!htb]
+\begin{center}
+\begin{tabular}{| p{0.25\textwidth} | p{0.75\textwidth} |}\hline
+\textbf{Stan/ Zmiana stanu} & \textbf{Serwisy}\\\hline\hline
+INIT & \begin{itemize} \setlength{\itemsep}{0pt} \setlength{\parskip}{0pt} \setlength{\parsep}{0pt} \setlength{\topsep}{0pt}
+\item Brak komunikacji na warstwie aplikacji
+\item Master uzyskał dostęp do rejestrów informacyjnych warstwy łącza danych
+\end{itemize} \\\hline
+INIT $\Rightarrow$ PREOP & \begin{itemize} \setlength{\itemsep}{0pt} \setlength{\parskip}{0pt} \setlength{\parsep}{0pt} \setlength{\topsep}{0pt}
+\item Master konfiguruje rejestry adresowe warstwy łącza danych oraz kanały SyncManager dla komunikacji asynchronicznej
+\item Master inicjalizuje synchronizacje zegarów rozproszonych
+\item Master żąda stanu 'Pre-Operational'
+\item oczekiwanie na potwierdzenie statusu warstwy aplikacji
+\end{itemize}\\\hline
+PREOP & \begin{itemize} \setlength{\itemsep}{0pt} \setlength{\parskip}{0pt} \setlength{\parsep}{0pt} \setlength{\topsep}{0pt}
+\item Asynchroniczna wymiana komunikatów w warstwie aplikacji
+\item Brak wymiany danych procesowych
+\end{itemize}\\\hline
+PREOP $\Rightarrow$ SAFEOP & \begin{itemize} \setlength{\itemsep}{0pt} \setlength{\parskip}{0pt} \setlength{\parsep}{0pt} \setlength{\topsep}{0pt}
+\item Master konfiguruje parametry wykorzystując komunikację asynchroniczną
+\item Master konfiguruje rejestry warstwy łącza danych
+\item Master żąda stanu 'Safe-Operational'
+\item oczekiwanie na potwierdzenie statusu warstwy aplikacji
+\end{itemize}\\\hline
+SAFEOP & \begin{itemize}
+\item Asynchroniczna wymiana komunikatów w warstwie aplikacji
+\item Wymiana danych procesowych, ale tylko zmienne wejściowe są przetwarzane, wyjściowe pozostają w stanie 'Safe'
+\end{itemize}\\\hline
+SAFEOP $\Rightarrow$ OP & \begin{itemize} \setlength{\itemsep}{0pt} \setlength{\parskip}{0pt} \setlength{\parsep}{0pt} \setlength{\topsep}{0pt}
+\item Master wysyła poprawne dane wyjściowe
+\item Master żąda stanu ‘Operational’
+\item oczekiwanie na potwierdzenie statusu warstwy aplikacji
+\end{itemize}\\\hline
+OP & \begin{itemize} \setlength{\itemsep}{0pt} \setlength{\parskip}{0pt} \setlength{\parsep}{0pt} \setlength{\topsep}{0pt}
+\item Dane wejściowe oraz wyjściowe są poprawne
+\end{itemize}\\\hline
+BOOT & Opcjonalne lecz zalecane jeśli atuallizacje oprogramowania są konieczne\begin{itemize} \setlength{\itemsep}{0pt} \setlength{\parskip}{0pt} \setlength{\parsep}{0pt} \setlength{\topsep}{0pt}
+\item Zmiany stanów tylko z/do INIT
+\item Brak wymiany danych procesowych
+\item Asynchroniczna wymiana komunikatów w warstwie aplikacji
+\item Dopuszczalne specjalne konfiguracje skrzynki odbiorczej
+\end{itemize}\\\hline
+\end{tabular}
+\end{center}
+\vspace*{-6mm}
+  \caption{Serwisy maszyny stanów}
+	\label{etherCAT:state_machine_services}
+\end{table}

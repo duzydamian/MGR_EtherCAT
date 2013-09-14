@@ -1,7 +1,8 @@
 \begin{figure}[htbp]
 \centering
-\begin{tikzpicture}
+\begin{tikzpicture}[scale=1.2]
 \begin{axis}[
+		x=3cm,
 		ybar stacked, bar width=\baselineskip,
 %		grid=major,
 		ymin=0,ymax=110, 
@@ -9,7 +10,7 @@
 		yticklabels={0, 20, 40, 60, 80, 100},
 		xtick=data,
 		xticklabel style={text centered, text width=2.5cm},
-	    xticklabels={Odpytywanie w~przedziale czasowym, Nadawanie Master/Slave, EtherCAT},
+	    xticklabels={Odpytywanie w~przedziale czasowym,Nadawanie Master/Slave,EtherCAT},
 	    enlarge x limits=0.2,
 		every node near coord/.style={font=\tiny},
 	    ]  
@@ -29,6 +30,6 @@
 \end{axis}
 
 \end{tikzpicture}
-\caption{Współczynnik wykorzystania kanału transmisyjnego \\ w Ethernecie (dwa pierwsze wykresy od lewej strony) i EtherCAT}
+\caption{Współczynnik wykorzystania kanału transmisyjnego \\ w Ethernecie (dwa pierwsze wykresy od lewej strony) i EtherCAT.}
 \label{etherCAT:wykorzystanie}
 \end{figure}
