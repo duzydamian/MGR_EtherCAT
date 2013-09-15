@@ -1,5 +1,5 @@
 \section{Wstęp}
-Tematem projektu, którego dotyczy ta praca jest: „Projekt i~realizacja stanowiska laboratoryjnego do badania zależności czasowych w~sieci EtherCAT". Zagadnienia związane z~tworzeniem oprogramowania dla sterowników przemysłowych są dla autora niezwykle interesujące, a zrealizowany projekt miał na~celu dalsze pogłębienie jego wiedzy z~tego zakresu. Wyboru tego konkretnego tematu autor dokonał, ponieważ protokół EtherCAT jest jeszcze nowością i~według wielu źródeł stanowi przyszłość branży informatyki przemysłowej \cite{art1_etherCAT, art2_etherCAT}, a~praca nad tym tematem wydaje się być pomocna i~wartościowa w~przyszłej pracy zawodowej lub na~ewentualnym dalszym etapie kształcenia.
+Tematem, którego dotyczy ta praca jest: „Projekt i~realizacja stanowiska laboratoryjnego do badania zależności czasowych w~sieci EtherCAT". Zagadnienia związane z~tworzeniem oprogramowania dla sterowników przemysłowych są dla autora niezwykle interesujące, a zrealizowany projekt miał na~celu dalsze pogłębienie jego wiedzy z~tego zakresu. Wyboru tego konkretnego tematu autor dokonał, ponieważ protokół EtherCAT jest jeszcze nowością i~według wielu źródeł stanowi przyszłość branży informatyki przemysłowej \cite{art1_etherCAT, art2_etherCAT}, a~praca nad tym tematem wydaje się być pomocna i~wartościowa w~przyszłej pracy zawodowej lub na~ewentualnym dalszym etapie kształcenia.
 
 \subsection{Geneza}
 Informatyka przemysłowa to dziedzina wiedzy z~pogranicza nauk informatycznych oraz szeroko pojętych nauk o~technologiach przemysłowych łącząca te~dwa zakresy wiedzy. Informatyka przemysłowa to~dział, który jest niezwykle pomocny, zwłaszcza przy analizach danych, ale~również podczas tworzenia funkcjonalnych i~wydajnych maszyn dla nowoczesnych gałęzi gospodarki. Specjaliści z~zakresu informatyki przemysłowej zajmują się takimi zagadnieniami jak monitorowanie produkcji przemysłowej czy też analizowaniem wybranych danych, które później służą do~porównań. Niezwykle ważne jest wykorzystanie tych danych, które dostarczą istotnych informacji dla każdego przemysłu, a~także sterowanie produkcji przemysłowej, która pomaga w~dynamicznym rozwoju każdej gałęzi w~gospodarce. 
@@ -7,8 +7,10 @@ Przemysł to~szczególna gałąź gospodarki, która aby się rozwijać potrzebu
 
 Systemy komputerowe realizują bardzo odpowiedzialne zadania, a~współczesna technologia stawia coraz poważniejsze wymagania związane przede wszystkim z~gwarantowanym i~nieprzekraczalnym czasem realizacji pojedynczego cyklu sterowania bądź regulacji, co wymaga wprowadzenia rozwiązań gwarantujących determinizm czasowy. Determinizm czasowy oznacza, że wyniki działania systemu komputerowego pojawiają się w~określonym i~skończonym czasie.
 
+\subsection{Przemysłowe systemy czasu rzeczywitego}
 System czasu rzeczywistego (ang. \textit{Real-Time System}, w~skrócie \textit{RTS}) według jednej z~definicji jest to~system komputerowy, w~którym obliczenia są prowadzone równolegle z~przebiegiem zewnętrznego procesu w~otoczeniu systemu (w~sterowanym obiekcie). Mają one na celu nadzorowanie, sterowanie oraz terminowe reagowanie na~zdarzenia zachodzące w~tym procesie. Uproszczony schemat działania przedstawiono na~Rysunku~\ref{wstep:rts}.
 \input{tikz/rts} %
+\vspace{-3mm}
 
 System czasu rzeczywistego jest takim systemem, który do poprawnego działania musi spełniać następujące warunki:
 \begin{enumerate}
@@ -16,22 +18,9 @@ System czasu rzeczywistego jest takim systemem, który do poprawnego działania 
 \item Warunki czasowe -- odpowiedź systemu musi nadejść we właściwym czasie (przed przekroczeniem czasu granicznego dla danego systemu).
 \end{enumerate}
 
-Dla określenia podziału systemów czasu rzeczywistego przydatne jest pojęcie funkcji zysku. Jest to funkcja zależna głównie od czasu i~dokonuje odwzorowania czasu wykonania zadania na korzyść wynikającą z~jego wykonania. Wartość korzyści niekoniecznie jest wielkością wymiarowaną. Źródłem występujących ograniczeń czasowych są~zazwyczaj zjawiska fizyczne zachodzące w~świecie rzeczywistym kontrolowanym przez system. Zadanie jest uznawane za~zrealizowane jako poprawne, jeśli w~chwili jego zakończenia wartość funkcji zysku jest większa od zera.
-
-Założenia dla wykresów funkcji zysku:
-\begin{itemize}
-\item $t_0$ -- jest to moment w~którym zadanie zostało zlecone oraz rozpoczęło się jego wykonywanie,
-\item $t_T$ -- jest to graniczny moment w~którym przetwarzanie może zostać zakończone,
-\item w~przypadku jak na Rysunku~\ref{wstęp:funkcja_zysku:3} funkcja z(t) jest funkcją ciągłą w~punktach $t_1$ i~$t_T$,
-\item dla wartości $t \leq t_0$ funkcji zysku nie wyznacza się, gdyż jest to~sytuacja nie~możliwa, tzn. obliczany byłby zysk z~zakończenia zadania przed jego rozpoczęciem, co~nie~może się zdarzyć i~nie ma logicznego sensu.
-\end{itemize}
-
-W tego typu systemach przekształcanie danych wymienianych między nim, a środowiskiem zewnętrznym zachodzi w~deterministycznie określonym czasie. W~opisach stosuje się pojęcie terminu (ang. \textit{deadline}), oznaczające najdłuższy dopuszczalny czas reakcji systemu na~wystąpienie zdarzenia. Szybkość działania systemu czasu rzeczywistego nie~jest tak naprawdę bardzo ważna, istotne jest, aby spełnione były bezwarunkowo przyjęte ograniczenia czasowe.
-\clearpage
-
 \input{tikz/funkcja_zysku} %
-\vspace{-0.5cm}
-Jak wynika z~przedstawionych na Rysunku~\ref{wstep:funkcja_zysku} teoretycznych funkcji zysku rozróżniamy trzy typy systemów czasu rzeczywistego:
+
+Jak wynika z~przedstawionych na Rysunku~\ref{wstep:funkcja_zysku} teoretycznych funkcji zysku, rozróżniamy trzy typy systemów czasu rzeczywistego:
 \begin{itemize}
 \item systemy o~ostrych ograniczeniach czasowych (ang. \textit{hard real-time}) -- gdy przekroczenie terminu powoduje poważne, a~nawet katastrofalne skutki, jak np.~zagrożenie życia lub~zdrowia ludzi, uszkodzenie lub~zniszczenie urządzeń, przy czym nie~jest istotna wielkość przekroczenia terminu a~jedynie sam fakt jego przekroczenia. Wynika z~tego, ze informacja wygenerowana przez system po~przekroczeniu czasu granicznego $t_T$ oznacza poważny błąd systemu,
 
@@ -40,12 +29,24 @@ Jak wynika z~przedstawionych na Rysunku~\ref{wstep:funkcja_zysku} teoretycznych 
 \item systemy o~miękkich lub~łagodnych ograniczeniach czasowych (ang. \textit{soft real-time}) -- gdy przekroczenie pewnego czasu powoduje negatywne skutki tym poważniejsze, im~bardziej ten czas został przekroczony; w~tym przypadku przez ,,negatywne skutki'' rozumie się spadek funkcji zysku aż~do~osiągnięcia wartości zero.
 \end{itemize}
 
+Dla określenia podziału systemów czasu rzeczywistego przydatne jest pojęcie funkcji zysku. Jest to funkcja zależna głównie od czasu i~dokonuje odwzorowania czasu wykonania zadania na korzyść wynikającą z~jego wykonania. Wartość korzyści niekoniecznie jest wielkością wymiarowaną. Źródłem występujących ograniczeń czasowych są~zazwyczaj zjawiska fizyczne zachodzące w~świecie rzeczywistym kontrolowanym przez system. Zadanie jest uznawane za~zrealizowane jako poprawne, jeśli w~chwili jego zakończenia wartość funkcji zysku jest większa od zera.
+\clearpage
+Założenia dla wykresów funkcji zysku:
+\begin{itemize}
+\item $t_0$ -- jest to moment w~którym zadanie zostało zlecone oraz rozpoczęło się jego wykonywanie,
+\item $t_T$ -- jest to graniczny moment w~którym przetwarzanie może zostać zakończone,
+\item w~przypadku jak na Rysunku~\ref{wstęp:funkcja_zysku:3} funkcja z(t) jest funkcją ciągłą w~punktach $t_1$ i~$t_T$,
+\item dla wartości $t \leq t_0$ funkcji zysku nie wyznacza się, gdyż jest to~sytuacja niemożliwa, tzn. obliczany byłby zysk z~zakończenia zadania przed jego rozpoczęciem, co~nie~może się zdarzyć i~nie ma sensu logicznego.
+\end{itemize}
+
+W tego typu systemach przekształcanie danych wymienianych między nim, a środowiskiem zewnętrznym zachodzi w~deterministycznie określonym czasie. W~opisach stosuje się pojęcie terminu (ang. \textit{deadline}), oznaczające najdłuższy dopuszczalny czas reakcji systemu na~wystąpienie zdarzenia. Szybkość działania systemu czasu rzeczywistego nie~jest tak naprawdę ważna, istotne jest, aby spełnione były bezwarunkowo przyjęte ograniczenia czasowe.
+
 Idealnymi przykładami praktycznymi z~życia codziennego wyjaśniającymi wprowadzony podział oraz funkcję zysku~są:
 \begin{itemize}
 \item W~przypadku systemów typu  ,,hard real-time'' jest to reaktor jądrowy. Zakładając, że system nadzorujący pracę takiego urządzenia nie~zdążyłby wystarczająco szybko zareagować na~podnoszenie się temperatury rdzenia i~doszłoby do~jego przegrzania lub nawet do~ częściowego stopienia. Jak pokazał przykład awarii reaktora jądrowego w~Czarnobylu tego typu zjawiska mają tragiczne i~wieloletnie skutki. Jest to~idealny przykład, że~nie pojawienie się odpowiedzi systemu na~czas może przynieść poważne konsekwencje i~nie~ma znaczenia o ile czas graniczny został przekroczony,
-\item W~przypadku systemów typu  ,,soft real-time'' jest to bankomat. Jak wiadomo bankomat musi zareagować na~żądania zgłaszane przez klienta w~skończonym czasie. Jeżeli czas ten będzie zbyt długi, tzn. będzie przekraczał czas graniczny to~negatywnym skutkiem będzie spadające zadowolenie klienta wynikające z~jakości świadczonej usługi. Wiadomo, że~nie~wolno ignorować tego faktu, bo~niezadowolenie klienta może spowodować, że~nie~skorzysta on~więcej z~danej sieci bankomatów. Na~tym przykładzie dobrze widać, że przekroczenie czasu granicznego nie~jest tragiczne w~skutkach, ale powoduje spadek wartości funkcji zysku, którą jest w~tym przypadku zadowolenie klienta.
+\item W~przypadku systemów typu  ,,soft real-time'' jest to bankomat. Jak wiadomo bankomat musi zareagować na~żądania zgłaszane przez klienta w~skończonym czasie. Jeżeli czas ten będzie zbyt długi, tzn. będzie przekraczał czas graniczny to~negatywnym skutkiem będzie spadające zadowolenie klienta wynikające z~jakości świadczonej usługi. Wiadomo, że~nie~wolno ignorować tego faktu, bo~niezadowolenie klienta może spowodować, że~nie~skorzysta on~więcej z~danej sieci bankomatów. Na~tym przykładzie dobrze widać, że przekroczenie czasu granicznego nie~jest poważne w~skutkach, ale powoduje spadek wartości funkcji zysku, którą jest w~tym przypadku zadowolenie klienta.
 \end{itemize}
-
+\clearpage
 Systemy czasu rzeczywistego najczęściej pracują pod kontrolą specjalnych systemów operacyjnych spełniających reżimy czasu rzeczywistego. System operacyjny czasu rzeczywistego (ang. \textit{Real-Time Operating System}, w~skrócie \textit{RTOS}) jest to system operacyjny, który został opracowany tak, aby~spełniać wymagania narzucone na~czas wykonania zadanych operacji. Podstawowym wymaganiem dla systemu typu RTOS jest określenie najdłuższego możliwego czasu, po którym urządzenie wypracuje odpowiedź na wystąpienie zdarzenia (określenie przypadku pesymistycznego). 
 %Ze względu na~kryterium ograniczeń czasowych systemy te~dzielimy na:
 %\begin{itemize}
@@ -53,7 +54,7 @@ Systemy czasu rzeczywistego najczęściej pracują pod kontrolą specjalnych sys
 %\item Miękkie (ang. \textit{Soft RTOS}) -- są to systemy, które starają się odpowiedzieć w~możliwie najkrótszym czasie, ale niestety nie jest znany najdłuższy możliwy czas odpowiedzi.
 %\end{itemize}
 
-Zaawansowanym problemem występującym w~systemach operacyjnych tego typu jest dobór algorytmu szeregowania oraz przydziału czasu. W~systemie czasu czasu rzeczywistego ze względu na ograniczone zasoby trzeba wybrać, który z~procesów będzie miał w~danym momencie przydzielony procesor oraz jak~długo przydział taki powinien trwać, aby wszystkie wykonywane procesy spełniły określone dla nich ograniczenia czasowe.
+Zaawansowanym problemem występującym w~systemach operacyjnych tego typu jest dobór algorytmu szeregowania oraz przydziału czasu. W~systemie czasu rzeczywistego ze względu na ograniczone zasoby trzeba wybrać, który z~procesów będzie miał w~danym momencie przydzielony procesor oraz jak~długo przydział taki powinien trwać, aby wszystkie wykonywane procesy spełniły określone dla nich ograniczenia czasowe.
 
 %Na rynku dostępnych jest aktualnie wiele systemów operacyjnych czasu rzeczywistego od różnych producentów lub otwartych, których przykłady przedstawia Tabela~\ref{rtos}.
 %\begin{table}[!htb]
@@ -75,10 +76,36 @@ Zaawansowanym problemem występującym w~systemach operacyjnych tego typu jest d
 %\end{table}
 
 Kolejnym niezbędnym elementem, oprócz układów wejściowych i~wyjściowych oraz kontrolowanych urządzeń (np. robotów) są deterministyczne sieci transmisyjne.
-W~sieciach przemysłowych dane przesyłane są~często, ale~są~one krótkie (mają niewielki rozmiar), w~przeciwieństwie do~sieci ogólnego przeznaczenia, gdzie przesyła się dane rzadko~i~w~dużej ilości. Dane mają charakter np. wartości
+W~sieciach przemysłowych dane są~często przesyłane, ale~są~one krótkie (mają niewielki rozmiar), w~przeciwieństwie do~sieci ogólnego przeznaczenia, gdzie przesyła się dane rzadko~i~w~dużej ilości. Dane mają charakter np. wartości
 pomiaru, rozkazów start/stop, alarmu, przekazania wartości zadanej do~zrealizowania przez regulator itd. Bardzo często informacja przesyłana w~tych sieciach ma rozmiar pojedynczego bitu lub słowa.
 
-W~sieciach, w~których zagwarantowany jest determinizm czasowy transmisji, okres od wysłania pakietu danych od~nadawcy do~jego odbioru po~stronie odbiorcy jest z~góry znany i~pozostaje niezmienny. Wówczas komunikacja między węzłami sieci może być realizowana w~czasie rzeczywistym, łatwiejsza jest też ich synchronizacja. Obie te kwestie są kluczowe dla sprawnego działania systemów sterowania. Dodatkowo sieci takie muszą zapewniać wszelkiego rodzaju mechanizmy kontroli poprawności przesyłu danych oraz zabezpieczać przez ewentualną ich utratą. Kolejnym wymaganiem stawianym przed sieciami tego typu jest odporność na~zakłócenia zewnętrzne, w~tym szczególnie zakłócenia elektromagnetyczne. Rola komunikacji jest krytyczna z~punktu widzenia technologii, ekonomii i~bezpieczeństwa prowadzenia procesu. \clearpage
+W~sieciach, w~których zagwarantowany jest determinizm czasowy transmisji, okres od wysłania pakietu danych od~nadawcy do~jego odbioru po~stronie odbiorcy jest z~góry znany i~pozostaje niezmienny. Wówczas komunikacja między węzłami sieci może być realizowana w~czasie rzeczywistym, łatwiejsza jest też ich synchronizacja. Obie te kwestie są kluczowe dla sprawnego działania systemów sterowania. Dodatkowo sieci takie muszą zapewniać wszelkiego rodzaju mechanizmy kontroli poprawności przesyłu danych oraz zabezpieczać przez ewentualną ich utratą. Kolejnym wymaganiem stawianym sieciom tego typu jest odporność na~zakłócenia zewnętrzne, w~tym szczególnie zakłócenia elektromagnetyczne. Rola komunikacji jest krytyczna z~punktu widzenia technologii, ekonomii i~bezpieczeństwa prowadzenia procesu. 
+
+Aby sieć mogła być deterministyczna musi stosować specyficznym sposób transmisji danych.
+Istnieją trzy modele transmisji gwarantujące spełnienie wymogów determinizmu czasowego \cite{kwiecien,gaj}:
+\begin{itemize}
+\item Master--Slave,
+\item Token,
+\item Producent-Dystrybutor-Konsument, w~skrócie PDK.
+\end{itemize}
+
+Model Master--Slave bazuje na wymianie informacji pomiędzy węzłem nadrzędnym (ang. \textit{Master}), a węzłami podrzędnymi (ang. \textit{Slave}). Stacja master jest odpowiedzialna za kontrolowanie ruchu sieciowego.Wymiany odbywają się cyklicznie zgodnie ze~scenariuszem. Wymiany zawsze odbywają się pomiędzy węzłami Master i Slave, w~przypadku wymiany danych między węzłami podrzędnymi, ruch odbywa się pośrednio przez węzeł nadrzędny.
+
+Model Token -- wszystkie stacje w sieci są równorzędne. Prawo do nadawania ma w~danym momencie tylko jeden abonent posiadający żeton (ang. \textit{Token}). Żeton jest wymieniany między kolejnymi węzłami (ang. \textit{token passing}). Stacja, która otrzyma żeton ma prawo nadawać przez określony czas, po czym bezwzględni musi przekazać go dalej. Sieć oparta o ten model może być zbudowana w~topologii pierścienia (ang. \textit{Token Ring}) lub (ang. \textit{Token Bus})
+
+Model PDK -- istnieją w~nim trzy rodzaje stacji. Zgodnie z~nazwą są to:
+\begin{itemize}
+\item Producent -- jest odpowiedzialny na poziomie aplikacji za ,,produkcję'' danych, które mogą być periodyczne lub nie, synchroniczne lub nie, z innymi aplikacjami lub ,,produkcjami'' danych.
+
+\item Dystrybutor -- przechowuje scenariusz wymian i~na jego podstawie określa, kiedy jaka informacji ma być
+obsłużona przez sieć. Dystrybutor w przeciwieństwie do stacji Master nie inicjuje samodzielnie transmisji
+danych użytecznych ani ich nie retransmituje. Określa jedynie, kiedy producent danej informacji ma zrealizować zapis rozgłoszeniowy odpowiednich danych w sieci.
+
+\item Konsument -- jest aplikacją, która będąc wykonywaną, żąda danych. I znów, użycie danych może być periodyczne lub nie i synchroniczne bądź nie, z innymi aplikacjami.
+\end{itemize}
+
+Zdaniem autora EtherCAT jest modelem hybrydowym. Nie da się go w~prosty sposób przypisać do żadnego z~opisanych tutaj modeli. Rozwiązanie jest nowoczesne i~innowacyjne dlatego nie zostało oparte na modelach wykorzystywanych przy tworzeniu starszych rozwiązań. Teoretycznie w~opisach działania protokołu występują pojęcia master oraz slave, ale w~topologii protokołu EtherCAT może występować wiele węzłów nadrzędnych, węzły podrzędne mogą żądać transmisji oraz nie ma sztywnego scenariusza wymian. Węzeł zarządzający może zatrzymać cały ruch w~sieci, zawiesić działanie dowolnego węzła lub zażądać od niego danych. Porównując zasady działania do modelu z~żetonem węzeł chcący nadać informacje musi oczekiwać, aż do momentu wykrycia fragmentu telegramu przeznaczonego dla niego, co zdaniem autora przypomina koncepcje żetonu. Niestety jednak z~powodu mechanizmu organizacji wymiany danych zależnie od zapotrzebowania wszystkich węzłów, nie jest stały i~dobrze znany moment uzyskania prawa do nadawania. Ostatni z~przedstawionych modeli najlepiej pasuje do rozwiązań zastosowanych w~standardzie EtherCAT. Węzeł nadrzędny pełni tutaj rolę dystrybutora, a~wszystkie pozostałe węzły wraz z nim pełnią rolę producenta i~konsumenta lub tylko jedną z~nich. Powyższa analiza udowadnia, że sieć EtherCAT posiada niektóre cechy każdego z~przedstawionych modeli. Podsumowując zdaniem autora zasada zapewniania determinizmu czasowego w~protokole EtherCAT jest najbliższa modelowi Producent-Dystrybutor-Konsument. Zdecydowanie najistotniejszą innowacją mającą na celu poprawę parametrów czasowych jest zastosowana metoda transmisji danych pozwalająca uzyskać wysokie wykorzystanie kanału transmisyjnego.
+
 Podsumowanie najważniejszych wymagań stawianych przemysłowym sieciom informatycznym:
 \begin{itemize}
 \item Niezawodność,
@@ -93,32 +120,10 @@ Podsumowanie najważniejszych wymagań stawianych przemysłowym sieciom informat
 \item Łatwość lokalizowania usterek.
 \end{itemize}
 
-\vspace{5mm}
-Aby sieć mogła być deterministyczna musi stosować specyficznym sposób transmisji danych.
-Istnieją trzy modele transmisji gwarantujące spełnienie wymogów determinizmu czasowego \cite{kwiecien,gaj}:
-\begin{itemize}
-\item Master--Slave,
-\item Token,
-\item Producent-Dystrybutor-Konsument, w~skrócie PDK
-\end{itemize}
-
-Model Master--Slave -- bazuje na wymianie informacji pomiędzy węzłem nadrzędnym (ang. \textit{Master}), a węzłami podrzędnymi (ang. \textit{Slave}). Stacja master jest odpowiedzialna za kontrolowanie ruchu sieciowego.Wymiany odbywają się cyklicznie zgodnie ze~scenariuszem. Wymiany zawsze odbywają się pomiędzy węzłami Master i Slave, w~przypadku wymiany danych między węzłami podrzędnymi, ruch odbywa się pośrednio przez węzeł nadrzędny.
-
-Model Token -- wszystkie stacje w sieci są równorzędne. Prawo do nadawania ma w~danym momencie tylko jeden abonent posiadający żeton (ang. \textit{Token}). Żeton jest wymieniany między kolejnymi węzłami. Stacja, która otrzyma żeton ma prawo nadawać przez określony czas, po czym bezwzględni musi przekazać go dalej.
-
-Model PDK -- istnieją trzy rodzaje stacji. Zgodnie z~nawą dane są przekazywane od producenta poprzez dystrybutora, aż do konsumenta.
-
-\vspace{5mm}
-Rozwinięcie pojawi się tutaj
-\vspace{5mm}
-
-Zdaniem autora EtherCAT jest modelem hybrydowym.
-
-\clearpage
 Aby system składający się z~wielu komponentów był systemem czasu rzeczywistego, konieczne jest spełnianie wymogów przez każdy z~elementów składowych. W~przypadku systemów informatycznych oznacza to, że~zarówno sprzęt, system operacyjny, jak i~oprogramowanie aplikacyjne muszą gwarantować dotrzymanie zdefiniowanych ograniczeń czasowych.
 
 Z~powyższego opisu wynika, że systemy czasu rzeczywistego są~bardzo ważnym elementem nie~tylko w~przemyśle, ale również w~życiu codziennym. Przemysłowe sieci komputerowe są~bardzo istotnym elementem tych systemów, dlatego właśnie uzasadnione jest, aby przebadać i~poznać je~dokładnie oraz ustalić jakie zależności czasowe w~nich występują.
-Sieć EtherCAT będąca tematem niniejszej pracy spełnia większość wymagania stawiane nowoczesnym protokołom pracującym w~warunkach przemysłowych, dlatego autor uważa, że~warto przyjrzeć mu się bliżej i~przeprowadzić zaplanowane badania oraz znaleźć ewentualne perspektywy na~kolejne prace badawcze w~przyszłości.
+Sieć EtherCAT będąca tematem niniejszej pracy spełnia większość wymagań stawianych nowoczesnym protokołom pracującym w~warunkach przemysłowych, dlatego autor uważa, że~warto przyjrzeć mu się bliżej i~przeprowadzić zaplanowane badania oraz znaleźć ewentualne perspektywy na~kolejne prace badawcze w~przyszłości.
 \clearpage
 \subsection{Stanowisko laboratoryjne}
 Na potrzeby realizacji projektu wykorzystano dwa różne istniejące stanowiska laboratoryjne, które składały się~z~elementów opisanych w~Tablicy~\ref{stanowiska}.
@@ -183,15 +188,16 @@ Adres IP: 157.158.57.121 & Adres IP: 157.158.57.47  \\\hline
 \end{tabular}
 \end{center}
 \vspace*{-6mm}
-  \caption{Dostępne stanowiska laboratoryjne}
+  \caption{Dostępne stanowiska laboratoryjne.}
 	\label{stanowiska}
 \end{table}
 
 \input{tikz/schematCP} %
 \input{tikz/schematCX} %
 \vspace{-0.7cm}
+
 \subsubsection{Sterownik PLC}
-W~realizacji wykorzystane zostały stanowiska firmy Beckhoff wyposażone w~jednostki centralne pracujące pod kontrolą systemu Windows CE (Microsoft Windows Compact Edition). Na~jednostce takiej uruchamiane są programy do~sterowania z~poziomu komputera (ang. \textit{Soft PLC}). Jest to rozwiązanie alternatywne dla~klasyczny sterowników swobodnie programowalnych w~postaci dedykowanego urządzenia (ang.~\textit{Hard~PLC}), nazywanych przez niektórych prawdziwymi (ang.~\textit{True~PLC}).
+W~realizacji wykorzystane zostały stanowiska firmy Beckhoff wyposażone w~jednostki centralne pracujące pod kontrolą systemu Windows CE (Microsoft Windows Compact Edition). Na~jednostce takiej uruchamiane są programy do~sterowania z~poziomu komputera (ang. \textit{Soft PLC}). Jest to rozwiązanie alternatywne dla~klasycznych sterowników swobodnie programowalnych w~postaci dedykowanego urządzenia (ang.~\textit{Hard~PLC}), nazywanych przez niektórych prawdziwymi (ang.~\textit{True~PLC}).
 Koncepcja~ta powstała i~jest rozwijana, ponieważ te~klasyczne sterowniki posiadają zbyt małe możliwości obliczeniowe oraz szybkość działania jednostki centralnej. W~tradycyjnych rozwiązaniach niestety zwiększanie tych możliwości (ilość dostępnej pamięci oraz szybkości działania) powoduje bardzo szybki wzrost ceny gotowego urządzenia.
 Niezbędnym elementem konfiguracji zestawu, który zostaje przekształcony w~,,soft PLC'' jest karta komunikacyjna umożliwiająca połączenie sterownika z~modułami sygnałowymi i~wykonawczymi na~obiekcie z~wykorzystaniem sieci przemysłowej.
 Przykładowe zastosowanie programu do~sterowania z~poziomu komputera zostało szczegółowo opisane w~\cite{art_softPLC}.
@@ -199,13 +205,13 @@ Tego typu rozwiązanie~ma następujące zalety:
 \begin{itemize}
 \item duże zwiększenie możliwości obliczeniowych przy stosunkowo niewielkim wzroście kosztów,
 \item możliwość integracji PLC i~systemu SCADA na~jednym urządzeniu (podobnie jak w~panelach operatorskich ze~zintegrowanymi sterownikami~PLC),
-\item możliwość zastosowania istniejącej infrastruktury na~obiekcie w~przypadku przebudowy; należy jedynie podmienić istniejący sterownik typu ,,hard'' na~jednostkę wyposażoną w~odpowiedni moduł komunikacyjny,
+\item możliwość zastosowania istniejącej infrastruktury na~obiekcie w~przypadku przebudowy; należy jedynie zamienić istniejący sterownik typu ,,hard'' na~jednostkę wyposażoną w~odpowiedni moduł komunikacyjny,
 \item teoretycznie możliwość zastosowania istniejącego oprogramowania z~jednostki ,,hard PLC'', po modyfikacji ewentualnych różnic między systemami.
 \end{itemize}
 
 Taki ,,sterownik PLC w~komputerze PC'' wykorzystuje standardowe języki programowania sterowników~PLC (zgodność z~normą IEC~61131-3) do~tworzenia logiki sterującej takiej jak:
 \begin{itemize}
-\item IL -- \textbf{I}nstruction \textbf{L}ist to~tekstowy język programowania składający się z~serii instrukcji, z~których każda zaczyna~się z~nowej linii i~zawiera operator z~jednym lub więcej argumentem (zależnie od~funkcji),
+\item IL -- \textbf{I}nstruction \textbf{L}ist to~tekstowy język programowania składający się z~serii instrukcji, z~których każda znajduje~się w~oddzielnej linii i~zawiera operator z~jednym lub więcej argumentem (zależnie od~funkcji),
 
 \item LD -- \textbf{L}adder \textbf{D}iagram jest graficznym językiem programowania, który swoją strukturą przypomina obwód elektryczny. Doskonały do~łączenia POUs (Progam Organization Units). LD~składa~się z~sieci cewek i~styków ograniczonej przez linie prądowe. Linia z~lewej strony przekazuje wartość logiczną TRUE, z~tej strony zaczyna~się też wykonywać linia pozioma,
 
@@ -215,7 +221,7 @@ Taki ,,sterownik PLC w~komputerze PC'' wykorzystuje standardowe języki programo
 
 \item ST -- \textbf{S}tructured \textbf{T}ext jest tekstowym językiem programowania, złożonym z~serii instrukcji takich jak If..then lub For...do,
 
-\item CFC -- \textbf{C}ontinuous \textbf{F}unction \textbf{C}hart jest graficznym językiem programowania, który w~przeciwieństwie do~FBD nie~działa w~sieci, a~w~luźno położonej strukturze, co~pozwala na np.~stworzenie sprzężenia zwrotnego.
+\item CFC -- \textbf{C}ontinuous \textbf{F}unction \textbf{C}hart jest graficznym językiem programowania, który w~przeciwieństwie do~FBD nie~działa w~sieci, lecz~w~swobodnie położonej strukturze, co~pozwala np. na stworzenie sprzężenia zwrotnego.
 \end{itemize}
 
 \indent
