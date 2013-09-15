@@ -1,3 +1,4 @@
+\vspace{-2mm}
 \subsection{EtherCAT}
 %zasada działania
 %topologia
@@ -10,18 +11,18 @@ EtherCAT jest nowoczesnym protokołem sieciowym przeznaczonym do stosowania w~ap
 
 \subsubsection{Przetwarzanie ,,w locie''}
 W dużej części aplikacji przemysłowych dane mają mały rozmiar rzędu pojedynczych bajtów. Wykorzystując standardowy Ethernet i~jego ramki stosunek danych użytecznych do narzutu protokołu jest bardzo niekorzystny. 
-Minimalny rozmiar ramki ethernetowej wynosi 8~bajtów. Zakładając, że~urządzenie okresowo przesyła 4 bajty informacji, na przykład informację o~swoich aktualnych ustawieniach, a w odpowiedzi otrzymuje również 4~bajty danych, na~przykład zestaw komend i~informacji kontrolnych, przy założeniu nieskończenie krótkiego czas odpowiedzi węzła, użyteczna przepustowość wyniesie zaledwie $\frac{4}{84}\approx4,8\%$. Jeżeli średni czas odpowiedzi będzie dłuższy, na przykład wyniesie 10 $\mu s$, to użyteczna przepustowość spadnie do zaledwie $1,9\%$. Przykład takiej transmisji został przedstawiony na~Rysunku~\ref{etherCAT:ethernet}.
+Minimalny rozmiar ramki ethernetowej wynosi 8~bajtów. Zakładając, że~urządzenie okresowo przesyła 4 bajty informacji o~swoich aktualnych ustawieniach, a w odpowiedzi otrzymuje również 4~bajty zestawu komend i~informacji kontrolnych, przy założeniu nieskończenie krótkiego czas odpowiedzi węzła, użyteczna przepustowość wyniesie zaledwie $\frac{4}{84}\approx4,8\%$ \cite{kwiecien,gaj}. Jeżeli średni czas odpowiedzi będzie dłuższy, na przykład wyniesie 10 $\mu s$, to użyteczna przepustowość spadnie do zaledwie $1,9\%$. Przebieg takiej transmisji został przedstawiony na~Rysunku~\ref{etherCAT:ethernet}.
 \input{tikz/ethernet}
 \vspace{-3mm}
 
 W~celu zapewnienia determinizmu oraz zwiększenia przepustowości stosuje się w~standardach przemysłowych różne rozwiązania. Jednym z przykładów jest zastępowanie procedury dostępu do medium transmisyjnego z~wykorzystaniem wielodostępu z~wykrywaniem nośnej oraz detekcją kolizji (ang. \textit{Carrier Sense Multiple Access/with Collision Detection} w~skrócie \textit{CSMA/CD}) na m.in mechanizm odpytywania.
-Nie jest istotnym jaką metodę dokładnie zastosujemy dopóki ramki są rozsyłane pojedynczo z oraz do urządzeń. Działania te nie wyeliminują problemu marnowania przepustowości kanału transmisyjnego i jego wykorzystania. Dlatego ten właśnie element transmisji danych z wykorzystaniem Ethernetu został potraktowany bardzo szczególnie przy projektowaniu standardu EtherCAT.
+Nie jest istotnym jaką metodę dokładnie zastosujemy dopóki ramki są rozsyłane pojedynczo z oraz do urządzeń. Działania te nie wyeliminują problemu utraty przepustowości kanału transmisyjnego i jego wykorzystania. Dlatego ten właśnie element transmisji danych z wykorzystaniem Ethernetu został potraktowany bardzo szczególnie przy projektowaniu standardu EtherCAT.
 
 Zatem zamiast standardowej dla Ethernetu transmisji pakietowej z~koniecznością odtwarzania pofragmentowanych danych zastosowano mechanizm wykorzystujący telegramy zbudowane z datagramów, które są szczegółowo opisane w podrozdziale~\ref{subsec:telegram} .
 Rozwiązanie to~polega na tym, że w pojedynczej ramce są zawarte informacje przeznaczone dla wielu różnych węzłów podrzędnych. Transmisja takiej ramki inicjowana jest przez węzeł nadrzędny, a~następnie przechodzi ona przez kolejne węzły podrzędne sieci, które przetwarzają ją w locie. W takim podejściu twórcy standardu EtherCAT potraktowali ramkę ethernetową jak pewnego rodzaju pamięć RAM, do której zapisywane i z~której odczytywane są dowolne informacje w~oparciu o~adresy lokalizujące poszukiwane dane w~tej pamięci.
 Przetwarzanie to polega na tym, że w~momencie odebrania ramki sprawdzane jest, czy znajduje się w~niej informacja przeznaczona dla tego właśnie węzła. Jeżeli zostanie wykryte, że~tak~jest to węzeł odczytuje odpowiedni fragment danych oraz uzupełnia je ewentualnie o~informacje potwierdzające odbiór lub~inne wymagane przez węzeł nadrzędny. Następnie ramka jest przesyłana do kolejnego w topologi węzła lub zawracana, jeśli dany węzeł jest ostatnim w~sieci. 
 
-Dzięki takiemu podejściu protokół charakteryzuje się bardzo dużym wykorzystaniem kanału transmisyjnego w porównaniu do odpytywania w przedziale czasowym (ang. \textit{Pooling Timeslicing}) oraz nadawania Master/Slave (ang. \textit{Broadcast Master/Slave}) znanych ze~zwykłego Ethernetu, co pokazano na Rysunku~\ref{etherCAT:wykorzystanie}.
+Dzięki takiemu podejściu protokół charakteryzuje się bardzo dużym wykorzystaniem kanału transmisyjnego w porównaniu do odpytywania w przedziale czasowym (ang. \textit{Pooling Timeslicing}) oraz nadawania Master/Slave (ang. \textit{Broadcast Master/Slave}) znanych ze~zwykłego Ethernetu, co pokazano na Rysunku~\ref{etherCAT:wykorzystanie} \cite{art3_etherCAT,art6_etherCAT,art7_etherCAT,ETG_doc}.
 \input{tikz/wykorzystanie}
 \vspace{-3mm}
 
@@ -128,7 +129,7 @@ Zgodnie z~informacjami z dokumentacji producenta istnieją cztery stany, które 
 \item Operational,
 \item Bootstrap (opcjonalny).
 \end{itemize}
-Wszystkie stany oraz dopuszczalne przejścia między nimi zostały przedstawione na~Rysunku~\ref{etherCAT:state_machine}.
+Wszystkie stany oraz dopuszczalne przejścia między nimi zostały przedstawione na~Rysunku~\ref{etherCAT:state_machine}, a serwisy z~nimi związane w Tablicy~\ref{etherCAT:state_machine_services}.
 \input{tikz/state_machine} %
 
 Warto zauważyć, że nie wszystkie teoretyczne przejścia są dozwolone w praktyce. Na przykład, aby~przejść ze stanu Init do stanu Operational należy wykonać następującą sekwencję: Init $\Rightarrow$ Pre-Operational $\Rightarrow$ Save-Operational $\Rightarrow$ Operational.

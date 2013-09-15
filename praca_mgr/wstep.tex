@@ -29,9 +29,9 @@ Jak wynika z~przedstawionych na Rysunku~\ref{wstep:funkcja_zysku} teoretycznych 
 \item systemy o~miękkich lub~łagodnych ograniczeniach czasowych (ang. \textit{soft real-time}) -- gdy przekroczenie pewnego czasu powoduje negatywne skutki tym poważniejsze, im~bardziej ten czas został przekroczony; w~tym przypadku przez ,,negatywne skutki'' rozumie się spadek funkcji zysku aż~do~osiągnięcia wartości zero.
 \end{itemize}
 
-Dla określenia podziału systemów czasu rzeczywistego przydatne jest pojęcie funkcji zysku. Jest to funkcja zależna głównie od czasu i~dokonuje odwzorowania czasu wykonania zadania na korzyść wynikającą z~jego wykonania. Wartość korzyści niekoniecznie jest wielkością wymiarowaną. Źródłem występujących ograniczeń czasowych są~zazwyczaj zjawiska fizyczne zachodzące w~świecie rzeczywistym kontrolowanym przez system. Zadanie jest uznawane za~zrealizowane jako poprawne, jeśli w~chwili jego zakończenia wartość funkcji zysku jest większa od zera.
+Dla określenia podziału systemów czasu rzeczywistego przydatne jest pojęcie funkcji zysku \cite{rts}. Jest to funkcja zależna głównie od czasu i~dokonuje odwzorowania czasu wykonania zadania na korzyść wynikającą z~jego wykonania. Wartość korzyści niekoniecznie jest wielkością wymiarowaną. Źródłem występujących ograniczeń czasowych są~zazwyczaj zjawiska fizyczne zachodzące w~świecie rzeczywistym kontrolowanym przez system. Zadanie jest uznawane za~zrealizowane jako poprawne, jeśli w~chwili jego zakończenia wartość funkcji zysku jest większa od zera.
 \clearpage
-Założenia dla wykresów funkcji zysku:
+Założenia dla wykresów funkcji zysku \cite{rts}:
 \begin{itemize}
 \item $t_0$ -- jest to moment w~którym zadanie zostało zlecone oraz rozpoczęło się jego wykonywanie,
 \item $t_T$ -- jest to graniczny moment w~którym przetwarzanie może zostać zakończone,
@@ -39,7 +39,7 @@ Założenia dla wykresów funkcji zysku:
 \item dla wartości $t \leq t_0$ funkcji zysku nie wyznacza się, gdyż jest to~sytuacja niemożliwa, tzn. obliczany byłby zysk z~zakończenia zadania przed jego rozpoczęciem, co~nie~może się zdarzyć i~nie ma sensu logicznego.
 \end{itemize}
 
-W tego typu systemach przekształcanie danych wymienianych między nim, a środowiskiem zewnętrznym zachodzi w~deterministycznie określonym czasie. W~opisach stosuje się pojęcie terminu (ang. \textit{deadline}), oznaczające najdłuższy dopuszczalny czas reakcji systemu na~wystąpienie zdarzenia. Szybkość działania systemu czasu rzeczywistego nie~jest tak naprawdę ważna, istotne jest, aby spełnione były bezwarunkowo przyjęte ograniczenia czasowe.
+W tego typu systemach przekształcanie danych wymienianych między nim, a środowiskiem zewnętrznym zachodzi w~deterministycznie określonym czasie. W~opisach stosuje się pojęcie terminu (ang. \textit{deadline}), oznaczające najdłuższy dopuszczalny czas reakcji systemu na~wystąpienie zdarzenia \cite{rts}. Szybkość działania systemu czasu rzeczywistego nie~jest tak naprawdę ważna, istotne jest, aby spełnione były bezwarunkowo przyjęte ograniczenia czasowe.
 
 Idealnymi przykładami praktycznymi z~życia codziennego wyjaśniającymi wprowadzony podział oraz funkcję zysku~są:
 \begin{itemize}
@@ -126,6 +126,7 @@ Z~powyższego opisu wynika, że systemy czasu rzeczywistego są~bardzo ważnym e
 Sieć EtherCAT będąca tematem niniejszej pracy spełnia większość wymagań stawianych nowoczesnym protokołom pracującym w~warunkach przemysłowych, dlatego autor uważa, że~warto przyjrzeć mu się bliżej i~przeprowadzić zaplanowane badania oraz znaleźć ewentualne perspektywy na~kolejne prace badawcze w~przyszłości.
 \clearpage
 \subsection{Stanowisko laboratoryjne}
+Dostępne stanowiska wyposażone w urządzenia firmy Beckhoff należało uruchomić i~przystosować do pracy umożliwiającej zbadanie zależności czasowych w protokole EtherCAT. Dokładny opis wykonanych prac zostanie przedstawiony w Rozdziale~\ref{sec:stanowiska}.
 Na potrzeby realizacji projektu wykorzystano dwa różne istniejące stanowiska laboratoryjne, które składały się~z~elementów opisanych w~Tablicy~\ref{stanowiska}.
 \begin{table}[!htb]
 \begin{center}
@@ -192,10 +193,11 @@ Adres IP: 157.158.57.121 & Adres IP: 157.158.57.47  \\\hline
 	\label{stanowiska}
 \end{table}
 
+\noindent Wszystkie połączenia oznaczone na schematach jako EtherCAT tworzą jedną sieć. Autor celowo i~świadomie rozróżnił dwa typy połączeń, aby zwrócić uwagę na zastosowanie na stanowiskach różnych medium transmisyjnych. Linie oznaczone jako skrętka są widocznym na stanowisku przewodem ethernetowym, natomiast łącze E-bus jest niewidoczne, ponieważ znajduje się na składaniu modułów.
 \input{tikz/schematCP} %
 \input{tikz/schematCX} %
-\vspace{-0.7cm}
-
+\clearpage
+\noindent Stanowiska podłączone są do sieci lokalnej Ethernet w~laboratorium, więc komunikacja z~nimi odbywa się tak samo jak z~każdym innym urządzeniem sieciowym. Podstawy programowania i~korzystania ze sterowników autor poznał zapoznając się z~odpowiednią literaturą \cite{plc1,plc2,plc4,plc5,plc6} oraz uczęszczając w~toku studiów na zajęcia obowiązkowe oraz specjalizacyjne.
 \subsubsection{Sterownik PLC}
 W~realizacji wykorzystane zostały stanowiska firmy Beckhoff wyposażone w~jednostki centralne pracujące pod kontrolą systemu Windows CE (Microsoft Windows Compact Edition). Na~jednostce takiej uruchamiane są programy do~sterowania z~poziomu komputera (ang. \textit{Soft PLC}). Jest to rozwiązanie alternatywne dla~klasycznych sterowników swobodnie programowalnych w~postaci dedykowanego urządzenia (ang.~\textit{Hard~PLC}), nazywanych przez niektórych prawdziwymi (ang.~\textit{True~PLC}).
 Koncepcja~ta powstała i~jest rozwijana, ponieważ te~klasyczne sterowniki posiadają zbyt małe możliwości obliczeniowe oraz szybkość działania jednostki centralnej. W~tradycyjnych rozwiązaniach niestety zwiększanie tych możliwości (ilość dostępnej pamięci oraz szybkości działania) powoduje bardzo szybki wzrost ceny gotowego urządzenia.
@@ -208,7 +210,7 @@ Tego typu rozwiązanie~ma następujące zalety:
 \item możliwość zastosowania istniejącej infrastruktury na~obiekcie w~przypadku przebudowy; należy jedynie zamienić istniejący sterownik typu ,,hard'' na~jednostkę wyposażoną w~odpowiedni moduł komunikacyjny,
 \item teoretycznie możliwość zastosowania istniejącego oprogramowania z~jednostki ,,hard PLC'', po modyfikacji ewentualnych różnic między systemami.
 \end{itemize}
-
+\clearpage
 Taki ,,sterownik PLC w~komputerze PC'' wykorzystuje standardowe języki programowania sterowników~PLC (zgodność z~normą IEC~61131-3) do~tworzenia logiki sterującej takiej jak:
 \begin{itemize}
 \item IL -- \textbf{I}nstruction \textbf{L}ist to~tekstowy język programowania składający się z~serii instrukcji, z~których każda znajduje~się w~oddzielnej linii i~zawiera operator z~jednym lub więcej argumentem (zależnie od~funkcji),
@@ -224,8 +226,7 @@ Taki ,,sterownik PLC w~komputerze PC'' wykorzystuje standardowe języki programo
 \item CFC -- \textbf{C}ontinuous \textbf{F}unction \textbf{C}hart jest graficznym językiem programowania, który w~przeciwieństwie do~FBD nie~działa w~sieci, lecz~w~swobodnie położonej strukturze, co~pozwala np. na stworzenie sprzężenia zwrotnego.
 \end{itemize}
 
-\indent
-\indent Stanowiska podłączone są do sieci lokalnej Ethernet w~laboratorium, więc komunikacja z~nimi odbywa się tak samo jak z~każdym innym urządzeniem sieciowym. Podstawy programowania i~korzystania ze sterowników autor poznał zapoznając się z~odpowiednią literaturą \cite{plc1,plc2,plc4,plc5,plc6} oraz uczęszczając w~toku studiów na zajęcia obowiązkowe oraz specjalizacyjne.
+\noindent Autor zdecydował się na napisanie oprogramowania w~języku ST, ponieważ nadawał się on najlepiej do implementacji założonej funkcjonalności. Stworzony kod jest czytelny i~przejrzysty.
 
 \subsubsection{Komputer}
 Projekt w~całości był realizowany na laptopie autora, podłączanym do~sieci w~laboratorium. Na~komputerze uruchomiana była maszyna wirtualna. Na~jednej zainstalowane było środowisko TwinCAT do~programowania sterownika oraz do~tworzenia i~uruchamiania wizualizacji. Wizualizacje tworzone w~środowisku TwinCAT można uruchomić bezpośrednio na~komputerze wyposażonym w~odpowiednie oprogramowanie lub na~urządzeniu docelowym po~podpięciu do~niego monitora (o~ile urządzenie docelowe posiada wyjście DVI lub odpowiedni interfejs systemowy w~postaci odrębnego modułu).

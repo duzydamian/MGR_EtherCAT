@@ -9,15 +9,15 @@
 	    myline/.style={-, =latex', shorten >=1pt, rounded corners, ultra thick},
 	    mylabel/.style={text centered, font=\scriptsize\bfseries} 
 	} 
-	\node[bottom color=gray!50, mynode, text width=2cm] (ethhdr) {Ethernet header}; 
+	\node[bottom color=gray!50, mynode, text width=1.6cm] (ethhdr) {Ethernet header}; 
 	\node[mylabel, below=1mm of ethhdr] (ethhdrs) {14/16B};		 
-	\node[mylabel, below=of ethhdrs] (ethhdradr) {EtherType 0x0800};
-	\node[mylabel, below=1mm of ethhdradr] (udpadr) {TCP Port 0x88A4};	
+	\node[mylabel, below=of ethhdrs.east] (ethhdradr) {EtherType 0x0800};
+	\node[mylabel, right=5mm of ethhdradr] (udpadr) {TCP Port 0x88A4};	
 	
 	\node[bottom color=yellow!50, mynode, right=of ethhdr, text width=1.4cm] (ip) {IP header};
 	\node[mylabel, below=1mm of ip] (ips) {20B};	
 	
-	\node[bottom color=yellow!50, mynode, right=of ip, text width=1.5cm] (udp) {UDP header};		
+	\node[bottom color=yellow!50, mynode, right=of ip, text width=1.5cm] (udp) {TCP header};		
 	\node[mylabel, below=1mm of udp] (udps) {8B};	
 		
 	\node[bottom color=yellow!50, mynode, right=of udp, text width=2cm] (ecat) {EtherCAT header};
