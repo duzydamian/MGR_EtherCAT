@@ -1,0 +1,27 @@
+\begin{figure}[h]
+ \centering
+ \begin{tikzpicture}[x=1cm,y=10cm]
+  \tikzstyle{background grid}=[draw, black!50,step=.25cm]
+	\draw[-latex, thin, draw=gray] (0,1.5)--(10,1.5) node [right] {$x$};
+	\draw[-latex, thin, draw=gray] (0,1.45)--(0,2) node [left] {$t[s]$};
+	%\draw [dotted, gray, step=0.5cm] (0,0) grid (20,4);
+ 	\draw (0,1.5) node[left] {1,5};
+	\draw[] (0,1.653)--(10,1.653) node[left=10cm] {1,653};
+	\draw[thin, dotted] (0,1.570)--(10,1.570) node[below] {min};
+	\draw[thin, dotted] (0,1.870)--(10,1.870) node[above] {max};
+		
+	\node at (1, 1.590) {\textbullet};
+	\node at (2, 1.870) {\textbullet};
+	\node at (3, 1.610) {\textbullet};
+	\node at (4, 1.650) {\textbullet};
+	\node at (5, 1.750) {\textbullet};
+	\node at (6, 1.600) {\textbullet};
+	\node at (7, 1.610) {\textbullet};
+	\node at (8, 1.640) {\textbullet};		
+	\node at (9, 1.570) {\textbullet};
+	\node at (10, 1.640) {\textbullet};
+					
+\end{tikzpicture}
+\caption{Pomiary czasu ponownego podłączenia oraz obliczona wartość średnia.}
+\label{badania:wykres:op_jeden_bonus}
+\end{figure}

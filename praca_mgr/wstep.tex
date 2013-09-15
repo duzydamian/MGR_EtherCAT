@@ -93,6 +93,28 @@ Podsumowanie najważniejszych wymagań stawianych przemysłowym sieciom informat
 \item Łatwość lokalizowania usterek.
 \end{itemize}
 
+\vspace{5mm}
+Aby sieć mogła być deterministyczna musi stosować specyficznym sposób transmisji danych.
+Istnieją trzy modele transmisji gwarantujące spełnienie wymogów determinizmu czasowego \cite{kwiecien,gaj}:
+\begin{itemize}
+\item Master--Slave,
+\item Token,
+\item Producent-Dystrybutor-Konsument, w~skrócie PDK
+\end{itemize}
+
+Model Master--Slave -- bazuje na wymianie informacji pomiędzy węzłem nadrzędnym (ang. \textit{Master}), a węzłami podrzędnymi (ang. \textit{Slave}). Stacja master jest odpowiedzialna za kontrolowanie ruchu sieciowego.Wymiany odbywają się cyklicznie zgodnie ze~scenariuszem. Wymiany zawsze odbywają się pomiędzy węzłami Master i Slave, w~przypadku wymiany danych między węzłami podrzędnymi, ruch odbywa się pośrednio przez węzeł nadrzędny.
+
+Model Token -- wszystkie stacje w sieci są równorzędne. Prawo do nadawania ma w~danym momencie tylko jeden abonent posiadający żeton (ang. \textit{Token}). Żeton jest wymieniany między kolejnymi węzłami. Stacja, która otrzyma żeton ma prawo nadawać przez określony czas, po czym bezwzględni musi przekazać go dalej.
+
+Model PDK -- istnieją trzy rodzaje stacji. Zgodnie z~nawą dane są przekazywane od producenta poprzez dystrybutora, aż do konsumenta.
+
+\vspace{5mm}
+Rozwinięcie pojawi się tutaj
+\vspace{5mm}
+
+Zdaniem autora EtherCAT jest modelem hybrydowym.
+
+\clearpage
 Aby system składający się z~wielu komponentów był systemem czasu rzeczywistego, konieczne jest spełnianie wymogów przez każdy z~elementów składowych. W~przypadku systemów informatycznych oznacza to, że~zarówno sprzęt, system operacyjny, jak i~oprogramowanie aplikacyjne muszą gwarantować dotrzymanie zdefiniowanych ograniczeń czasowych.
 
 Z~powyższego opisu wynika, że systemy czasu rzeczywistego są~bardzo ważnym elementem nie~tylko w~przemyśle, ale również w~życiu codziennym. Przemysłowe sieci komputerowe są~bardzo istotnym elementem tych systemów, dlatego właśnie uzasadnione jest, aby przebadać i~poznać je~dokładnie oraz ustalić jakie zależności czasowe w~nich występują.
@@ -109,7 +131,8 @@ Adres IP: 157.158.57.121 & Adres IP: 157.158.57.47  \\\hline
 \setlength{\itemsep}{5pt}
 \setlength{\parskip}{0pt}
 \setlength{\parsep}{0pt}
-\item 2~silniki AM3021-0C00-0000,
+\item Serwomechanizm AM3021-0C00-0000.
+\item Serwomechanizm AM3021-0C40-0000.
 \item Wyspa EK1100 z~zestawem modułów~IO:
 \begin{itemize}[leftmargin=3mm]
 \setlength{\itemsep}{3pt}
@@ -130,7 +153,8 @@ Adres IP: 157.158.57.121 & Adres IP: 157.158.57.47  \\\hline
 \setlength{\itemsep}{5pt}
 \setlength{\parskip}{0pt}
 \setlength{\parsep}{0pt}
-\item 2~silniki AM3021-0C00-0000.
+\item Serwomechanizm AM3021-0C00-0000.
+\item Serwomechanizm AM3021-0C40-0000.
 \item Zestaw modułów IO:
 \begin{itemize}[leftmargin=3mm]
 \setlength{\itemsep}{3pt}
@@ -189,7 +213,7 @@ Taki ,,sterownik PLC w~komputerze PC'' wykorzystuje standardowe języki programo
 
 \item SFC -- \textbf{S}equential \textbf{F}unction \textbf{C}hart to~graficzny język programowania, w~którym łatwo jest ukazać chronologię wykonywania przez program różnych procesów,
 
-\item ST -- \textbf{S}truktured \textbf{T}ext jest tekstowym językiem programowania, złożonym z~serii instrukcji takich jak If..then lub For...do,
+\item ST -- \textbf{S}tructured \textbf{T}ext jest tekstowym językiem programowania, złożonym z~serii instrukcji takich jak If..then lub For...do,
 
 \item CFC -- \textbf{C}ontinuous \textbf{F}unction \textbf{C}hart jest graficznym językiem programowania, który w~przeciwieństwie do~FBD nie~działa w~sieci, a~w~luźno położonej strukturze, co~pozwala na np.~stworzenie sprzężenia zwrotnego.
 \end{itemize}

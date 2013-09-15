@@ -80,6 +80,47 @@ Eksperyment miał na~celu sprawdzenie po upływie jakiego czasu od~odłączeniu 
 
 Analiza wyników przeprowadzonego badania pozwala wysnuć wniosek, że możliwe jest całkowite rozłączenie i~ponowne podłączenie sieci ,,w locie''. Czas potrzebny na~stabilizację połączenia po jego utracie również w tym wypadku jest zdaniem autora zadowalający. Niestety jednak porównując uzyskane wielkości do~tych z~badania pojedynczego węzła sieci można zauważyć, że czas ten wzrósł dość znacząco i~w~przypadku jeszcze większej liczby węzłów przestanie on już być akceptowalny. Obserwując uzyskany wykres można dojść do wniosku, że różnice pomiędzy kolejnymi iteracjami eksperymentu są stosunkowo małe i~wpływ na~nie może mieć w~większości zastosowana metoda pomiarowa.
 
+\subsubsection{Pełna stabilizacja urządzenia}
+W~czasie badań autor zauważył, że zmierzone w~pierwszych trzech eksperymentach czasy określają jedynie czas potrzebny na ustabilizowanie sieci, ale nie uwzględniają, że po nawiązaniu połączenia urządzenie wymaga jeszcze pewnego czasu na ustawienie się w~prawidłowy stan 'Operational'. Eksperyment ten został przeprowadzony z~wykorzystaniem stworzonego oprogramowania oraz wizualizacji. Autor dokonał pomiaru czasu od momentu zmiany stanu urządzenia z~OP, aż do jego powrotu do prawidłowego stanu.
+
+\begin{table}[!htb]
+\begin{center}
+\begin{tabular}{| c | c | c | c | c |}\hline
+\textbf{Liczba} & \textbf{Wartość} & \textbf{Wartość} & \textbf{Wartość} & \textbf{Odchylenie} \\
+\textbf{próbek} & \textbf{średnia} & \textbf{minimalna} & \textbf{maksymalna} & \textbf{standardowe} \\\hline\hline
+20 & 5,646s & 5,440s & 6,080s & 0,165\\\hline
+\end{tabular}
+\end{center}
+\vspace*{-6mm}
+  \caption{Wyniki przeprowadzonego badania}
+	\label{badania:wyniki:op_jeden}
+\end{table}
+
+\noindent Wyniki przeprowadzonego eksperymentu zostały zebrane w Tabeli~\ref{badania:wyniki:op_jeden}. Na podstawie zmierzonych wartości oraz po ich analizie statystycznej uzyskano wykres przedstawiony na Rysunku~\ref{badania:wykres:op_jeden}
+\input{tikz/op_jeden}
+
+Analiza wyników przeprowadzonego badania wykazuje, że czas potrzebny na przywrócenie węzła do prawidłowego działania jest dwu krotnie wyższy niż w~przypadku odzyskiwania połączenia. Czas potrzebny na stabilizację połączenia po jego utracie jest zdaniem autora zadowalający, ale już nie tak dobry jak czas stabilizacji połączenia. Obserwując uzyskany wykres można dojść do wniosku, że różnice pomiędzy kolejnymi iteracjami eksperymentu są stosunkowo małe, o czym świadczy odchylenie standardowe, którego wartość wynosi 0,165. Zdaniem autora głównym źródłem różnic jest zastosowana metoda pomiarowa.
+
+Dodatkowym wynikiem badania jest wykrycie faktu, że oprócz odłączonego węzła stan swój zmienia węzeł będący terminalem przyłączeniowym (EK1100). Fakt ten nie zostaje wykryty i~zgłoszony przez środowisko oraz nie był widoczny na podglądzie topologii w~czasie zaburzania. Autor postanowił przebadać i~przeanalizować czas potrzebny na powrót tego węzła do prawidłowego działania. Fakt ten może mieć duże znaczenie przy innych topologiach, gdzie do jednego terminala będzie podłączonych więcej węzłów podrzędnych. W~takiej sytuacji autor przewiduje przerwanie komunikacji z~wszystkimi węzłami podpiętymi do terminala.
+
+\begin{table}[!htb]
+\begin{center}
+\begin{tabular}{| c | c | c | c | c |}\hline
+\textbf{Liczba} & \textbf{Wartość} & \textbf{Wartość} & \textbf{Wartość} & \textbf{Odchylenie} \\
+\textbf{próbek} & \textbf{średnia} & \textbf{minimalna} & \textbf{maksymalna} & \textbf{standardowe} \\\hline\hline
+10 & 1,653s & 1,570s & 1,870s & 0,091\\\hline
+\end{tabular}
+\end{center}
+\vspace*{-6mm}
+  \caption{Wyniki przeprowadzonego badania}
+	\label{badania:wyniki:op_jeden_bonus}
+\end{table}
+
+\noindent Wyniki przeprowadzonego eksperymentu zostały zebrane w Tabeli~\ref{badania:wyniki:op_jeden_bonus}. Na podstawie zmierzonych wartości oraz po ich analizie statystycznej uzyskano wykres przedstawiony na Rysunku~\ref{badania:wykres:op_jeden_bonus}
+\input{tikz/op_jeden_bonus}
+
+Wyniki przeprowadzonego eksperymentu mają taką samą charakterystykę jak we wszystkich dotychczasowych badaniach. Czas powrotu do prawidłowego stanu pracy w~tym przypadku jest aż trzy razy mniejszy niż dla węzła odłączanego. Zdaniem autora wynika to z~prostszego oprogramowania wewnętrznego terminala przyłączeniowego (emulowana maszyna stanów) lub węzeł zaburzony rozpoczyna swoją potencjalizację po węźle poprzedzającym.
+
 \clearpage
 \subsubsection{Problemy}
 W~czasie dziesiątek przeprowadzonych w~tym badaniu pomiarów autor doprowadził do sytuacji w~której sieć nie~powróciła już samoczynnie do~prawidłowego działania. Jest to sprzeczne z~zapewnieniami twórców standardu i~dlatego wszystkie przypadki zostaną tu zawarte,szczegółowo opisane i~przeanalizowane.
@@ -95,11 +136,24 @@ Dalsza analiza wykazała, że węzeł AX-5203 jest w prawidłowym stanie inicjal
 Okazało się, ze problem ten można prosto rozwiązać bez potrzeby restartowania całego stanowiska poprzez wymuszenie zmiany stanu węzła nadrzędnego z~INIT na~OP (opcja dostępna z~poziomu środowiska), co skutkuje wysłaniem takiego samego żądania do wszystkich węzłów podrzędnych i sieć ponownie zaczyna funkcjonować. Wynik analizy znajduje odzwierciedlenie bezpośrednio w~treści wiadomości opisującej błąd.
 \end{enumerate}
 
-\subsection{Badania niewykonalne}
+Podsumowując wszystkie powyższe badania przeprowadzone w~tym podrozdziale autor wyciągnął dwa kluczowe wnioski:
+\begin{enumerate}
+\item odłączanie oraz ponowne podłączanie pojedynczego węzła, grupy węzłów, a~nawet całej sieci jest możliwe ,,w~locie'' w~pracującym systemie; należy jednak pamiętać, że operacja stabilizacji sieci oraz przywracanie urządzeń do prawidłowego stanu wymaga czasu i~nie w przypadku wszystkich instalacji będzie to dopuszczalne,
+\item należy pamiętać, że jeżeli w~czasie przywracania prawidłowego stanu sieci jakiekolwiek urządzenie nie przejdzie prawidłowo ze stanu inicjalizacji do stanu operacyjnego to~działanie całej sieci zostaje zawieszone.
+\end{enumerate}
+\subsection{Opóźnienie transmisji}
+Eksperyment miał na celu sprawdzenie czy w~protokole występują opóźnienia związane z~transmisja danych. Dla przebadania autor postanowił zastosować dostępne na stanowisku serwomechanizmy. Jako podstawę wykorzystano podstawową konfiguracje sterowników i wizualizację. Do badania wykorzystano po~jednym serwomechanizmie z~każdego stanowiska, a~do ich sterowania zastosowano dostępny z~poziomu TwinCAT System Managera moduł TwinCAT NC Server, który wygląda jak pokazano na Rysunku~\ref{axis_function}. Zastosowanie tej metody było uzasadnione tym, że obserwując zmienne związane z~pracą silnika autor dostrzegł, że odpowiednie parametry są regularnie przetwarzane i wymieniane pomiędzy jednostką centralną, a napędem. Duża ilość przesyłanych danych sugeruje, że jeżeli występują jakieś opóźnienia w~transmisji to eksperyment powinien je wykazać.
 
-\subsubsection{Zbadanie innych topologii}
+\begin{figure}[!htb] 	\centering 	\includegraphics[width=0.85\textwidth]{images/axis_function} \caption{Moduł pozwalający sterować silnikiem z~wykorzystaniem funkcji.} \label{axis_function} \end{figure}
 
-\subsubsection{Zbadanie opóźnień na poziomie transmisji pojedynczych ramek}
+Autor zadawał różne funkcję podając pozycje docelowe oraz żądaną prędkość. Wykorzystując stworzone oprogramowanie oraz wizualizację mierzono czas trwania ruchu silnika. Te same zadania były równolegle uruchamiane na obu stanowiskach. Autor zawsze przeprowadzał pomiar dwukrotnie tzn. od pozycji zerowej do pozycji docelowej i~z~powrotem żeby wykluczyć przypadkowe różnice. Wiele kombinacji odległości i~prędkości poskutkowało uzyskiwanie czasów od pojedynczych sekund do kilku minut. Niestety badanie to nie wykazało żadnych opóźnień w~transmisji, ponieważ:
+\begin{itemize}
+\item czasy tam i~z~powrotem w każdej próbie były równe,
+\item czasy odmierzane na dwóch niezależnych stanowiskach o~różnej topologii oraz liczbie węzłów podrzędnych zawsze były równe.
+\end{itemize}
+Autor dokładał wszelkich starań, aby uzyskać rozbieżne wyniki, ale dalsze wydłużanie czasu pracy silników nie przynosiło efektów. Nawet odłączanie i~ponowne podłączanie zdalnych modułów wejścia/wyjścia w~czasie pracy silnika nie wpłynęło na otrzymywane wyniki.
+%\subsubsection{Zbadanie innych topologii}
+%\subsubsection{Zbadanie opóźnień na poziomie transmisji pojedynczych ramek}
 %Różne kable
 %Długość kabla
 %
