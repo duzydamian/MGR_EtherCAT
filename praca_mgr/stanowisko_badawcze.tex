@@ -99,6 +99,36 @@ Na przedstawionym zrzucie ekranu widać, że podstawą do stworzenia rozszerzone
 \begin{figure}[!htb] 	\centering 	\includegraphics[width=0.95\textwidth]{images/topologyCX++} \caption{Topologia stanowiska typu CX++.} \label{topology:cx++} \end{figure}
 
 Na tak przygotowanym stanowisku, w~celu uniknięcia różnic powstałych przez zastosowane oprogramowanie sterownika~PLC, autor zdecydował się uruchomić projekt przygotowany dla wersji podstawowej. Wybrane zostały po dwa przyciski, diody czerwone oraz diody zielone z~każdego stanowiska. Celem przeprowadzenia eksperymentów związanych z~opóźnieniem transmisji do wizualizacji i~oprogramowania zostały przypisane silniki, których automatyczne wykrycie udostępnia środowisko do zarządzania projektem.
+
+\vspace{1cm}
+Na rozbudowanym już stanowisku autor postanowił zrealizować drugą koncepcję pomiaru zależności czasowych w~protokole EtherCAT. Pomysłem było stworzenie oprogramowania umożliwiającego ruch silnika przez zadany czas. Stworzone wcześniej oprogramowanie zostało rozszerzone o~warunek zezwolenia na ruch silnika. Tak jak poprzednio stoper jest wyzwalany uruchomieniem silnika, a w tym przypadku sygnał \textit{Q} pochodzący z~timera znajdującego się wewnątrz bloku funkcyjnego \textit{STOPWATCH} (aktywowany w momencie odmierzenia zadanego czasu) posłużył do cofnięcia zezwolenia na ruch. Zmodyfikowany kod źródłowy został przedstawiony w~Listingu~\ref{servoDist}.
+
+\vspace{5mm}
+\begin{lstlisting}[caption={Oprogramowanie odmierzające drogę przebytą w zadanym czasie.},label=servoDist]
+PROGRAM MAIN
+VAR
+	stoper_axis1: STOPWATCH := (max_value:=t#120s);
+	stoper_axis2: STOPWATCH := (max_value:=t#120s);
+END_VAR
+
+Enable_1 := NOT stoper_axis1.timer.Q;
+Enable_2 := NOT stoper_axis2.timer.Q;
+
+stoper_axis1.start_stop := NOT axis1_Not_moving;
+stoper_axis1();
+axis1_driving_time := stoper_axis1.value;
+stoper_axis2.start_stop := NOT axis2_Not_moving;
+stoper_axis2();
+axis2_driving_time := stoper_axis2.value;
+\end{lstlisting}
+
+\clearpage
+Decydując się na zmianę oprogramowania sterownika autor postanowił zmodyfikować również wizualizację. Przede wszystkim usunięto z~niej elementy związane z~pomiarem czasu stabilizacji stanu urządzeń.
+
+Stworzoną wizualizacje typu drugiego przedstawiono na Rysunku~\ref{vis2_inuse}.
+\begin{figure}[!htb] 	\centering 	\includegraphics[width=0.99\textwidth]{images/vis2_inuse} \caption{Przykładowa uruchomiona wizualizacja typu drugiego.} \label{vis2_inuse} \end{figure}
+
+\noindent Tak przygotowany kod sterownika PLC oraz wizualizacja posłużyły do przeprowadzenia badania drogi przebytej przez silnik w zdanym czasie, ze stałą prędkością. 
 %ToDo: topologia, poprawić opis, jak zastosować istniejący kod i wizualizację do badań.
 %\subsection{Opóźnienia pojedynczego odcinka sieci}
 %\subsection{Wpływ topologi na opóźnienia}

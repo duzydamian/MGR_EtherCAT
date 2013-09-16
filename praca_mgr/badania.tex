@@ -142,7 +142,9 @@ Podsumowując wszystkie powyższe badania przeprowadzone w~tym podrozdziale auto
 \item należy pamiętać, że jeżeli w~czasie przywracania prawidłowego stanu sieci jakiekolwiek urządzenie nie przejdzie prawidłowo ze stanu inicjalizacji do stanu operacyjnego to~działanie całej sieci zostaje zawieszone.
 \end{enumerate}
 \subsection{Opóźnienie transmisji}
-Eksperyment miał na celu sprawdzenie, czy w~protokole występują opóźnienia związane z~transmisją danych. Dla przebadania autor postanowił zastosować dostępne na stanowisku serwomechanizmy. Jako fundament wykorzystano podstawową konfigurację sterowników i wizualizację. Do badania wykorzystano po~jednym serwomechanizmie z~każdego stanowiska, a~do ich sterowania zastosowano dostępny z~poziomu TwinCAT System Managera moduł TwinCAT NC Server, którego przykładowy wygląda przedstawiono na Rysunku~\ref{axis_function}. Zastosowanie tej metody było uzasadnione tym, że obserwując zmienne związane z~pracą silnika autor dostrzegł, że odpowiednie parametry są regularnie przetwarzane i wymieniane pomiędzy jednostką centralną, a napędem. Duża ilość przesyłanych danych sugeruje, że jeżeli występują jakieś opóźnienia w~transmisji to eksperyment powinien je wykazać.
+Eksperyment miał na celu sprawdzenie, czy w~protokole występują opóźnienia związane z~transmisją danych. Dla przebadania autor postanowił zastosować dostępne na stanowisku serwomechanizmy. 
+\subsubsection{Badanie różnic czasu}
+Jako fundament wykorzystano podstawową konfigurację sterowników i wizualizację. Do badania wykorzystano po~jednym serwomechanizmie z~każdego stanowiska, a~do ich sterowania zastosowano dostępny z~poziomu TwinCAT System Managera moduł TwinCAT NC Server, którego przykładowy wygląda przedstawiono na Rysunku~\ref{axis_function}. Zastosowanie tej metody było uzasadnione tym, że obserwując zmienne związane z~pracą silnika autor dostrzegł, że odpowiednie parametry są regularnie przetwarzane i wymieniane pomiędzy jednostką centralną, a napędem. Duża ilość przesyłanych danych sugeruje, że jeżeli występują jakieś opóźnienia w~transmisji to eksperyment powinien je wykazać.
 
 \begin{figure}[!htb] 	\centering 	\includegraphics[width=0.85\textwidth]{images/axis_function} \caption{Moduł pozwalający sterować silnikiem z~wykorzystaniem funkcji.} \label{axis_function} \end{figure}
 
@@ -155,6 +157,12 @@ Autor zadawał różne funkcje podając pozycje docelowe oraz żądaną prędko�
 \end{itemize}
 
 Autor dokładał wszelkich starań, aby uzyskać rozbieżne wyniki, ale dalsze wydłużanie czasu pracy silników nie przynosiło efektów. Nawet odłączanie i~ponowne podłączanie zdalnych modułów wejścia/wyjścia w~czasie pracy silnika nie wpłynęło na otrzymywane wyniki. Dodatkowo autor przeprowadził to samo badanie wykorzystując stanowisko rozszerzone do 15 węzłów slave, ale również w~tym przypadku osiągane wyniki nie wykazały występowania opóźnień transmisji.
+\clearpage
+\subsubsection{Badanie różnic odległości}
+W~porównaniu do poprzedniego eksperymentu zastosowano drugi typ stworzonego oprogramowania oraz wizualizacji. Tak samo, jak w~pierwszym badaniu opóźnienia transmisji tutaj również wykorzystano sterowane z~poziomu środowiska serwomechanizmy. Drugie podejście było uzasadnione przede wszystkim niepowodzeniem pierwszego eksperymentu. Pracujące ze stałą, zadaną prędkością przez określony czas silniki powinny po zakończeniu pracy stopera zatrzymać się w~pewnej odległości, różnej dla obu silników.
+
+Otrzymane wyniki potwierdziły przypuszczenia autora. W~każdym pomiarze silniki zatrzymywały się w różnych punktach.
+Analiza wyników
 %\subsubsection{Zbadanie innych topologii}
 %\subsubsection{Zbadanie opóźnień na poziomie transmisji pojedynczych ramek}
 %Różne kable
