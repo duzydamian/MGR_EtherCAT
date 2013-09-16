@@ -133,7 +133,7 @@ Do błędu doszło w~momencie zaburzenia pracy całej sieci, tj. odłączenia ws
 
 Na rysunku można zaobserwować, że urządzenia są podłączone do sieci, ale ich stan jest błędny (brak czerwony ramek wokół węzłów). Analizując stan stanowiska i~sieci w~środowisku zaobserwowano, że w~sieci nie są przesyłane dane.
 Dalsza analiza wykazała, że węzeł AX-5203 jest w prawidłowym stanie inicjalizacji (0x0001), natomiast problematyczna okazała się zdalna wyspa, która ma nieprawidłowy stan 0x5C01, który według jednej z dokumentacji producenta oznacza błąd podczas resetowania stanu \cite{err0x707}.
-Okazało się, ze problem ten można prosto rozwiązać bez potrzeby restartowania całego stanowiska poprzez wymuszenie zmiany stanu węzła nadrzędnego z~INIT na~OP (opcja dostępna z~poziomu środowiska), co skutkuje wysłaniem takiego samego żądania do wszystkich węzłów podrzędnych i sieć ponownie zaczyna funkcjonować. Wynik analizy znajduje odzwierciedlenie bezpośrednio w~treści wiadomości opisującej błąd.
+Okazało się, ze problem ten można prosto rozwiązać bez potrzeby restartowania całego stanowiska poprzez wymuszenie zmiany stanu węzła nadrzędnego z~INIT na~OP (opcja dostępna z~poziomu środowiska), co skutkuje wysłaniem takiego samego żądania do wszystkich węzłów podrzędnych i sieć ponownie zaczyna funkcjonować. Wynik analizy znajduje odzwierciedlenie bezpośrednio w~treści wiadomości opisującej błąd. Zdaniem autora błąd może wynikać z~charakterystyki  generowanych przez użytkownika zakłóceń, tzn. wysoka częstotliwość oraz krótki czas trwania.
 %\end{enumerate}
 
 Podsumowując wszystkie powyższe badania przeprowadzone w~tym podrozdziale autor wyciągnął dwa kluczowe wnioski:
@@ -159,10 +159,24 @@ Autor zadawał różne funkcje podając pozycje docelowe oraz żądaną prędko�
 Autor dokładał wszelkich starań, aby uzyskać rozbieżne wyniki, ale dalsze wydłużanie czasu pracy silników nie przynosiło efektów. Nawet odłączanie i~ponowne podłączanie zdalnych modułów wejścia/wyjścia w~czasie pracy silnika nie wpłynęło na otrzymywane wyniki. Dodatkowo autor przeprowadził to samo badanie wykorzystując stanowisko rozszerzone do 15 węzłów slave, ale również w~tym przypadku osiągane wyniki nie wykazały występowania opóźnień transmisji.
 \clearpage
 \subsubsection{Badanie różnic odległości}
-W~porównaniu do poprzedniego eksperymentu zastosowano drugi typ stworzonego oprogramowania oraz wizualizacji. Tak samo, jak w~pierwszym badaniu opóźnienia transmisji tutaj również wykorzystano sterowane z~poziomu środowiska serwomechanizmy. Drugie podejście było uzasadnione przede wszystkim niepowodzeniem pierwszego eksperymentu. Pracujące ze stałą, zadaną prędkością przez określony czas silniki powinny po zakończeniu pracy stopera zatrzymać się w~pewnej odległości, różnej dla obu silników.
+W~porównaniu do poprzedniego eksperymentu zastosowano drugi typ stworzonego oprogramowania oraz wizualizacji. Tak samo, jak w~pierwszym badaniu opóźnienia transmisji tutaj również wykorzystano sterowane z~poziomu środowiska serwomechanizmy. Drugie podejście było uzasadnione przede wszystkim niepowodzeniem pierwszego eksperymentu. Pracujące ze stałą, zadaną prędkością przez określony czas silniki powinny po zakończeniu pracy stopera zatrzymać się w~pewnej odległości, różnej dla obu silników. Wyniki przeprowadzonego eksperymentu zostały zebrane w Tablicy~\ref{badania:wyniki:servo_dist}. Jako silnik~1 został skojarzony serwomechanizm z~przedostatniego węzła sieci, natomiast jako silnik~2~z~ostatniego węzła (Rysunek~\ref{topology:cx++}).
+
+\begin{table}[!htb]
+\begin{center}
+\begin{tabular}{| c | c | c | c | c |}\hline
+\textbf{Liczba} & \textbf{Wartość} & \textbf{Wartość} & \textbf{Wartość} & \textbf{Odchylenie} \\
+\textbf{próbek} & \textbf{średnia} & \textbf{minimalna} & \textbf{maksymalna} & \textbf{standardowe} \\\hline\hline
+15 & 0,5778 & 0,0446 & 1,1654 & 0,4551\\\hline
+\end{tabular}
+\end{center}
+\vspace*{-6mm}
+  \caption{Wyniki przeprowadzonego badania.}
+	\label{badania:wyniki:servo_dist}
+\end{table}
 
 Otrzymane wyniki potwierdziły przypuszczenia autora. W~każdym pomiarze silniki zatrzymywały się w różnych punktach.
-Analiza wyników
+Analiza wyników wykazuje, że są one bardzo małe. Zdaniem autora różnice nie wynikają z~opóźnień w protokole EtherCAT, ale z~niedokładności działania i sterowania silnikiem. Zauważalne były zmieniające się dynamicznie prędkość oraz pozycja silnia po jego zatrzymaniu.
+Zwiększanie czasu pomiaru oraz zmiana prędkości poruszania się nie wpłynęły znacząco na wyniki. Fakt nie wykrycia opóźnień może być potwierdzony tym, że wynik uzyskany dla najdłuższego pomiaru (10 minut) nie był wynikiem maksymalnym. Bardzo dziwna jest zauważalna zależność różnicy od zadanej prędkości, tzn. dla niektórych wartości większą odległość pokonywał silnik pierwszy, a dla innych silnik drugi.
 %\subsubsection{Zbadanie innych topologii}
 %\subsubsection{Zbadanie opóźnień na poziomie transmisji pojedynczych ramek}
 %Różne kable
