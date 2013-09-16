@@ -1,0 +1,48 @@
+\begin{figure}[htbp]
+ \centering
+        \tikzstyle{background grid}=[draw, black!50,step=.25cm]
+	\begin{tikzpicture}[node distance=2mm, auto]%, show background grid]
+	\tikzset{
+    	mynode/.style={rectangle,rounded corners,draw=black, top color=white, very thick, inner sep=4mm, 		text centered,font=\footnotesize},
+    	mynodemini/.style={rectangle,rounded corners,draw=black, top color=white, thick, inner sep=2mm, text centered,font=\scriptsize},    	
+	    myarrow/.style={->, >=latex', shorten >=1pt, ultra thick},
+	    myline/.style={-, =latex', shorten >=1pt, rounded corners, ultra thick},
+	    mylabel/.style={text centered, font=\scriptsize\bfseries} 
+	} 
+	\node[bottom color=yellow!50, mynode] (header) {Nagłówek datagramu};  
+	\node[bottom color=yellow!50, mynode, below=1.3cm of header.south west, text width=3.2cm] (mainadress) {Address};	
+	\node[mylabel, above=1mm of mainadress] (mainadresss) {4B};		
+	\node[bottom color=yellow!50, mynode, below=2.2cm of mainadress.25] (offset) {Offset}; 
+	\node[bottom color=yellow!50, mynode, below=1mm of offset] (offset2) {Offset}; 	
+	\node[mylabel, above=1mm of offset] (offsets) {2B};		  		
+	\node[bottom color=yellow!50, mynode, left=of offset] (position) {Position};
+	\node[bottom color=yellow!50, mynode, below=1mm of position] (adress) {Address}; 
+	\node[bottom color=yellow!50, mynode, below=1mm of adress.south east, text width=3.2cm] (ladress) {Logical Address}; 			   		
+	\node[below=3mm of ladress] (spacing) {};
+	\node[mylabel, above=1mm of position] (positions) {2B};
+	
+	\node[bottom color=yellow!50, mynode, left=of mainadress] (idx) {Idx};   		
+	\node[mylabel, below=1mm of idx] (idxs) {1B};
+	\node[bottom color=yellow!50, mynode, left=of idx] (cmd) {Cmd};   		
+	\node[mylabel, below=1mm of cmd] (cmds) {1B};		
+	\node[bottom color=yellow!50, mynode, right=of mainadress] (len) {Len};   				
+	\node[mylabel, below=1mm of len] (lens) {11b};	
+	\node[bottom color=yellow!50, mynode, right=of len] (r) {R};   				
+	\node[mylabel, below=1mm of r] (rs) {3b};	
+	\node[bottom color=yellow!50, mynode, right=of r] (c) {C};   				
+	\node[mylabel, below=1mm of c] (cs) {1b};		
+	\node[bottom color=yellow!50, mynode, right=of c] (m) {M};   				
+	\node[mylabel, below=1mm of m] (ms) {1b};	
+	\node[bottom color=yellow!50, mynode, right=of m] (irq) {IRQ};   				
+	\node[mylabel, below=1mm of irq] (irqs) {2B};	
+				 
+	\draw[myline,black,dotted] (datagram.south west) -- (cmd.north west); 	
+	\draw[myline,black,dotted] (datagram.south east) -- (irq.north east); 
+	
+	\draw[myline,black,dotted] (mainadress.south west) -- (position.north west); 	
+	\draw[myline,black,dotted] (mainadress.south east) -- (offset.north east); 
+		
+\end{tikzpicture} 
+\caption{Budowa nagłówka datagramu.}
+\label{etherCAT:datagram_header}
+\end{figure}

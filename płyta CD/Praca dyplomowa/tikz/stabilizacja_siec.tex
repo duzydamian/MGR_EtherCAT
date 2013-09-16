@@ -1,0 +1,27 @@
+\begin{figure}[h]
+ \centering
+ \begin{tikzpicture}[x=1cm,y=5cm]
+  \tikzstyle{background grid}=[draw, black!50,step=.25cm]
+	\draw[-latex, thin, draw=gray] (0,4)--(10,4) node [right] {$x$};
+	\draw[-latex, thin, draw=gray] (0,3.95)--(0,5.55) node [left] {$t[s]$};
+	%\draw [dotted, gray, step=0.5cm] (0,0) grid (20,4);
+ 	\draw (0,4) node[left] {4};
+	\draw[] (0,4.790)--(10,4.790) node[left=10cm] {4,790};
+	\draw[thin, dotted] (0,4.149)--(10,4.149) node[below] {min};
+	\draw[thin, dotted] (0,5.455)--(10,5.455) node[above] {max};
+		
+	\node at (1, 4.863) {\textbullet};
+	\node at (2, 4.149) {\textbullet};
+	\node at (3, 5.313) {\textbullet};
+	\node at (4, 5.455) {\textbullet};
+	\node at (5, 4.339) {\textbullet};
+	\node at (6, 4.911) {\textbullet};
+	\node at (7, 5.099) {\textbullet};
+	\node at (8, 4.339) {\textbullet};		
+	\node at (9, 4.967) {\textbullet};
+	\node at (10, 4.463) {\textbullet};
+					
+\end{tikzpicture}
+\caption{Pomiary czasu ponownego podłączenia oraz obliczona wartość średnia.}
+\label{badania:wykres:stabilizacja_siec}
+\end{figure}

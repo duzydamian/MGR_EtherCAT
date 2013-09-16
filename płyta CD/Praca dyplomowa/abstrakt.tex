@@ -1,0 +1,63 @@
+%\documentclass[a4paper,12pt]{report}
+\documentclass[a4paper,12pt]{article}
+%\documentclass[a4paper,12pt]{book}
+\usepackage{polski}
+\usepackage[polish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[top=2.5cm, bottom=2.5cm, left=3cm, right=2.5cm]{geometry}
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{ifthen}
+%\usepackage[utf8]{inputenc}
+\usepackage{a4wide}
+\usepackage{fullpage}
+\usepackage{verbatim}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{hyperref}
+\usepackage{subfig}
+\usepackage{listings}
+\usepackage{mdwlist}
+\usepackage{titlesec}
+\usepackage{lipsum}
+
+\hypersetup{
+	bookmarks=true,
+	pdftitle={Abstrakt do },
+	pdfauthor={Damian Karbowiak},
+	pdfsubject={System sterowania i wizualizacji pracy robota 3D},
+	pdfkeywords={INŻ sprawozdanie Politechnika Śląska System sterowania i wizualizacji pracy robota 3D raport końcowy projekt magisterski},
+	colorlinks=true,
+	linkcolor=Blue,
+	urlcolor=Blue
+	}
+
+\let\subsubsubsection\paragraph
+%\setcounter{secnumdepth}{6} % subsubparagraph ???
+% that is, subsubsubsubsubsection :-)
+\setcounter{secnumdepth}{4}
+
+\newcommand{\tytul}{System sterowania i wizualizacji pracy robota 3D.}
+\newcommand{\data}{czerwiec 2013}
+\newcommand{\promotor}{dr~inż. Jacek Stój}
+\newcommand{\autor}{Damian Karbowiak}
+%\newcommand{\konsultant}{mgr inż. Wojciech Domagała }
+\newcommand{\konsultant}{}
+
+\titlespacing{\section}{1cm}{*4}{*1.5}
+\titlespacing{\subsection}{1cm}{*4}{*1.5}
+\titlespacing{\subsubsection}{1cm}{*4}{*1.5}
+
+\begin{document}
+\lstset{backgroundcolor=\color{white}, boxpos=c, captionpos=b}
+\lstset{numbers=left, stepnumber=1, numbersep=10pt, frame=single}
+\lstset{frameround=tttt}
+\renewcommand{\lstlistlistingname}{\vspace*{-13mm}}
+\renewcommand{\listfigurename}{\vspace*{-13mm}}
+%\renewcommand*\l@figure[2]{\indent}
+\renewcommand{\listtablename}{\vspace*{-13mm}}
+\renewcommand*{\refname}{\vspace*{-13mm}}
+\renewcommand{\lstlistingname}{Kod źródłowy} 
+
+\include{abstrakt_tresc}
+
+\end{document}

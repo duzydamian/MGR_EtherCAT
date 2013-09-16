@@ -1,0 +1,62 @@
+\begin{figure}[htbp]
+ \centering
+        \tikzstyle{background grid}=[draw, black!50,step=.25cm]
+	\begin{tikzpicture}[node distance=0.8cm, auto]%, show background grid]
+	\tikzset{
+    	mynode/.style={rectangle,rounded corners,draw=black, top color=white, bottom color=orange!50,very thick, inner sep=1em, minimum size=2.5em, 		text centered, text width=2.5cm},
+    	mynodemini/.style={rectangle,rounded corners,draw=black, top color=white, bottom color=orange!50,very thick, inner sep=.5em, text centered},    	
+	    myarrow/.style={-, =latex', shorten >=1pt, ultra thick, yellow},
+	    myline/.style={-, =latex', shorten >=1pt, rounded corners, thick},
+	    mylabel/.style={text width=7em, text centered} 
+	} 
+	
+	\node[mynode] (master) {Węzeł nadrzędny};  
+	\node[above=2mm of master](mclock){\ClockFrametrue\ClockStyle=1\clock{3}{10}};
+	\node[mylabel, above=-2mm of mclock]{M};
+	\draw[myline,black] (master.north) -- ++(0,0.38) (mclock.south);
+	
+	\node[mynode, right=of master] (slave1) {Węzeł podrzędny 1};
+	\node[above=2mm of slave1](sclock1){\showclock{3}{10}};
+	\node[mylabel, above=-2mm of sclock1]{S};
+	\draw[myline,black] (slave1.north) -- ++(0,0.38) (sclock1.south);	
+
+	\node[mynodemini, below=1.5cm of slave1] (io1) {I/O};
+	\node[above=2mm of io1](sio1){\showclock{3}{10}};
+	\node[mylabel, above=-2mm of sio1]{S};
+	\draw[myline,black] (io1.north) -- ++(0,0.38) (sio1.south);	
+	\node[mynodemini, right=0mm of io1] (io2) {I/O};
+	\node[above=2mm of io2](sio2){\showclock{3}{10}};
+	\node[mylabel, above=-2mm of sio2]{S};
+	\draw[myline,black] (io2.north) -- ++(0,0.38) (sio2.south);	
+	\node[mynodemini, right=0mm of io2] (io3) {I/O};
+	\node[above=2mm of io3](sio3){\showclock{3}{10}};
+	\node[mylabel, above=-2mm of sio3]{S};
+	\draw[myline,black] (io3.north) -- ++(0,0.38) (sio3.south);	
+	\node[mynodemini, right=0mm of io3] (io4) {I/O};
+	\node[above=2mm of io4](sio4){\showclock{3}{10}};
+	\node[mylabel, above=-2mm of sio4]{S};
+	\draw[myline,black] (io4.north) -- ++(0,0.38) (sio4.south);	
+						
+	\node[mynode, right=of slave1] (slave2) {Węzeł podrzędny 2};
+	\node[above=2mm of slave2](sclock2){\showclock{3}{10}};
+	\node[mylabel, above=-2mm of sclock2]{S};
+	\draw[myline,black] (slave2.north) -- ++(0,0.38) (sclock2.south);	
+		
+	\node[mynode, right=of slave2] (slaven) {Węzeł podrzędny n};  	 	 		
+	\node[above=2mm of slaven](sclockn){\showclock{3}{10}};
+	\node[mylabel, above=-2mm of sclockn]{S};
+	\draw[myline,black] (slaven.north) -- ++(0,0.38) (sclock1.south);	
+		
+	\draw [decorate,decoration={brace, amplitude=10pt}, line width=1pt] (mclock.south) -- (sclock1.south) node[mylabel, midway, above=3mm] (deltal) {$\Delta t_1$};		
+	\draw [decorate,decoration={brace, amplitude=10pt, aspect=0.7}, line width=1pt] (mclock.south) ++(0,-0.2) -- ++(8.3,0) (sclock2.south);		
+	\node[mylabel, above=4.5cm of io2.east] (deltal2) {$\Delta t_2$};		
+	
+	\draw[myarrow] (master.east) -| (slave1.west);
+	\draw[myarrow] (slave1.east)  -| (slave2.west);
+	\draw[myarrow, dotted] (slave2.east) -| (slaven.west);	
+	\draw[myarrow] (slave1.west) ++(0,-0.5) -| ++(-0.3,-2.36) -| (io1.west);	
+ 
+\end{tikzpicture} 
+\caption{Schemat pracy zegarów rozproszonych.}
+\label{etherCAT:synchronizacja}
+\end{figure}

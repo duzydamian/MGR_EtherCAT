@@ -1,0 +1,31 @@
+\begin{figure}[htbp]
+ \centering
+        \tikzstyle{background grid}=[draw, black!50,step=.25cm]
+	\begin{tikzpicture}[node distance=1cm, auto]%, show background grid]
+	\tikzset{
+    	mynode/.style={rectangle,rounded corners,draw=black, fill=red!15,very thick, inner sep=1.2em, minimum size=2.5em, 		text centered, text width=2.5cm},
+    	mynodemini/.style={rectangle,rounded corners,draw=black, fill=red!15,very thick, inner sep=.5em, text centered, text width=2.5cm},    	
+	    myarrow/.style={<->, >=latex', shorten >=1pt, ultra thick},
+	    myline/.style={-, =latex', shorten >=1pt, rounded corners, ultra thick},
+	    mylabel/.style={text width=7em, text centered} 
+	} 
+	\node[mynode] (asic_fpga) {ASIC/FPGA \\ EtherCAT};  
+	\node[mynode, fill=blue!15, left=3cm of asic_fpga] (proc) {Procesor};
+	\node[mynodemini, right=of asic_fpga.north east] (layer1) {Warstwa \\ fizyczna};
+	\node[right=of layer1] (empty1) {};
+	\node[mynodemini, right=of asic_fpga.south east] (layer2) {Warstwa \\ fizyczna};  	 	 		
+	\node[right=of layer2] (empty2) {};	
+
+	\draw[myarrow] (proc) -- (asic_fpga) node [midway,above] {Interfejs};		
+	\draw[myarrow] (proc) -- (asic_fpga) node [midway,below=0.6cm] {hosta};		
+	
+	\draw[myarrow] (asic_fpga.north east) -- (layer1);	
+	\draw[myarrow] (asic_fpga.south east) -- (layer2);	
+				
+	\draw[myarrow] (layer1) -- (empty1);	
+	\draw[myarrow] (layer2) -- (empty2);	
+ 
+\end{tikzpicture} 
+\caption{Budowa węzła z~wykorzystaniem układu ASIC/FPGA \\ EtherCAT z~dołączonym zewnętrznym procesorem.}
+\label{etherCAT:FPGA_ASIC+proc}
+\end{figure}

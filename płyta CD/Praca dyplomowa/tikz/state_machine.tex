@@ -1,0 +1,35 @@
+\begin{figure}[htbp]
+ \centering
+        \tikzstyle{background grid}=[draw, black!50,step=.25cm]
+	\begin{tikzpicture}[node distance=2mm, auto]%, show background grid]
+	\tikzset{
+    	mynode/.style={rectangle,rounded corners,draw=black, top color=white, very thick, inner sep=4mm, 		text centered,font=\footnotesize},
+	    myarrowto/.style={ ->, shorten >=1pt, ultra thick},
+	    myarrowfrom/.style={ <-, shorten >=1pt, ultra thick},	    
+	    mylabel/.style={text centered, font=\scriptsize\bfseries} 
+	} 
+	\node[bottom color=cyan!40, mynode, text width=10cm] (init) {Init};  
+	\node[bottom color=cyan!40, mynode, text width=4cm, below=1.5cm of init.195] (preop) {Pre-Operational}; 
+	\node[bottom color=cyan!40, mynode, text width=4cm, below=3.5cm of init] (safeop) {Safe-Operational};   		
+	\node[bottom color=cyan!40, mynode, text width=7cm, below=6cm of init.200] (op) {Operational}; 
+	\node[bottom color=violet!20, mynode, text width=2cm, below=2.5cm of init.8] (bootstrap) {Bootstrap (opcjonalny)};   		
+	 
+	\draw[myarrowto,dotted] ([xshift=32mm]init.south) -- ++(0,-1.4) node [midway,black] {(IB)};
+	\draw[myarrowfrom,dotted] ([xshift=44mm]init.south) -- ++(0,-1.4) node [midway,black] {(BI)};	
+	
+	\draw[myarrowto] ([xshift=-36mm]init.south) -- ++(0,-1.5) node [midway,black] {(IP)};
+	\draw[myarrowfrom] ([xshift=-22mm]init.south) -- ++(0,-1.5) node [midway,black] {(PI)};		
+	
+	\draw[myarrowto] ([xshift=5mm]preop.south) -- ++(0,-0.85) node [midway,black] {(PS)};
+	\draw[myarrowfrom] ([xshift=19mm]preop.south) --++(0,-0.85) node [midway,black] {(SP)};		
+	
+	\draw[myarrowto] ([xshift=-40mm]safeop.south east) -- ++(0,-1.35) node [midway,black] {(SO)};
+	\draw[myarrowfrom] ([xshift=-26mm]safeop.south east) -- ++(0,-1.35) node [midway,black] {(OS)};					
+	
+	\draw[myarrowfrom] ([xshift=5mm]init.south west) -- ++(0,-6) node [midway,black] {(OI)};
+	\draw[myarrowfrom] ([xshift=8mm]preop.south west) -- ++(0,-3.35) node [midway,black] {(OP)};
+	\draw[myarrowfrom] ([xshift=10mm]init.south) -- ++(0,-3.5) node [midway,black] {(SI)};		
+\end{tikzpicture} 
+\caption{Maszyna stanów EtherCAT.}
+\label{etherCAT:state_machine}
+\end{figure}

@@ -1,0 +1,25 @@
+\begin{figure}[htbp]
+ \centering
+        \tikzstyle{background grid}=[draw, black!50,step=.25cm]
+	\begin{tikzpicture}[node distance=1cm, auto]%, show background grid][scale=1.1]
+	\tikzset{
+    	mynode/.style={rectangle,rounded corners,draw=black, top color=white, bottom color=orange!50,very thick, inner sep=0.6em, minimum size=2.5em, 		text centered, text width=2.5cm},
+    	mynodemini/.style={rectangle,rounded corners,draw=black, top color=white, bottom color=orange!50,very thick, inner sep=.5em, text centered},    	
+	    myarrow/.style={->, >=latex', shorten >=1pt, ultra thick},
+	    myline/.style={-, =latex', shorten >=1pt, rounded corners, ultra thick},
+	    mylabel/.style={text width=7em, text centered} 
+	} 
+	\node[mynode] (master) {Węzeł nadrzędny \\ (ang. \textit{master})};  
+	\node[mynode, below right=of master] (slave1) {Węzeł podrzędny 1};
+	\node[mynode, right=of slave1] (slave2) {Węzeł podrzędny 2};
+	\node[mynode, right=of slave2] (slaven) {Węzeł podrzędny n};  	 	 		
+	
+	\draw[myarrow,black] (master.350) -| (slave1.135);
+	\draw[myarrow,black] (slave1.45) -- ++(0,1.5) -| (slave2.135);
+	\draw[myarrow,black,dotted] (slave2.45) -- ++(0,1.5) -| (slaven.135);	
+	\draw[myarrow,black] (slaven.45) |- (master.20);	
+ 
+\end{tikzpicture} 
+\caption{Przykładowa topologia sieci.}
+\label{etherCAT:topologia}
+\end{figure}

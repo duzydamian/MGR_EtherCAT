@@ -1,0 +1,53 @@
+\begin{figure}[htbp]
+ \centering
+        \tikzstyle{background grid}=[draw, black!50,step=.25cm]
+	\begin{tikzpicture}[node distance=1.5mm, auto]%, show background grid]
+	\tikzset{
+    	mynode/.style={rectangle,rounded corners,draw=black, top color=white, very thick, inner sep=4mm, 		text centered,font=\footnotesize},
+    	mynodemini/.style={rectangle,rounded corners,draw=black, top color=white, thick, inner sep=2mm, text centered,font=\scriptsize},    	
+	    myarrow/.style={->, >=latex', shorten >=1pt, ultra thick},
+	    myline/.style={-, =latex', shorten >=1pt, rounded corners, ultra thick},
+	    mylabel/.style={text centered, font=\scriptsize\bfseries} 
+	} 
+	\node[bottom color=gray!50, mynode] (ethhdr) {Ethernet header};  
+	\node[bottom color=gray!50, mynodemini, below=of ethhdr.205] (da) {DA};
+	\node[mylabel, below=1mm of da] (das) {6B};	
+	\node[bottom color=gray!50, mynodemini, right=of da] (sa) {SA};  
+	\node[mylabel, below=1mm of sa] (sas) {6B};	
+	\node[bottom color=gray!50, mynodemini, right=of sa] (typ) {Typ};	
+	\node[mylabel, below=1mm of typ] (typs) {2/4B};	
+	\node[mylabel, below=of sas] (ethhdradr) {EtherType 0x88A4};
+	
+	\node[bottom color=yellow!50, mynode, right=of ethhdr, text width=2cm] (ecat) {EtherCAT};
+	\node[bottom color=yellow!50, mynodemini, below=of ecat, text width=2.4cm] (ecathdr) {EtherCAT header};
+	\node[mylabel, below=1mm of ecathdr] (ecathdrs) {2B};
+	
+	\node[bottom color=yellow!50, mynode, right=of ecat, text width=6cm] (ecatt) {EtherCAT telegram};
+	\node[bottom color=yellow!50, mynodemini, below=of ecatt.193] (ecatd1) {Datagram 1};  	 
+	\node[mylabel, below=1mm of ecatd1] (ecatd1s) {(10+n+2)B};
+	\node[bottom color=yellow!50, mynodemini, right=of ecatd1] (ecatd2) {Datagram 2};
+	\node[mylabel, below=1mm of ecatd2] (ecatd2s) {(10+m+2)B};  	 	 		
+	\node[bottom color=yellow!50, mynodemini, right=0.7cm of ecatd2] (ecatdn) {Datagram n};
+	\node[mylabel, below=1mm of ecatdn] (ecatdns) {(10+k+2)B};
+	\node [fit=(ecatd1s) (ecatdns) (ecatdns)] (fit) {};  
+ 	%\draw [decorate, xshift=-20pt,line width=4pt] (fit.south east) -- (fit.north east);
+	\draw [decorate,decoration={brace,amplitude=10pt}, line width=1pt] (fit.south east) ++(-0.1,0.3) -- ++(-6.9,0) (fit.south west);		
+	\node[mylabel, below=1mm of fit] (fits) {44--1498B};
+			
+	\node[bottom color=gray!50, mynode, right=of ecatt] (eth) {Ethernet};
+	\node[bottom color=gray!50, mynodemini, below=of eth.222] (pad) {Pad.};
+	\node[mylabel, below=1mm of pad] (pads) {0--32B};
+	\node[bottom color=gray!50, mynodemini, right=of pad] (fcs) {FCS}; 	 
+	\node[mylabel, below=1mm of fcs] (fcss) {4B}; 		
+ 
+	\draw[myline,black,dotted] (ecatd2) -- (ecatdn); 	
+	
+	\node[mylabel, below=1cm of ethhdradr.east] (dal) {DA -- Destination Address};
+	\node[mylabel, right=of dal] (sal) {SA -- Source Address};
+	\node[mylabel, right=of sal] (padl) {Pad. -- Payload};
+	\node[mylabel, right=of padl, text width=4cm] (fcsl) {FCS -- Frame Check Sequance (CRC)};			
+	
+\end{tikzpicture} 
+\caption{Ramka w transmisji EtherCAT i~jej podział na datagramy.}
+\label{etherCAT:ramka}
+\end{figure}

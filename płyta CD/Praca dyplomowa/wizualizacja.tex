@@ -1,0 +1,28 @@
+\lstset{language=VBScript,
+        basicstyle=\footnotesize\ttfamily,
+        breaklines=true,
+        tabsize=2,
+        numbers=left,
+        numberstyle=\tiny,
+        numbersep=7pt,
+        showspaces=false,
+        keywordstyle=\color{Blue}\textbf,
+        commentstyle=\color{Red}\emph,
+        showstringspaces=false,
+        stringstyle=\color{BurntOrange}
+        }
+\section{Wizualizacja HMI}
+Zaimplementowana przez autora wizualizacja ma na~celu zobrazowanie działania modelu oraz umożliwienie operatorowi wpływania na~jego działanie. Kolejne podrozdziały zawierają opis specyfikacji zewnętrznej oraz wewnętrznej. Część odnosząca się do specyfikacji zewnętrznej jest skróconą instrukcją obsługi użytkownika. Specyfikacja wewnętrzna jest opisem, jak zostały zrealizowane poszczególne elementy~i~w jaki sposób wizualizacja współpracuje ze~sterownikiem.
+
+\subsection{Specyfikacja zewnętrzna}
+Specyfikacja zewnętrzna przedstawiona w dalszej części podrozdziału stanowi skróconą instrukcję obsługi wizualizacji oraz opis możliwości oferowanych przez poszczególne ekrany.
+
+Autor projektu wykorzystał w~swojej pracy szereg elementów dostępnych standardowo w~środowisku Simatic WinCC flexible. Podstawowymi elementami sterującymi są przyciski w~trybie tekstowym oraz przeźroczystym. Głównymi obiektami służącymi do prezentacji informacji są: pola tekstowe, pola wejściowo-wyjściowe oraz pola daty i~godziny. Dodatkowo celem uatrakcyjnienia wizualizacji wykorzystane zostały suwaki (ang. \emph{slider}), obrazki oraz zegarek. 
+
+Obsługa tej części projektu jest realizowana za pomocą myszy i~klawiatury podłączonych do~komputera. Za~pomocą klawiatury wybieramy interesujący nas ekran lub wprowadzamy żądaną wartość pozycji docelowej na~ekranie testowania trybu automatycznego.
+
+\subsection{Specyfikacja wewnętrzna}
+Wizualizacja komunikuje się z~komputera klasy~PC ze~sterownikiem za~pośrednictwem protokołu Ethernet w~sieci lokalnej.
+Odniesienia do~odpowiednich adresów w~pamięci sterownika dokonywane są za~pomocą nazw symbolicznych zdefiniowanych w~tablicy Tags. Do działania wizualizacja używa tylko jednej zmiennej wewnętrznej i~jest~to zmienna tablicowa \emph{MagazynDTEnable} z elementami typu bool. Elementy te odpowiadają za~wyświetlanie dat oraz godzin na~ekranie ze~stanem magazynu po~kliknięciu na~wybraną komórkę. Obsługa wyświetlania dat polega na tym, że po kliknięciu w wybrane pole ustawiana jest odpowiednia zmienna w~tej tablicy na~wartośc \emph{true}, a~po zwolnieniu klawisza myszki na wartość \emph{false}. Za zmiany te odpowiadają niewidzialne przyciski umieszczone na~tych polach.
+
+Wizualizacja wpływa na pracę sterownika poprzez zmianę pojedynczych bitów za~pomocą umieszczonych na~ekranie przycisków. Wpływa ona również poprzez modyfikowanie wybranych zmiennych odpowiadających pozycjom docelowym lub poprzez dodawanie odpowiednich zadań do~kolejki. Bardziej zaawansowane operacje zostały zrealizowane za~pomocą skryptów napisanych w~języku VBScript, które są bardzo prostą i~szybką opcją wykonywania bardziej zaawansowanych czynności. 

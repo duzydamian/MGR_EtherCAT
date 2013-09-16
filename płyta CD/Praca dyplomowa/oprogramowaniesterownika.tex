@@ -1,0 +1,30 @@
+\lstset{language=Pascal,
+        basicstyle=\footnotesize\ttfamily,
+        breaklines=true,
+        tabsize=2,
+        numbers=left,
+        numberstyle=\tiny,
+        numbersep=7pt,
+        showspaces=false,
+        keywordstyle=\color{Blue}\textbf,
+        commentstyle=\color{Red}\emph,
+        showstringspaces=false,
+        stringstyle=\color{BurntOrange}
+        }
+\section{Oprogramowanie sterownika}
+W~niniejszym rozdziale opisane zostało oprogramowanie sterujące modelem. W~kolejnych podrozdziałach zostanie przedstawiona specyfikacja zewnętrzna oraz wewnętrzna. 
+
+\subsection{Specyfikacja zewnętrzna}
+Specyfikacja zewnętrzna przedstawiona w dalszej części podrozdziału zawiera opis, jak korzystać z~oprogramowania wgranego do sterownika przez jego autora. Opisane zostało, jak ustawiać odpowiednie zmienne, aby~uzyskać żądany efekt.
+
+Lista zmiennych wejściowych i wyjściowych wymieniana między sterownikiem a modelem została już opisana w~pierwszym rozdziale, w~Tablicach~\ref{in} oraz~\ref{out}. Pozostałe zmienne znajdują się w wewnętrznej pamięci sterownika.
+
+Oprogramowanie może sterować modelem w~sposób automatyczny lub ręczny. Tryb automatyczny w~trybie obsługi magazynu zostanie opisany w podrozdziale 2.1.2. Tryb ręczny może być realizowany przy pomocy zadajnika podpiętego do sterownika lub przy pomocy przycisków umieszczonych na odpowiednim ekranie wizualizacji. W~trybie tym o~pracy robota decydujący jest stan przycisków. Dopuszczalne są wszystkie możliwe ruchy w~przedziale od wyłącznika krańcowego do wartości maksymalnej.
+
+\subsection{Specyfikacja wewnętrzna}
+Podrozdział specyfikacja wewnętrzna opisuje sposób rozwiązania przez autora kwestii sterowania modelem przy użyciu dostępnego na~stanowisku sterownika oraz poszczególnych trybów sterowania.
+W~tworzeniu oprogramowania zostały wykorzystane następujące języki programowania:
+\begin{itemize} 
+\item język drabinkowy (Ladder), wykorzystany do stworzenia głównych elementów programu,
+\item S7-SCL, który został zastosowany do korzystania z tablic. Niestety do korzystania z nich nie można zastosować języka LAD, ponieważ nie da się w~nim odwoływać do elementów tablicy przez indeksy będące zmiennymi, a~jedynie przez stałe. Po zapoznaniu się z~dokumentacją okazało się, że~taka możliwość istnieje w~języku STL, ale jest to metoda skomplikowana w~implementacji. Właśnie dlatego najlepszym i~najprostszym rozwiązaniem okazuję się S7-SCL, który jest kompilowany do kodu w~języku STL.
+\end{itemize} 
